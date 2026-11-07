@@ -57,7 +57,7 @@ The dev server sends example data once per second, reloads open pages when a fil
 
 ## Stats on YouTube (Chrome extension)
 
-The extension in `extension/` shows your live values on top of youtube.com and music.youtube.com, also in full screen. It reads them from the dev server above, so start `npm run dev` first.
+The extension in `extension/` shows your live values on top of youtube.com, music.youtube.com and Teams recordings (Teams web and the SharePoint/Stream player), also in full screen. It reads them from the dev server above, so start `npm run dev` first.
 
 1. Open `chrome://extensions`, turn on **Developer mode** (top right).
 2. Click **Load unpacked** and choose the `extension` folder of this repo.

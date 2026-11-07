@@ -1,23 +1,47 @@
 {
   "manifest_version": 3,
   "name": "StrideCast",
-  "version": "0.1.0",
-  "description": "Shows live cross-trainer stats from StrideCast on top of YouTube and YouTube Music.",
-  "permissions": ["storage"],
-  "host_permissions": ["http://127.0.0.1:3700/*"],
-  "background": { "service_worker": "background.js" },
-  "action": { "default_title": "StrideCast: switch between bar, panel and hidden (Alt+S)" },
+  "version": "0.2.0",
+  "description": "Shows live cross-trainer stats from StrideCast on top of YouTube, YouTube Music and Teams recordings.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:3700/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "StrideCast: switch between bar, panel and hidden (Alt+S)"
+  },
   "content_scripts": [
     {
-      "matches": ["https://www.youtube.com/*", "https://music.youtube.com/*"],
-      "js": ["content.js"],
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://music.youtube.com/*",
+        "https://*.sharepoint.com/*",
+        "https://teams.microsoft.com/*",
+        "https://teams.cloud.microsoft/*"
+      ],
+      "js": [
+        "content.js"
+      ],
       "run_at": "document_idle"
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["lib/stats.js"],
-      "matches": ["https://www.youtube.com/*", "https://music.youtube.com/*"]
+      "resources": [
+        "lib/stats.js"
+      ],
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://music.youtube.com/*",
+        "https://*.sharepoint.com/*",
+        "https://teams.microsoft.com/*",
+        "https://teams.cloud.microsoft/*"
+      ]
     }
   ]
 }
