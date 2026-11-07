@@ -1,5 +1,6 @@
-// Development server: serves web/, streams example data on /api/live and reloads open
-// pages when a file under web/ changes. Listens on this computer only (127.0.0.1).
+// Development server: serves web/, streams example data on /api/live (the latest values
+// on /api/now) and reloads open pages when a file under web/ changes. Listens on this
+// computer only (127.0.0.1).
 
 import { createServer } from 'node:http';
 import { watch } from 'node:fs';
@@ -84,6 +85,9 @@ createServer((req, res) => {
   if (url.pathname === '/api/live') {
     openStream(req, res, liveClients);
     res.write(`data: ${JSON.stringify(sim.current())}\n\n`);
+  } else if (url.pathname === '/api/now') {
+    res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
+    res.end(JSON.stringify(sim.current()));
   } else if (url.pathname === '/__reload') {
     openStream(req, res, reloadClients);
   } else {

@@ -11,6 +11,7 @@
 
 - `web/`: the pages (plain HTML, CSS and ES modules, no build step). `web/assets/stats.js` holds the pure functions; keep them testable in Node.
 - `server/dev.mjs`: dev server with example data (`server/simulator.mjs`) and live reload. It binds to 127.0.0.1 only; keep it that way.
+- `extension/`: Chrome extension (Manifest V3) with the overlay on YouTube and YouTube Music. Its service worker fetches `/api/now`; the content script draws the bar and panel in a shadow root. `extension/lib/stats.js` is a copy of `web/assets/stats.js`, kept identical by a test.
 - `test/`: `npm test` (`node --test`). No npm dependencies so far.
 - Live data shape (`/api/live`, server-sent events): `power`, `targetPower` (W), `rpm`, `speed` (km/h), `hr` (bpm), `distance` (km), `energy` (kJ), `elapsed` (s), `source` (`example` or the device).
 - Jan views the pages in the Claude desktop app's browser panel at `http://127.0.0.1:3700/`; they reload themselves on every change.
