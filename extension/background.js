@@ -5,6 +5,8 @@
 
 const FEEDS = [
   'http://stridecast-pi2w.local:3000/api/now',
+  // Chrome doesn't always resolve .local names; the Pi's fixed address on Jan's network.
+  'http://192.168.178.165:3000/api/now',
   'http://127.0.0.1:3700/api/now',
 ];
 const TIMEOUT_MS = 2500;
