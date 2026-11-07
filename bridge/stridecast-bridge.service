@@ -1,0 +1,22 @@
+[Unit]
+Description=StrideCast bridge (Kettler console to Bluetooth LE and HTTP)
+After=network-online.target
+Wants=network-online.target
+# The bridge drives the Bluetooth controller itself, so BlueZ must not run.
+Conflicts=bluetooth.service
+
+[Service]
+User=rasqberry
+WorkingDirectory=/home/rasqberry/stridecast/bridge
+ExecStartPre=-+/usr/sbin/rfkill unblock bluetooth
+ExecStartPre=-+/usr/bin/hciconfig hci0 up
+ExecStart=/opt/node24/bin/node server.js
+Restart=always
+RestartSec=5
+SupplementaryGroups=dialout
+AmbientCapabilities=CAP_NET_RAW CAP_NET_ADMIN
+CapabilityBoundingSet=CAP_NET_RAW CAP_NET_ADMIN
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

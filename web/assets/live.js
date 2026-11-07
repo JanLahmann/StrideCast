@@ -20,6 +20,7 @@ export function startLive(onData) {
     const data = JSON.parse(event.data);
     render(data);
     if (data.source === 'example') setStatus('example', 'Example data');
+    else if (data.connected === false) setStatus('off', 'ELYX not connected');
     else setStatus('ok', 'ELYX');
     onData?.(data);
   };

@@ -203,7 +203,10 @@ const HTML = `
     }
     for (const el of root.querySelectorAll('[data-k]')) el.textContent = formatValue(el.dataset.k, data);
     if (data.source === 'example') setStatus('example', 'Example data');
-    else setStatus('ok', 'ELYX');
+    else if (data.connected === false) {
+      setStatus('off', 'ELYX not connected');
+      return;
+    } else setStatus('ok', 'ELYX');
     history.push(data);
     if (history.length > WINDOW) history.shift();
     if (mode === 'panel') drawChart();

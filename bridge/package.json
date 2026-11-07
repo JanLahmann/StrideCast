@@ -1,0 +1,26 @@
+{
+  "name": "stridecast-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reads a Kettler console over USB and offers it over Bluetooth LE (FTMS, Cycling Power) and HTTP.",
+  "license": "Apache-2.0 AND MIT",
+  "type": "commonjs",
+  "main": "server.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@abandonware/bleno": "^0.6.2",
+    "@serialport/parser-readline": "^12.0.0",
+    "serialport": "^12.0.0"
+  },
+  "allowScripts": {
+    "@abandonware/bleno@0.6.2": true,
+    "@abandonware/bluetooth-hci-socket@0.5.3-12": true,
+    "usb@2.19.1": true,
+    "@serialport/bindings-cpp@12.0.1": true
+  }
+}

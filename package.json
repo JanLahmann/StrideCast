@@ -10,6 +10,7 @@
   },
   "scripts": {
     "dev": "node server/dev.mjs",
-    "test": "node --test"
+    "test": "node --test",
+    "dev:pi": "STRIDECAST_SOURCE=http://StrideCast-Pi2w.local:3000 node server/dev.mjs"
   }
 }

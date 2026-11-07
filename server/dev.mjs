@@ -29,9 +29,30 @@ const liveClients = new Set();
 const reloadClients = new Set();
 const reloadSnippet = '<script>new EventSource("/__reload").onmessage = () => location.reload();</script>';
 
+// STRIDECAST_SOURCE=http://StrideCast-Pi2w.local:3000 takes the values from the bridge on
+// the Pi instead of the simulator.
+const source = process.env.STRIDECAST_SOURCE?.replace(/\/$/, '');
 const sim = createSimulator();
-setInterval(() => {
-  const message = `data: ${JSON.stringify(sim.tick(1))}\n\n`;
+let current = source ? { connected: false, source: 'elyx' } : sim.current();
+let fetching = false;
+
+async function fetchFromBridge() {
+  if (fetching) return;
+  fetching = true;
+  try {
+    const res = await fetch(`${source}/api/now`, { signal: AbortSignal.timeout(3000) });
+    current = await res.json();
+  } catch {
+    current = { connected: false, source: 'elyx', error: 'bridge unreachable' };
+  } finally {
+    fetching = false;
+  }
+}
+
+setInterval(async () => {
+  if (source) await fetchFromBridge();
+  else current = sim.tick(1);
+  const message = `data: ${JSON.stringify(current)}\n\n`;
   for (const res of liveClients) res.write(message);
 }, 1000);
 
@@ -84,15 +105,15 @@ createServer((req, res) => {
   const url = new URL(req.url, `http://${host}:${port}`);
   if (url.pathname === '/api/live') {
     openStream(req, res, liveClients);
-    res.write(`data: ${JSON.stringify(sim.current())}\n\n`);
+    res.write(`data: ${JSON.stringify(current)}\n\n`);
   } else if (url.pathname === '/api/now') {
     res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
-    res.end(JSON.stringify(sim.current()));
+    res.end(JSON.stringify(current));
   } else if (url.pathname === '/__reload') {
     openStream(req, res, reloadClients);
   } else {
     serveFile(url, res);
   }
 }).listen(port, host, () => {
-  console.log(`StrideCast dev server with example data: http://${host}:${port}/`);
+  console.log(`StrideCast dev server: http://${host}:${port}/ (${source ? `values from ${source}` : 'example data'})`);
 });
