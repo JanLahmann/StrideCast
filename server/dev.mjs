@@ -73,7 +73,9 @@ async function serveFile(url, res) {
     res.writeHead(200, { 'Content-Type': type, 'Cache-Control': 'no-store' });
     res.end(body);
   } catch {
-    res.writeHead(404, { 'Content-Type': 'text/plain' }).end('Not found');
+    // An HTML page with the reload script, so a tab stuck on it recovers by itself.
+    res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(`<!doctype html><title>Not found</title><p>Not found: ${url.pathname.replace(/[<>&"]/g, '')}</p>${reloadSnippet}`);
   }
 }
 
