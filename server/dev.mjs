@@ -56,6 +56,7 @@ function openStream(req, res, clients) {
 async function serveFile(url, res) {
   let path = decodeURIComponent(url.pathname);
   if (path.endsWith('/')) path += 'index.html';
+  else if (!extname(path)) path += '.html'; // /ride serves ride.html
   const file = resolve(join(root, normalize(path)));
   if (!file.startsWith(root + sep)) {
     res.writeHead(403).end();
