@@ -1,4 +1,4 @@
-// StrideCast overlay on YouTube and YouTube Music: a small stats bar or a larger panel,
+// StrideCast overlay on YouTube, YouTube Music and Teams recordings (SharePoint/Stream): a small stats bar or a larger panel,
 // both draggable, also shown in full screen. Alt+S or the toolbar icon switches
 // bar → panel → hidden.
 
