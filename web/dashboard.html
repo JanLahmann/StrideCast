@@ -63,6 +63,7 @@
   };
 
   startLive((data) => {
+    if (data.connected === false) return;
     history.push(data);
     if (history.length > WINDOW) history.shift();
     powerLine.setAttribute('points', points('power', 0, 200));

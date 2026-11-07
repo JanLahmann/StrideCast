@@ -12,7 +12,9 @@
 - `web/`: the pages (plain HTML, CSS and ES modules, no build step). `web/assets/stats.js` holds the pure functions; keep them testable in Node.
 - `server/dev.mjs`: dev server with example data (`server/simulator.mjs`) and live reload. It binds to 127.0.0.1 only; keep it that way.
 - `extension/`: Chrome extension (Manifest V3) with the overlay on YouTube and YouTube Music. Its service worker fetches `/api/now`; the content script draws the bar and panel in a shadow root. `extension/lib/stats.js` is a copy of `web/assets/stats.js`, kept identical by a test.
-- `test/`: `npm test` (`node --test`). No npm dependencies so far.
+- `bridge/`: runs on the Pi Zero 2 W `StrideCast-Pi2w.local` (user `rasqberry`, service `stridecast-bridge`, port 3000). CommonJS; `ble/` is vendored MIT code from kettlerUSB2BLE. Deploy with rsync + `npm ci` on the Pi (native builds need the `allowScripts` entries; the Zero needs extra swap to compile). See `bridge/README.md`.
+- `npm run dev:pi`: the dev server takes the values from the bridge instead of the simulator.
+- `test/`: `npm test` (`node --test`). The root package has no npm dependencies.
 - Live data shape (`/api/live`, server-sent events): `power`, `targetPower` (W), `rpm`, `speed` (km/h), `hr` (bpm), `distance` (km), `energy` (kJ), `elapsed` (s), `source` (`example` or the device).
 - Jan views the pages in the Claude desktop app's browser panel at `http://127.0.0.1:3700/`; they reload themselves on every change.
 
