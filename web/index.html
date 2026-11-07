@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StrideCast</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  body { background: radial-gradient(120% 90% at 10% 0%, #17313A, var(--bg) 60%); }
+  main { max-width: 1100px; margin: 0 auto; padding: 32px 20px; display: grid; gap: 28px; }
+  h1 { font: 700 clamp(40px, 6vw, 64px)/1 var(--display); margin: 0; letter-spacing: .02em; }
+  .head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px; }
+  .head .status { margin-left: 0; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .card { display: grid; gap: 8px; padding: 22px; border-radius: 14px; background: var(--panel); border: 3px solid transparent; text-decoration: none; }
+  .card:hover, .card:focus-visible { border-color: var(--c-focus); background: #18323A; outline: none; }
+  .card b { font: 600 34px/1 var(--display); }
+  .card span { color: var(--dim); }
+  .now { display: flex; flex-wrap: wrap; gap: 14px 36px; padding: 18px 22px; border-radius: 14px; background: var(--panel); }
+  .now .metric { display: grid; gap: 4px; }
+  .now .num { font-size: 44px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="head">
+    <h1>StrideCast</h1>
+    <span class="status" data-status><i></i><b>Connecting…</b></span>
+  </div>
+  <div class="cards">
+    <a class="card" href="ride.html"><b>Ride</b><span>Route video that plays at your speed, with live stats.</span></a>
+    <a class="card" href="dashboard.html"><b>Dashboard</b><span>Big numbers and the last 10 minutes.</span></a>
+  </div>
+  <div class="now" aria-label="Current values">
+    <div class="metric power"><span class="lbl">Power</span><span class="num"><span data-k="power">–</span><span class="unit">W</span></span></div>
+    <div class="metric cad"><span class="lbl">Cadence</span><span class="num"><span data-k="rpm">–</span><span class="unit">rpm</span></span></div>
+    <div class="metric hr"><span class="lbl">Heart rate</span><span class="num"><span data-k="hr">–</span><span class="unit">bpm</span></span></div>
+    <div class="metric speed"><span class="lbl">Speed</span><span class="num"><span data-k="speed">–</span><span class="unit">km/h</span></span></div>
+    <div class="metric speed"><span class="lbl">Time</span><span class="num" data-k="elapsed">–</span></div>
+  </div>
+</main>
+<script type="module">
+  import { startLive } from './assets/live.js';
+  startLive();
+</script>
+</body>
+</html>

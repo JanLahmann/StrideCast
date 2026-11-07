@@ -41,6 +41,20 @@ Example `ST` answer while pedaling: `105 063 099 000 090 0015 00:29 090` means 1
 
 Only one program can hold `/dev/ttyUSB0` at a time, so run either the bridge or QZ.
 
+## Try the pages (example data)
+
+The web pages run on any computer with Node.js 20 or newer, without the ELYX:
+
+```sh
+npm run dev    # http://127.0.0.1:3700/
+npm test
+```
+
+- **Ride:** a route video (a file on your computer or a YouTube link) that plays at your speed, with live stats.
+- **Dashboard:** big numbers and the last 10 minutes.
+
+The dev server sends example data once per second, reloads open pages when a file under `web/` changes, and only accepts connections from the same computer.
+
 ## Quick start (QZ, until the bridge is in this repo)
 
 1. Plug the ELYX console into the Pi and check that `/dev/ttyUSB0` appears.
