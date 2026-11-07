@@ -55,6 +55,18 @@ npm test
 
 The dev server sends example data once per second, reloads open pages when a file under `web/` changes, and only accepts connections from the same computer.
 
+## Stats on YouTube (Chrome extension)
+
+The extension in `extension/` shows your live values on top of youtube.com and music.youtube.com, also in full screen. It reads them from the dev server above, so start `npm run dev` first.
+
+1. Open `chrome://extensions`, turn on **Developer mode** (top right).
+2. Click **Load unpacked** and choose the `extension` folder of this repo.
+3. Open YouTube. The stats bar appears at the top right.
+
+- **Alt+S** or the StrideCast toolbar icon switches between the small bar, a larger panel with a 10-minute chart, and hidden.
+- Drag the bar or the panel's title to move them; drag the panel's corner to resize it. Both are remembered.
+- After changing the extension's files, click the reload icon on its card in `chrome://extensions`, then reload the YouTube tab.
+
 ## Quick start (QZ, until the bridge is in this repo)
 
 1. Plug the ELYX console into the Pi and check that `/dev/ttyUSB0` appears.
