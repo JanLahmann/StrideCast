@@ -1,12 +1,13 @@
 {
   "manifest_version": 3,
   "name": "StrideCast",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Shows live cross-trainer stats from StrideCast on top of YouTube, YouTube Music and Teams recordings.",
   "permissions": [
     "storage"
   ],
   "host_permissions": [
+    "http://stridecast-pi2w.local:3000/*",
     "http://127.0.0.1:3700/*"
   ],
   "background": {
