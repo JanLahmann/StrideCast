@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StrideCast Ride</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  body { overflow: hidden; }
+  .stage { position: fixed; inset: 0; container-type: size; background: linear-gradient(#6F9CC0, #CFE0E8 48%, #5C7B52 49%, #3F5C36); }
+  .stage video, .stage .yt, .stage .yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; background: #000; }
+  .top { position: fixed; top: 0; left: 0; right: 0; z-index: 3; background: var(--glass); border: 0; transition: opacity .4s; }
+  body.idle .top, body.idle .setup-btn { opacity: 0; pointer-events: none; }
+  .chip { position: fixed; z-index: 2; top: max(64px, 7cqh); left: 3cqw; background: var(--glass); border-radius: 12px; padding: 10px 16px; display: grid; gap: 4px; max-width: 60cqw; }
+  .chip strong { font-size: clamp(16px, 2cqw, 28px); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .chip span { color: var(--dim); font-size: clamp(13px, 1.4cqw, 20px); }
+  .chip b { color: var(--ink); font-family: var(--display); font-size: 1.3em; }
+  .bottom { position: fixed; z-index: 2; left: 0; right: 0; bottom: 0; padding: 6cqh 3cqw 3cqh; display: grid; grid-template-columns: 1.25fr repeat(4, 1fr); gap: 2cqw; align-items: end;
+    background: linear-gradient(to top, rgba(6,9,12,.9), rgba(6,9,12,.6) 70%, rgba(6,9,12,0)); }
+  .metric { display: grid; gap: .6cqh; min-width: 0; }
+  .metric .num { font-size: clamp(34px, 6cqw, 140px); white-space: nowrap; }
+  .metric.big .num { font-size: clamp(44px, 8.4cqw, 190px); }
+  .metric .lbl { font-size: clamp(11px, 1.1cqw, 22px); }
+  .metric .sub { color: var(--dim); font-size: clamp(12px, 1.3cqw, 24px); min-height: 1.4em; }
+  .setup-btn { position: fixed; z-index: 3; right: 20px; top: 70px; transition: opacity .4s; }
+  .setup { position: fixed; z-index: 4; inset: 0; display: grid; place-items: center; background: rgba(5, 8, 11, .6); padding: 16px; }
+  .setup form { width: min(520px, 100%); background: var(--panel); border-radius: 14px; padding: 24px; display: grid; gap: 18px; }
+  .setup h2 { font: 600 30px/1 var(--display); margin: 0; }
+  .setup .row { display: flex; gap: 8px; }
+  .setup .hint { color: var(--dim); font-size: 14px; margin: 0; }
+  .setup .actions { display: flex; justify-content: flex-end; gap: 8px; }
+  @media (max-width: 720px) {
+    .bottom { grid-template-columns: repeat(3, 1fr); }
+    .bottom .metric:nth-child(n+4) { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <video id="video" muted playsinline loop hidden></video>
+  <div class="yt" id="ytBox" hidden><div id="yt"></div></div>
+</div>
+
+<header class="top">
+  <a class="brand" href="./">StrideCast</a>
+  <nav><a href="ride.html" aria-current="page">Ride</a><a href="dashboard.html">Dashboard</a></nav>
+  <span class="status" data-status><i></i><b>Connecting…</b></span>
+</header>
+<button class="btn setup-btn" id="setupBtn" type="button">Choose video</button>
+
+<div class="chip">
+  <strong id="routeName">No video yet</strong>
+  <span>Playback <b id="rate">–</b> · <span data-k="distance">–</span> km</span>
+</div>
+
+<div class="bottom">
+  <div class="metric power big"><span class="lbl">Power</span><span class="num"><span data-k="power">–</span><span class="unit">W</span></span><span class="sub">target <span data-k="targetPower">–</span> W</span></div>
+  <div class="metric cad"><span class="lbl">Cadence</span><span class="num"><span data-k="rpm">–</span><span class="unit">rpm</span></span><span class="sub"></span></div>
+  <div class="metric hr"><span class="lbl">Heart rate</span><span class="num"><span data-k="hr">–</span><span class="unit">bpm</span></span><span class="sub"></span></div>
+  <div class="metric speed"><span class="lbl">Speed</span><span class="num"><span data-k="speed">–</span><span class="unit">km/h</span></span><span class="sub"></span></div>
+  <div class="metric speed"><span class="lbl">Time</span><span class="num" data-k="elapsed">–</span><span class="sub"><span data-k="energy">–</span> kJ</span></div>
+</div>
+
+<div class="setup" id="setup">
+  <form id="setupForm">
+    <h2>Choose a route video</h2>
+    <label class="field">Video file on this computer
+      <input type="file" id="file" accept="video/*">
+    </label>
+    <label class="field">or a YouTube link
+      <input type="url" id="ytUrl" placeholder="https://www.youtube.com/watch?v=…" autocomplete="off">
+    </label>
+    <label class="field">Filmed at (km/h)
+      <input type="number" id="filmed" min="1" max="60" step="0.5" value="10">
+    </label>
+    <p class="hint">The video plays at your speed divided by this speed. YouTube only plays at fixed steps, so it rounds to the nearest one.</p>
+    <p class="hint" id="error" hidden></p>
+    <div class="actions">
+      <button class="btn" type="button" id="cancel">Close</button>
+      <button class="btn primary" type="submit">Start</button>
+    </div>
+  </form>
+</div>
+
+<script type="module">
+  import { startLive } from './assets/live.js';
+  import { playbackRate, snapRate, youtubeId } from './assets/stats.js';
+
+  const $ = (id) => document.getElementById(id);
+  const video = $('video');
+  const rateEl = $('rate');
+  const setup = $('setup');
+  let mode = null; // 'file' | 'youtube'
+  let player = null;
+  let playerReady = false;
+  let filmed = 10;
+
+  const load = (key, fallback) => { try { return localStorage.getItem(key) ?? fallback; } catch { return fallback; } };
+  const save = (key, value) => { try { localStorage.setItem(key, value); } catch {} };
+
+  $('filmed').value = load('stridecast.filmed', '10');
+  $('ytUrl').value = load('stridecast.youtube', '');
+
+  function showError(text) {
+    $('error').textContent = text;
+    $('error').hidden = !text;
+  }
+
+  function loadYouTubeApi() {
+    return new Promise((resolve) => {
+      if (window.YT?.Player) return resolve(window.YT);
+      window.onYouTubeIframeAPIReady = () => resolve(window.YT);
+      const script = document.createElement('script');
+      script.src = 'https://www.youtube.com/iframe_api';
+      document.head.append(script);
+    });
+  }
+
+  async function startYouTube(id) {
+    const YT = await loadYouTubeApi();
+    player?.destroy();
+    playerReady = false;
+    $('ytBox').innerHTML = '<div id="yt"></div>';
+    player = new YT.Player('yt', {
+      videoId: id,
+      playerVars: { controls: 0, mute: 1, playsinline: 1, rel: 0, loop: 1, playlist: id },
+      events: { onReady: (e) => { e.target.mute(); playerReady = true; } },
+    });
+    video.hidden = true;
+    video.removeAttribute('src');
+    $('ytBox').hidden = false;
+    mode = 'youtube';
+  }
+
+  function startFile(file) {
+    player?.destroy();
+    player = null;
+    $('ytBox').hidden = true;
+    if (video.src) URL.revokeObjectURL(video.src);
+    video.src = URL.createObjectURL(file);
+    video.hidden = false;
+    mode = 'file';
+  }
+
+  $('setupForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    filmed = Number($('filmed').value) || 10;
+    save('stridecast.filmed', String(filmed));
+    const file = $('file').files[0];
+    const link = $('ytUrl').value.trim();
+    if (file) {
+      startFile(file);
+      $('routeName').textContent = file.name.replace(/\.[^.]+$/, '');
+    } else if (link) {
+      const id = youtubeId(link);
+      if (!id) return showError('That link has no YouTube video id. Paste the address of a single video.');
+      save('stridecast.youtube', link);
+      await startYouTube(id);
+      $('routeName').textContent = 'YouTube video';
+    } else {
+      return showError('Choose a video file or paste a YouTube link.');
+    }
+    showError('');
+    setup.hidden = true;
+  });
+  $('cancel').addEventListener('click', () => { setup.hidden = true; });
+  $('setupBtn').addEventListener('click', () => { setup.hidden = false; });
+
+  function applySpeed(speed) {
+    const rate = playbackRate(speed, filmed);
+    if (mode === 'file') {
+      if (!rate) video.pause();
+      else {
+        video.playbackRate = rate;
+        if (video.paused) video.play().catch(() => {});
+      }
+      rateEl.textContent = rate ? `${rate.toFixed(2)}×` : 'paused';
+    } else if (mode === 'youtube' && playerReady) {
+      if (!rate) {
+        player.pauseVideo();
+        rateEl.textContent = 'paused';
+      } else {
+        const snapped = snapRate(rate, player.getAvailablePlaybackRates());
+        if (player.getPlaybackRate() !== snapped) player.setPlaybackRate(snapped);
+        if (player.getPlayerState() !== window.YT.PlayerState.PLAYING) player.playVideo();
+        rateEl.textContent = `${snapped}×`;
+      }
+    } else {
+      rateEl.textContent = rate ? `${rate.toFixed(2)}×` : 'paused';
+    }
+  }
+
+  startLive((data) => applySpeed(data.speed));
+
+  // Hide the top bar while nobody touches the mouse or keyboard.
+  let idleTimer;
+  function wake() {
+    document.body.classList.remove('idle');
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => { if (setup.hidden) document.body.classList.add('idle'); }, 3000);
+  }
+  for (const type of ['mousemove', 'keydown', 'touchstart']) addEventListener(type, wake, { passive: true });
+  wake();
+</script>
+</body>
+</html>

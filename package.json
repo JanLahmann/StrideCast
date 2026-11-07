@@ -1,0 +1,15 @@
+{
+  "name": "stridecast",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cross-trainer workouts on the TV: a Raspberry Pi bridges a Kettler ELYX (USB) to training apps over Bluetooth.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node server/dev.mjs",
+    "test": "node --test"
+  }
+}

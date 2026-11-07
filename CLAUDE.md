@@ -7,6 +7,14 @@
 - Background notes, patches and build scripts: `~/GitHub/FwQ-Coordinator/docs/projects/elyx-kettler/`.
 - The qz logs in `~/GitHub/RasQberry-Two/.local/elyx-kettler/` contain heart-rate data. Never commit or copy them anywhere.
 
+## Code
+
+- `web/`: the pages (plain HTML, CSS and ES modules, no build step). `web/assets/stats.js` holds the pure functions; keep them testable in Node.
+- `server/dev.mjs`: dev server with example data (`server/simulator.mjs`) and live reload. It binds to 127.0.0.1 only; keep it that way.
+- `test/`: `npm test` (`node --test`). No npm dependencies so far.
+- Live data shape (`/api/live`, server-sent events): `power`, `targetPower` (W), `rpm`, `speed` (km/h), `hr` (bpm), `distance` (km), `energy` (kJ), `elapsed` (s), `source` (`example` or the device).
+- Jan views the pages in the Claude desktop app's browser panel at `http://127.0.0.1:3700/`; they reload themselves on every change.
+
 ## Licensing
 
 - This repo is Apache-2.0.
