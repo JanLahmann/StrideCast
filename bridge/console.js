@@ -12,8 +12,10 @@ const SCAN_MS = 5000;
 const POLL_MS = 1000;
 const WRITE_GAP_MS = 100; // the console takes one command per 100 ms
 
-// Start sequence from kettlerUSB2BLE: identify, reset, command mode, program 1.
-const START = ['VE', 'ID', 'VE', 'KI', 'CA', 'RS', 'CM', 'SP1'];
+// Start sequence from kettlerUSB2BLE: identify, command mode, program 1. Without its reset
+// (RS): a bridge restart mid-workout zeroed the console's time and energy (tested 8 Nov 2026).
+// Apps can still reset over Bluetooth (FTMS), which calls reset().
+const START = ['VE', 'ID', 'VE', 'KI', 'CA', 'CM', 'SP1'];
 
 class KettlerConsole extends EventEmitter {
   constructor() {

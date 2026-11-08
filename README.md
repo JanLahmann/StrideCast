@@ -41,6 +41,10 @@ Example `ST` answer while pedaling: `105 063 099 000 090 0015 00:29 090` means 1
 
 Only one program can hold `/dev/ttyUSB0` at a time, so run either the bridge or QZ.
 
+## The pages on the TV
+
+The bridge on the Pi serves the pages too, on port 80 as well as 3000: open `http://<pi name>/` (e.g. `http://stridecast-pi2w/` on a Fritz!Box network) in any browser on the home network, e.g. the TV's, and it shows the dashboard. Nothing has to run on a computer. Older browsers without JavaScript modules (like the one in some Samsung displays) get a simpler script that polls the values.
+
 ## Try the pages (example data)
 
 The web pages run on any computer with Node.js 20 or newer, without the ELYX:

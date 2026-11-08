@@ -50,3 +50,21 @@ test('WheelCounter turns km/h into wheel revolutions', async () => {
   assert.equal(after.revs, 39);
   assert.deepEqual([...encodeSpeedMeasurement({ revs: 39, eventTime: 1024 })], [0x01, 39, 0, 0, 0, 0x00, 0x04]);
 });
+
+test('resolvePath keeps the bridge inside web/', async () => {
+  const { resolvePath } = (await import('../bridge/static.js')).default;
+  const root = '/srv/web';
+  assert.equal(resolvePath(root, '/'), '/srv/web/index.html');
+  assert.equal(resolvePath(root, '/dashboard'), '/srv/web/dashboard.html');
+  assert.equal(resolvePath(root, '/assets/app.css'), '/srv/web/assets/app.css');
+  assert.equal(resolvePath(root, '/../bridge/server.js'), '/srv/web/bridge/server.js');
+  // .. can't climb above web/: it is clamped at the root
+  assert.equal(resolvePath(root, '/%2e%2e/%2e%2e/etc/passwd'), '/srv/web/etc/passwd.html');
+  assert.equal(resolvePath(root, '/%E0%A4%A'), null);
+});
+
+test('encodeRunMeasurement: foot pod speed, steps and distance', async () => {
+  const { encodeRunMeasurement } = (await import('../bridge/cycling-power.js')).default;
+  // 7.2 km/h = 2 m/s = 512/256; 45 rpm = 90 steps/min; 123.4 m = 1234 dm
+  assert.deepEqual([...encodeRunMeasurement(7.2, 45, 1234)], [0x02, 0x00, 0x02, 90, 0xd2, 0x04, 0, 0]);
+});

@@ -10,7 +10,7 @@
   body { display: grid; grid-template-rows: auto minmax(0, 1fr); }
   .dash { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: 1fr 1fr minmax(90px, .55fr); gap: 14px; padding: 14px; min-height: 0; }
   .tile { background: var(--panel); border-radius: 12px; padding: 14px 18px; display: grid; grid-template-rows: auto 1fr auto; container-type: size; min-height: 0; overflow: hidden; }
-  .tile .num { font-size: min(52cqh, 34cqw); align-self: center; white-space: nowrap; }
+  .tile .num { font-size: 17vh; font-size: min(52cqh, 34cqw); align-self: center; white-space: nowrap; }
   .tile .sub { font-size: 14px; color: var(--dim); min-height: 1.5em; }
   .chart { grid-column: 1 / -1; background: var(--panel); border-radius: 12px; padding: 10px 18px; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 6px; min-height: 0; }
   .chart svg { width: 100%; height: 100%; display: block; }
@@ -47,6 +47,7 @@
     </div>
   </section>
 </main>
+<script nomodule src="assets/legacy.js"></script>
 <script type="module">
   import { startLive } from './assets/live.js';
 

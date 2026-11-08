@@ -73,4 +73,25 @@ function encodePowerMeasurement(power, crank) {
   return buf;
 }
 
-module.exports = { CrankCounter, WheelCounter, WHEEL_MM, encodePowerMeasurement, encodeSpeedMeasurement };
+// Running Speed and Cadence Measurement (0x2A53), for watches that take a foot pod in
+// treadmill and walking activities. Speed in 1/256 m/s, cadence in steps per minute (two
+// steps per crank revolution, one per foot), total distance in 1/10 m.
+const TOTAL_DISTANCE_PRESENT = 0x02;
+
+function encodeRunMeasurement(kmh, rpm, distanceDm) {
+  const buf = Buffer.alloc(8);
+  buf.writeUInt8(TOTAL_DISTANCE_PRESENT, 0);
+  buf.writeUInt16LE(Math.min(0xffff, Math.round(((kmh || 0) / 3.6) * 256)), 1);
+  buf.writeUInt8(Math.min(255, Math.round((rpm || 0) * 2)), 3);
+  buf.writeUInt32LE(Math.round(distanceDm) % 0x100000000, 4);
+  return buf;
+}
+
+module.exports = {
+  CrankCounter,
+  WheelCounter,
+  WHEEL_MM,
+  encodePowerMeasurement,
+  encodeSpeedMeasurement,
+  encodeRunMeasurement,
+};

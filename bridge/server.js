@@ -2,12 +2,19 @@
 // as "StrideCast" (FTMS and Cycling Power) and serves the live values over HTTP:
 //   GET /api/now   the latest values as JSON (connected: false while the console is silent)
 //   GET /api/live  the same once per second as server-sent events
+//   GET /          the dashboard; other pages from web/ (ride), deployed next to bridge/
 // Set STRIDECAST_NO_BLE=1 to run without Bluetooth.
 
 const http = require('node:http');
+const path = require('node:path');
 const { KettlerConsole } = require('./console');
+const { serveStatic } = require('./static');
 
-const PORT = Number(process.env.PORT ?? 3000);
+const WEB_ROOT = path.resolve(process.env.STRIDECAST_WEB ?? path.join(__dirname, '..', 'web'));
+
+// Port 3000 for the extension and apps; port 80 as well, so the TV's browser only needs
+// http://<pi name>/ (needs CAP_NET_BIND_SERVICE, see the service file).
+const PORTS = (process.env.PORTS ?? '3000,80').split(',').map(Number).filter(Boolean);
 const STALE_MS = 5000;
 
 const kettler = new KettlerConsole();
@@ -51,7 +58,7 @@ setInterval(() => {
   for (const res of liveClients) res.write(message);
 }, 1000);
 
-http.createServer((req, res) => {
+function handle(req, res) {
   const { pathname } = new URL(req.url, 'http://bridge');
   if (pathname === '/api/now') {
     res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
@@ -61,9 +68,18 @@ http.createServer((req, res) => {
     res.write(`data: ${JSON.stringify(now())}\n\n`);
     liveClients.add(res);
     req.on('close', () => liveClients.delete(res));
+  } else if (req.method === 'GET' || req.method === 'HEAD') {
+    // the dashboard is what the TV wants, so it is the start page here
+    serveStatic(WEB_ROOT, pathname === '/' ? '/dashboard' : pathname, res);
   } else {
-    res.writeHead(404, { 'Content-Type': 'text/plain' }).end('Not found');
+    res.writeHead(405).end();
   }
-}).listen(PORT, () => console.log(`StrideCast bridge on port ${PORT}`));
+}
+
+for (const port of PORTS) {
+  http.createServer(handle)
+    .on('error', (error) => console.log(`Port ${port}: ${error.message}`))
+    .listen(port, () => console.log(`StrideCast bridge on port ${port}`));
+}
 
 kettler.start();
