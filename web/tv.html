@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StrideCast TV</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  /* The picture of an HDMI source (Fire TV through a USB capture card) with the live stats on top. */
+  body { background: #000; overflow: hidden; }
+  video { position: fixed; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #000; }
+  .bar { position: fixed; top: 12px; right: 12px; display: flex; align-items: center; gap: 14px; padding: 6px 14px; border-radius: 10px; background: var(--glass); backdrop-filter: blur(6px); }
+  .bar .num { font-size: 34px; }
+  .bar .status { margin: 0; }
+  .bar .status b { font-weight: 400; }
+  .controls { position: fixed; left: 12px; bottom: 12px; display: flex; gap: 8px; opacity: 0; transition: opacity .3s; }
+  body:hover .controls, .controls:focus-within { opacity: 1; }
+  .start { position: fixed; inset: 0; display: grid; place-content: center; gap: 14px; text-align: center; padding: 16px; }
+  .start p { color: var(--dim); max-width: 34em; margin: 0; }
+  select { background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+</style>
+</head>
+<body>
+<video id="video" autoplay playsinline></video>
+
+<section class="start" id="start">
+  <h1 class="num" style="font-size:48px;margin:0">StrideCast TV</h1>
+  <p id="startText">Shows the HDMI capture card (Fire TV) with your live values. Chrome asks once for the camera and microphone: that is the capture card's picture and sound.</p>
+  <div><button class="btn primary" id="go">Start</button></div>
+</section>
+
+<div class="bar">
+  <span class="power"><span class="num"><span data-k="power">–</span><span class="unit">W</span></span></span>
+  <span class="cad"><span class="num"><span data-k="rpm">–</span><span class="unit">rpm</span></span></span>
+  <span class="hr"><span class="num"><span data-k="hr">–</span><span class="unit">bpm</span></span></span>
+  <span class="speed"><span class="num"><span data-k="speed">–</span><span class="unit">km/h</span></span></span>
+  <span class="speed"><span class="num" data-k="elapsed">–</span></span>
+  <span class="status" data-status><i></i><b>Connecting…</b></span>
+</div>
+
+<div class="controls">
+  <select id="source" aria-label="Video source"></select>
+  <button class="btn" id="pip" title="Picture in picture (P)">PiP</button>
+  <button class="btn" id="full" title="Full screen (F)">Full screen</button>
+  <button class="btn" id="hideBar" title="Show or hide the values (S)">Values</button>
+</div>
+
+<script type="module">
+  import { startLive } from './assets/live.js';
+
+  const video = document.getElementById('video');
+  const start = document.getElementById('start');
+  const sourceSelect = document.getElementById('source');
+  const bar = document.querySelector('.bar');
+  const PREFERRED = /mirabox|capture|hdmi|cam link|uvc/i; // capture cards, not webcams
+  let stream = null;
+
+  startLive();
+
+  // The sound input of the same device: same name (macOS lists the card twice, once per
+  // kind), else the same group. Music and film sound: no echo cancellation, noise
+  // suppression or level control.
+  function audioFor(cam, devices) {
+    const mics = devices.filter((d) => d.kind === 'audioinput');
+    const mic = mics.find((d) => cam && d.label && d.label === cam.label)
+      ?? mics.find((d) => cam && d.groupId === cam.groupId)
+      ?? mics.find((d) => PREFERRED.test(d.label));
+    if (!mic) return false;
+    return { deviceId: { exact: mic.deviceId }, echoCancellation: false, noiseSuppression: false, autoGainControl: false, channelCount: 2 };
+  }
+
+  async function open(deviceId) {
+    stream?.getTracks().forEach((t) => t.stop());
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    const cam = devices.find((d) => d.kind === 'videoinput' && d.deviceId === deviceId);
+    const video1080 = { deviceId: { exact: deviceId }, width: { ideal: 1920 }, height: { ideal: 1080 }, frameRate: { ideal: 60 } };
+    stream = await navigator.mediaDevices.getUserMedia({ video: video1080, audio: audioFor(cam, devices) })
+      .catch(() => navigator.mediaDevices.getUserMedia({ video: video1080 }));
+    console.log('[StrideCast TV]', stream.getTracks().map((t) => `${t.kind}: ${t.label}`).join(', '));
+    video.srcObject = stream;
+    video.muted = false;
+    await video.play().catch(() => {});
+    start.hidden = true;
+    localStorage.setItem('stridecast-tv-source', deviceId);
+  }
+
+  async function go() {
+    // Ask once so the device names become visible, then pick the capture card.
+    const probe = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+    probe.getTracks().forEach((t) => t.stop());
+    const cams = (await navigator.mediaDevices.enumerateDevices()).filter((d) => d.kind === 'videoinput');
+    sourceSelect.replaceChildren(...cams.map((d) => new Option(d.label || 'Camera', d.deviceId)));
+    let saved = null;
+    try { saved = localStorage.getItem('stridecast-tv-source'); } catch {}
+    const pick = cams.find((d) => d.deviceId === saved) ?? cams.find((d) => PREFERRED.test(d.label)) ?? cams[0];
+    if (!pick) throw new Error('No video source found. Is the capture card plugged in?');
+    sourceSelect.value = pick.deviceId;
+    await open(pick.deviceId);
+  }
+
+  document.getElementById('go').addEventListener('click', () => go().catch((error) => {
+    document.getElementById('startText').textContent = `Could not open the capture card: ${error.message}`;
+  }));
+  sourceSelect.addEventListener('change', () => open(sourceSelect.value));
+
+  const togglePip = () => (document.pictureInPictureElement ? document.exitPictureInPicture() : video.requestPictureInPicture()).catch(() => {});
+  const toggleFull = () => (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen()).catch(() => {});
+  const toggleBar = () => { bar.hidden = !bar.hidden; };
+  document.getElementById('pip').addEventListener('click', togglePip);
+  document.getElementById('full').addEventListener('click', toggleFull);
+  document.getElementById('hideBar').addEventListener('click', toggleBar);
+  addEventListener('keydown', (e) => {
+    if (e.target.closest('select, input')) return;
+    if (e.key === 'p') togglePip();
+    if (e.key === 'f') toggleFull();
+    if (e.key === 's') toggleBar();
+  });
+
+  // Once Chrome has the permission, start without the button.
+  navigator.permissions?.query({ name: 'camera' }).then((p) => { if (p.state === 'granted') go().catch(() => {}); });
+</script>
+</body>
+</html>

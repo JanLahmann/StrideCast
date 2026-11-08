@@ -45,6 +45,14 @@ Only one program can hold `/dev/ttyUSB0` at a time, so run either the bridge or 
 
 The bridge on the Pi serves the pages too, on port 80 as well as 3000: open `http://<pi name>/` (e.g. `http://stridecast-pi2w/` on a Fritz!Box network) in any browser on the home network, e.g. the TV's, and it shows the dashboard. Nothing has to run on a computer. Older browsers without JavaScript modules (like the one in some Samsung displays) get a simpler script that polls the values.
 
+## Fire TV on the Mac (capture card)
+
+`/tv` shows an HDMI source through a USB capture card (tested with a MiraBox HSV321 and a Fire TV stick) with the live values on top. Chrome asks once for camera and microphone: that is the card's picture and sound.
+
+- **P** picture in picture (the TV picture floats above other windows), **F** full screen, **S** shows or hides the values.
+- No sound? The card takes stereo PCM only. On the Fire TV set Settings → Display & Sounds → Audio → Surround Sound to **PCM**, then unplug the card's USB cable once and reload the page.
+- Copy-protected apps (Netflix, Prime Video) stay black through a capture card.
+
 ## Try the pages (example data)
 
 The web pages run on any computer with Node.js 20 or newer, without the ELYX:
