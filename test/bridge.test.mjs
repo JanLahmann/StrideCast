@@ -68,3 +68,21 @@ test('encodeRunMeasurement: foot pod speed, steps and distance', async () => {
   // 7.2 km/h = 2 m/s = 512/256; 45 rpm = 90 steps/min; 123.4 m = 1234 dm
   assert.deepEqual([...encodeRunMeasurement(7.2, 45, 1234)], [0x02, 0x00, 0x02, 90, 0xd2, 0x04, 0, 0]);
 });
+
+test('encodeStrideCastData packs every value for the Garmin app', async () => {
+  const { encodeStrideCastData } = (await import('../bridge/cycling-power.js')).default;
+  const buf = encodeStrideCastData(
+    { power: 150, rpm: 60, speed: 9.5, energy: 120, elapsed: 3725, hr: 0, targetPower: 90, connected: true },
+    1234.6,
+  );
+  assert.equal(buf.length, 18);
+  assert.equal(buf.readUInt8(0), 1);
+  assert.equal(buf.readInt16LE(1), 150);
+  assert.equal(buf.readUInt8(3), 60);
+  assert.equal(buf.readUInt16LE(4), 950);
+  assert.equal(buf.readUInt32LE(6), 1235);
+  assert.equal(buf.readUInt16LE(10), 120);
+  assert.equal(buf.readUInt16LE(12), 3725);
+  assert.equal(buf.readUInt8(15), 1);
+  assert.equal(buf.readUInt16LE(16), 90);
+});

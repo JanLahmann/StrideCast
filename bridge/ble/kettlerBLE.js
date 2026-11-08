@@ -4,6 +4,7 @@ const CyclingPowerService = require('./cycling-power-service');
 const FitnessMachineService = require('./ftms-service');
 const CyclingSpeedService = require('./csc-service'); // StrideCast
 const RunningSpeedService = require('./rsc-service'); // StrideCast
+const StrideCastService = require('./stridecast-service'); // StrideCast
 
 // StrideCast: advertising data with flags, the 16-bit service UUIDs and the complete name.
 function advertisement(name, uuids) {
@@ -31,6 +32,7 @@ class KettlerBLE extends EventEmitter {
 		this.ftms = new FitnessMachineService(serverCallback); 
 		this.csc = new CyclingSpeedService(); // StrideCast: speed for watches
 		this.rsc = new RunningSpeedService(); // StrideCast: foot pod for watches
+		this.app = new StrideCastService(); // StrideCast: all values for our Garmin app
 
 		let self = this;
 		console.log(`[${this.name} starting]`);
@@ -98,17 +100,19 @@ class KettlerBLE extends EventEmitter {
 
 	}
 
-	// StrideCast: which sensors to offer, STRIDECAST_SENSORS=power,ftms,speed,run (the default
-	// is all four). A Garmin watch takes only one sensor type from one device, so for a watch
+	// StrideCast: which sensors to offer, STRIDECAST_SENSORS=power,ftms,speed,run,app (the
+	// default is all five). A Garmin watch takes only one sensor type from one device, so for a watch
 	// list just the one it should use (plus ftms for apps).
 	services() {
-		const wanted = (process.env.STRIDECAST_SENSORS ?? 'power,ftms,speed,run').split(',').map((s) => s.trim());
-		const all = { power: this.csp, ftms: this.ftms, speed: this.csc, run: this.rsc };
+		const wanted = (process.env.STRIDECAST_SENSORS ?? 'power,ftms,speed,run,app').split(',').map((s) => s.trim());
+		const all = { power: this.csp, ftms: this.ftms, speed: this.csc, run: this.rsc, app: this.app };
 		return wanted.map((name) => all[name]).filter(Boolean);
 	}
 
 	advertise() {
-		const uuids = this.services().map((service) => service.uuid);
+		// 16-bit UUIDs only; a 128-bit one would not fit next to the name. The app finds the
+		// Pi by its name.
+		const uuids = this.services().map((service) => service.uuid).filter((uuid) => uuid.length === 4);
 		bleno.startAdvertisingWithEIRData(advertisement(this.name, uuids), (error) => {
 			if (error) console.log(`[${this.name} advertise] error ${error}`);
 		});

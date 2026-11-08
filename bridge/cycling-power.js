@@ -87,7 +87,30 @@ function encodeRunMeasurement(kmh, rpm, distanceDm) {
   return buf;
 }
 
+// StrideCast's own data packet (service f6962b0f-…, read by the Garmin app), 18 bytes,
+// little-endian. Keep in step with garmin/source/Packet.mc.
+//   0 version (1)            1-2 power W (int16)       3 cadence rpm
+//   4-5 speed 0.01 km/h      6-9 distance m            10-11 energy kJ
+//   12-13 console time s     14 console heart rate     15 flags (bit 0: console connected)
+//   16-17 target power W
+function encodeStrideCastData(data, distanceM) {
+  const buf = Buffer.alloc(18);
+  const clamp = (v, max) => Math.max(0, Math.min(max, Math.round(v || 0)));
+  buf.writeUInt8(1, 0);
+  buf.writeInt16LE(Math.max(-32768, Math.min(32767, Math.round(data.power || 0))), 1);
+  buf.writeUInt8(clamp(data.rpm, 255), 3);
+  buf.writeUInt16LE(clamp((data.speed || 0) * 100, 0xffff), 4);
+  buf.writeUInt32LE(clamp(distanceM, 0xffffffff), 6);
+  buf.writeUInt16LE(clamp(data.energy, 0xffff), 10);
+  buf.writeUInt16LE(clamp(data.elapsed, 0xffff), 12);
+  buf.writeUInt8(clamp(data.hr, 255), 14);
+  buf.writeUInt8(data.connected === false ? 0 : 1, 15);
+  buf.writeUInt16LE(clamp(data.targetPower, 0xffff), 16);
+  return buf;
+}
+
 module.exports = {
+  encodeStrideCastData,
   CrankCounter,
   WheelCounter,
   WHEEL_MM,
