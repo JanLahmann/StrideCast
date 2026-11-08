@@ -52,11 +52,11 @@ class KettlerBLE extends EventEmitter {
 			console.log(`[${this.name} advertisingStart] ${(error ? 'error ' + error : 'success')}`);
 			self.emit('advertisingStart', error);
 
-			if (!error) {
-				bleno.setServices([self.csp
-				, self.ftms
-				, self.csc
-				], 
+			// StrideCast: set the services only once. Advertising restarts on every connect, and
+			// setting them again then would drop the client that just connected.
+			if (!error && !self.servicesSet) {
+				self.servicesSet = true;
+				bleno.setServices(self.services(), 
 				(error) => {
 					console.log(`[${this.name} setServices] ${(error ? 'error ' + error : 'success')}`);
 				});
@@ -81,9 +81,6 @@ class KettlerBLE extends EventEmitter {
 			console.log(`[${this.name} accept] Client: ${clientAddress}`);
 			self.emit('accept', clientAddress);
 			bleno.updateRssi();
-			// StrideCast: keep advertising while connected, so a watch that already uses the power
-			// meter can still find the speed sensor (and a second app can connect).
-			self.advertise();
 		});
 
 		bleno.on('disconnect', (clientAddress) => {
@@ -97,15 +94,23 @@ class KettlerBLE extends EventEmitter {
 
 	}
 
+	// StrideCast: STRIDECAST_NO_POWER=1 leaves out the Cycling Power service, for watches that
+	// only offer the device as a power meter when it has one.
+	services() {
+		const noPower = process.env.STRIDECAST_NO_POWER === '1';
+		return [noPower ? null : this.csp, this.ftms, this.csc].filter(Boolean);
+	}
+
 	advertise() {
-		bleno.startAdvertisingWithEIRData(advertisement(this.name, ['1818', '1826', '1816']), (error) => {
+		const uuids = this.services().map((service) => service.uuid);
+		bleno.startAdvertisingWithEIRData(advertisement(this.name, uuids), (error) => {
 			if (error) console.log(`[${this.name} advertise] error ${error}`);
 		});
 	}
 
 	// notifiy BLE services
 	notifyFTMS(event) {
-		this.csp.notify(event);
+		if (process.env.STRIDECAST_NO_POWER !== '1') this.csp.notify(event);
 		this.ftms.notify(event);
 		this.csc.notify(event);
 	};

@@ -16,6 +16,7 @@ class SpeedMeasurementCharacteristic extends Bleno.Characteristic {
   }
 
   onSubscribe(_maxValueSize, updateValueCallback) {
+    console.log('[StrideCast speed] client subscribed');
     this._updateValueCallback = updateValueCallback;
   }
 
@@ -30,6 +31,42 @@ class SpeedMeasurementCharacteristic extends Bleno.Characteristic {
   }
 }
 
+// SC Control Point (0x2A55): required when wheel data is supported. Answers by indication:
+// 0x10, the request's opcode, then 0x01 success / 0x02 not supported.
+class ControlPointCharacteristic extends Bleno.Characteristic {
+  constructor(measurement) {
+    super({ uuid: '2A55', properties: ['write', 'indicate'] });
+    this._measurement = measurement;
+    this._indicate = null;
+  }
+
+  onSubscribe(_maxValueSize, updateValueCallback) {
+    this._indicate = updateValueCallback;
+  }
+
+  onUnsubscribe() {
+    this._indicate = null;
+  }
+
+  onWriteRequest(data, _offset, _withoutResponse, callback) {
+    const opcode = data.readUInt8(0);
+    console.log(`[StrideCast speed] control point ${data.toString('hex')}`);
+    let answer;
+    if (opcode === 0x01 && data.length >= 5) {
+      // Set Cumulative Value: start counting wheel revolutions from the given value
+      this._measurement._wheel.revs = data.readUInt32LE(1);
+      answer = [0x10, opcode, 0x01];
+    } else if (opcode === 0x04) {
+      // Request Supported Sensor Locations: only the rear wheel
+      answer = [0x10, opcode, 0x01, 12];
+    } else {
+      answer = [0x10, opcode, 0x02];
+    }
+    callback(this.RESULT_SUCCESS);
+    this._indicate?.(Buffer.from(answer));
+  }
+}
+
 class CyclingSpeedService extends Bleno.PrimaryService {
   constructor() {
     const measurement = new SpeedMeasurementCharacteristic();
@@ -37,6 +74,7 @@ class CyclingSpeedService extends Bleno.PrimaryService {
       uuid: '1816',
       characteristics: [
         measurement,
+        new ControlPointCharacteristic(measurement),
         new StaticReadCharacteristic('2A5C', 'CSC Feature', [0x01, 0x00]), // wheel revolution data
         new StaticReadCharacteristic('2A5D', 'Sensor Location', [12]), // 12 = rear wheel
       ],
