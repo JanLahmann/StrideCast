@@ -44,7 +44,8 @@
   <select id="output" aria-label="Sound output"></select>
   <button class="btn" id="pip" title="Picture in picture (P)">PiP</button>
   <button class="btn" id="full" title="Full screen (F)">Full screen</button>
-  <button class="btn" id="hideBar" title="Show or hide the values (S)">Values</button>
+  <button class="btn" id="hideBar" title="Show or hide the values (Alt+S)">Values</button>
+  <button class="btn" id="stop" title="Stop the capture card (X)">Stop</button>
 </div>
 
 <script type="module">
@@ -115,11 +116,25 @@
   document.getElementById('pip').addEventListener('click', togglePip);
   document.getElementById('full').addEventListener('click', toggleFull);
   document.getElementById('hideBar').addEventListener('click', toggleBar);
+
+  // Stop: closes the capture card's picture and sound (the camera light goes off) and shows
+  // the start screen again. Start opens it again.
+  function stop() {
+    if (document.pictureInPictureElement) document.exitPictureInPicture().catch(() => {});
+    stream?.getTracks().forEach((t) => t.stop());
+    stream = null;
+    video.srcObject = null;
+    start.hidden = false;
+  }
+  document.getElementById('stop').addEventListener('click', stop);
   addEventListener('keydown', (e) => {
     if (e.target.closest('select, input')) return;
+    // Alt+S like the overlay on YouTube; e.code, as Alt changes e.key on a Mac.
+    if (e.altKey && e.code === 'KeyS') { e.preventDefault(); toggleBar(); return; }
+    if (e.altKey || e.metaKey || e.ctrlKey) return;
     if (e.key === 'p') togglePip();
     if (e.key === 'f') toggleFull();
-    if (e.key === 's') toggleBar();
+    if (e.key === 'x') stop();
   });
 
   // Once Chrome has the permission, start without the button.
