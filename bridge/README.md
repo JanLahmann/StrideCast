@@ -4,7 +4,7 @@ Runs on the Raspberry Pi at the trainer. It reads the Kettler console over USB o
 
 - **Bluetooth LE** as "StrideCast", with the Fitness Machine (FTMS) and Cycling Power services, so training apps can use the trainer. Apps can set the target power (console command `PW`).
 - **HTTP** on port 3000: `GET /api/now` (latest values as JSON) and `GET /api/live` (the same once per second as server-sent events). While the console is off or unplugged, both answer `{"connected": false}`.
-- **The pages** from `web/` on the same port, e.g. `http://<pi>:3000/dashboard`, so a browser on the TV needs nothing else.
+- **The pages** from `web/`, on port 3000 and on port 80, with the dashboard as start page: `http://<pi>/` is all a browser on the TV needs.
 
 The bridge finds the console by its USB-serial chip (CP2102, `10c4:ea60`) and reconnects by itself.
 

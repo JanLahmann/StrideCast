@@ -43,7 +43,7 @@ Only one program can hold `/dev/ttyUSB0` at a time, so run either the bridge or 
 
 ## The pages on the TV
 
-The bridge on the Pi serves the pages too: open `http://<pi address>:3000/dashboard` in any browser on the home network, e.g. the TV's. Nothing has to run on a computer.
+The bridge on the Pi serves the pages too, on port 80 as well as 3000: open `http://<pi name>/` (e.g. `http://stridecast-pi2w/` on a Fritz!Box network) in any browser on the home network, e.g. the TV's, and it shows the dashboard. Nothing has to run on a computer. Older browsers without JavaScript modules (like the one in some Samsung displays) get a simpler script that polls the values.
 
 ## Try the pages (example data)
 
