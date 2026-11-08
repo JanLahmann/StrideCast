@@ -62,3 +62,9 @@ test('resolvePath keeps the bridge inside web/', async () => {
   assert.equal(resolvePath(root, '/%2e%2e/%2e%2e/etc/passwd'), '/srv/web/etc/passwd.html');
   assert.equal(resolvePath(root, '/%E0%A4%A'), null);
 });
+
+test('encodeRunMeasurement: foot pod speed, steps and distance', async () => {
+  const { encodeRunMeasurement } = (await import('../bridge/cycling-power.js')).default;
+  // 7.2 km/h = 2 m/s = 512/256; 45 rpm = 90 steps/min; 123.4 m = 1234 dm
+  assert.deepEqual([...encodeRunMeasurement(7.2, 45, 1234)], [0x02, 0x00, 0x02, 90, 0xd2, 0x04, 0, 0]);
+});

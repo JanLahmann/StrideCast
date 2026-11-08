@@ -3,6 +3,7 @@ const EventEmitter = require('events');
 const CyclingPowerService = require('./cycling-power-service');
 const FitnessMachineService = require('./ftms-service');
 const CyclingSpeedService = require('./csc-service'); // StrideCast
+const RunningSpeedService = require('./rsc-service'); // StrideCast
 
 // StrideCast: advertising data with flags, the 16-bit service UUIDs and the complete name.
 function advertisement(name, uuids) {
@@ -29,6 +30,7 @@ class KettlerBLE extends EventEmitter {
 		this.csp = new CyclingPowerService();
 		this.ftms = new FitnessMachineService(serverCallback); 
 		this.csc = new CyclingSpeedService(); // StrideCast: speed for watches
+		this.rsc = new RunningSpeedService(); // StrideCast: foot pod for watches
 
 		let self = this;
 		console.log(`[${this.name} starting]`);
@@ -94,11 +96,13 @@ class KettlerBLE extends EventEmitter {
 
 	}
 
-	// StrideCast: STRIDECAST_NO_POWER=1 leaves out the Cycling Power service, for watches that
-	// only offer the device as a power meter when it has one.
+	// StrideCast: which sensors to offer, STRIDECAST_SENSORS=power,ftms,speed,run (the default
+	// is all four). A Garmin watch takes only one sensor type from one device, so for a watch
+	// list just the one it should use (plus ftms for apps).
 	services() {
-		const noPower = process.env.STRIDECAST_NO_POWER === '1';
-		return [noPower ? null : this.csp, this.ftms, this.csc].filter(Boolean);
+		const wanted = (process.env.STRIDECAST_SENSORS ?? 'power,ftms,speed,run').split(',').map((s) => s.trim());
+		const all = { power: this.csp, ftms: this.ftms, speed: this.csc, run: this.rsc };
+		return wanted.map((name) => all[name]).filter(Boolean);
 	}
 
 	advertise() {
@@ -110,9 +114,7 @@ class KettlerBLE extends EventEmitter {
 
 	// notifiy BLE services
 	notifyFTMS(event) {
-		if (process.env.STRIDECAST_NO_POWER !== '1') this.csp.notify(event);
-		this.ftms.notify(event);
-		this.csc.notify(event);
+		for (const service of this.services()) service.notify(event);
 	};
 	
  
