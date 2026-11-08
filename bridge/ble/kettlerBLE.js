@@ -87,7 +87,9 @@ class KettlerBLE extends EventEmitter {
 
 		bleno.on('disconnect', (clientAddress) => {
 			console.log(`[${this.name} disconnect] Client: ${clientAddress}`);
-			self.advertise();
+			// Advertising right away after a disconnect silently did nothing, so watches could
+			// not reconnect; give the controller a moment and restart it explicitly.
+			setTimeout(() => bleno.stopAdvertising(() => self.advertise()), 500);
 		});
 
 		bleno.on('rssiUpdate', (rssi) => {
