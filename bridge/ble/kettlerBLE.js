@@ -2,6 +2,21 @@ const bleno = require('@abandonware/bleno');
 const EventEmitter = require('events');
 const CyclingPowerService = require('./cycling-power-service');
 const FitnessMachineService = require('./ftms-service');
+const CyclingSpeedService = require('./csc-service'); // StrideCast
+
+// StrideCast: advertising data with flags, the 16-bit service UUIDs and the complete name.
+function advertisement(name, uuids) {
+	const flags = Buffer.from([0x02, 0x01, 0x06]); // LE general discoverable, no BR/EDR
+	const list = Buffer.alloc(2 + 2 * uuids.length);
+	list.writeUInt8(1 + 2 * uuids.length, 0);
+	list.writeUInt8(0x03, 1); // complete list of 16-bit service UUIDs
+	uuids.forEach((uuid, i) => list.writeUInt16LE(parseInt(uuid, 16), 2 + 2 * i));
+	const nameBytes = Buffer.from(name, 'utf8');
+	const nameField = Buffer.concat([Buffer.from([1 + nameBytes.length, 0x09]), nameBytes]);
+	const data = Buffer.concat([flags, list, nameField]);
+	if (data.length > 31) throw new Error(`advertising data is ${data.length} bytes, at most 31 fit`);
+	return data;
+}
 
 class KettlerBLE extends EventEmitter {
 
@@ -13,6 +28,7 @@ class KettlerBLE extends EventEmitter {
 
 		this.csp = new CyclingPowerService();
 		this.ftms = new FitnessMachineService(serverCallback); 
+		this.csc = new CyclingSpeedService(); // StrideCast: speed for watches
 
 		let self = this;
 		console.log(`[${this.name} starting]`);
@@ -23,9 +39,9 @@ class KettlerBLE extends EventEmitter {
 			self.emit('stateChange', state);
 
 			if (state === 'poweredOn') {
-				bleno.startAdvertising(self.name, [self.csp.uuid
-				, self.ftms.uuid
-				]);
+				// StrideCast: the name goes in the advertisement itself, not only in the scan
+				// response, so watches that scan passively show "StrideCast" instead of an address.
+				bleno.startAdvertisingWithEIRData(advertisement(self.name, ['1818', '1826', '1816']));
 			} else {
 				console.log('Stopping...');
 				bleno.stopAdvertising();
@@ -39,6 +55,7 @@ class KettlerBLE extends EventEmitter {
 			if (!error) {
 				bleno.setServices([self.csp
 				, self.ftms
+				, self.csc
 				], 
 				(error) => {
 					console.log(`[${this.name} setServices] ${(error ? 'error ' + error : 'success')}`);
@@ -76,6 +93,7 @@ class KettlerBLE extends EventEmitter {
 	notifyFTMS(event) {
 		this.csp.notify(event);
 		this.ftms.notify(event);
+		this.csc.notify(event);
 	};
 	
  
@@ -83,3 +101,4 @@ class KettlerBLE extends EventEmitter {
 };
 
 module.exports = KettlerBLE;
+module.exports.advertisement = advertisement;

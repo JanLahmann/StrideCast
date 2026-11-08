@@ -39,3 +39,14 @@ test('CrankCounter turns rpm into crank revolutions and event times', async () =
   const buf = encodePowerMeasurement(150, { revs: 2, eventTime: 1707 });
   assert.deepEqual([...buf], [0x20, 0, 150, 0, 2, 0, 0xab, 0x06]);
 });
+
+test('WheelCounter turns km/h into wheel revolutions', async () => {
+  const { WheelCounter, WHEEL_MM, encodeSpeedMeasurement } = (await import('../bridge/cycling-power.js')).default;
+  const wheel = new WheelCounter();
+  wheel.update(0, 0);
+  // 30 km/h for 10 s = 83.33 m = 39.76 turns of a 2096 mm wheel
+  const after = wheel.update(30, 10000);
+  assert.equal(after.revs, Math.floor((30 / 3.6) * 10 / (WHEEL_MM / 1000)));
+  assert.equal(after.revs, 39);
+  assert.deepEqual([...encodeSpeedMeasurement({ revs: 39, eventTime: 1024 })], [0x01, 39, 0, 0, 0, 0x00, 0x04]);
+});
