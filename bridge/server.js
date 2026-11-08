@@ -2,10 +2,15 @@
 // as "StrideCast" (FTMS and Cycling Power) and serves the live values over HTTP:
 //   GET /api/now   the latest values as JSON (connected: false while the console is silent)
 //   GET /api/live  the same once per second as server-sent events
+//   GET /          the pages from web/ (dashboard, ride), deployed next to bridge/
 // Set STRIDECAST_NO_BLE=1 to run without Bluetooth.
 
 const http = require('node:http');
+const path = require('node:path');
 const { KettlerConsole } = require('./console');
+const { serveStatic } = require('./static');
+
+const WEB_ROOT = path.resolve(process.env.STRIDECAST_WEB ?? path.join(__dirname, '..', 'web'));
 
 const PORT = Number(process.env.PORT ?? 3000);
 const STALE_MS = 5000;
@@ -61,8 +66,10 @@ http.createServer((req, res) => {
     res.write(`data: ${JSON.stringify(now())}\n\n`);
     liveClients.add(res);
     req.on('close', () => liveClients.delete(res));
+  } else if (req.method === 'GET' || req.method === 'HEAD') {
+    serveStatic(WEB_ROOT, pathname, res);
   } else {
-    res.writeHead(404, { 'Content-Type': 'text/plain' }).end('Not found');
+    res.writeHead(405).end();
   }
 }).listen(PORT, () => console.log(`StrideCast bridge on port ${PORT}`));
 

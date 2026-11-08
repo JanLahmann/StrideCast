@@ -50,3 +50,15 @@ test('WheelCounter turns km/h into wheel revolutions', async () => {
   assert.equal(after.revs, 39);
   assert.deepEqual([...encodeSpeedMeasurement({ revs: 39, eventTime: 1024 })], [0x01, 39, 0, 0, 0, 0x00, 0x04]);
 });
+
+test('resolvePath keeps the bridge inside web/', async () => {
+  const { resolvePath } = (await import('../bridge/static.js')).default;
+  const root = '/srv/web';
+  assert.equal(resolvePath(root, '/'), '/srv/web/index.html');
+  assert.equal(resolvePath(root, '/dashboard'), '/srv/web/dashboard.html');
+  assert.equal(resolvePath(root, '/assets/app.css'), '/srv/web/assets/app.css');
+  assert.equal(resolvePath(root, '/../bridge/server.js'), '/srv/web/bridge/server.js');
+  // .. can't climb above web/: it is clamped at the root
+  assert.equal(resolvePath(root, '/%2e%2e/%2e%2e/etc/passwd'), '/srv/web/etc/passwd.html');
+  assert.equal(resolvePath(root, '/%E0%A4%A'), null);
+});

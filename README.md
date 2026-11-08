@@ -41,6 +41,10 @@ Example `ST` answer while pedaling: `105 063 099 000 090 0015 00:29 090` means 1
 
 Only one program can hold `/dev/ttyUSB0` at a time, so run either the bridge or QZ.
 
+## The pages on the TV
+
+The bridge on the Pi serves the pages too: open `http://<pi address>:3000/dashboard` in any browser on the home network, e.g. the TV's. Nothing has to run on a computer.
+
 ## Try the pages (example data)
 
 The web pages run on any computer with Node.js 20 or newer, without the ELYX:
