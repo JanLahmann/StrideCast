@@ -41,7 +41,7 @@ class KettlerBLE extends EventEmitter {
 			if (state === 'poweredOn') {
 				// StrideCast: the name goes in the advertisement itself, not only in the scan
 				// response, so watches that scan passively show "StrideCast" instead of an address.
-				bleno.startAdvertisingWithEIRData(advertisement(self.name, ['1818', '1826', '1816']));
+				self.advertise();
 			} else {
 				console.log('Stopping...');
 				bleno.stopAdvertising();
@@ -81,12 +81,26 @@ class KettlerBLE extends EventEmitter {
 			console.log(`[${this.name} accept] Client: ${clientAddress}`);
 			self.emit('accept', clientAddress);
 			bleno.updateRssi();
+			// StrideCast: keep advertising while connected, so a watch that already uses the power
+			// meter can still find the speed sensor (and a second app can connect).
+			self.advertise();
+		});
+
+		bleno.on('disconnect', (clientAddress) => {
+			console.log(`[${this.name} disconnect] Client: ${clientAddress}`);
+			self.advertise();
 		});
 
 		bleno.on('rssiUpdate', (rssi) => {
 			console.log(`[${this.name} rssiUpdate]: ${rssi}`);
 		});
 
+	}
+
+	advertise() {
+		bleno.startAdvertisingWithEIRData(advertisement(this.name, ['1818', '1826', '1816']), (error) => {
+			if (error) console.log(`[${this.name} advertise] error ${error}`);
+		});
 	}
 
 	// notifiy BLE services
