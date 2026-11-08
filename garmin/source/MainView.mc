@@ -29,8 +29,9 @@ class MainView extends WatchUi.View {
         text(dc, w / 2, h * 0.40, Graphics.FONT_XTINY, "W", Graphics.COLOR_LT_GRAY);
 
         var km = d != null ? a.recorder.distanceKm(d) : null;
-        text(dc, w * 0.30, h * 0.52, Graphics.FONT_MEDIUM, d != null ? (d[:rpm] as Number).toString() + " rpm" : "--", 0x38BDF8);
-        text(dc, w * 0.70, h * 0.52, Graphics.FONT_MEDIUM, d != null ? (d[:speed] as Float).format("%.1f") + " km/h" : "--", Graphics.COLOR_WHITE);
+        // Cadence ends left of the middle, speed starts right of it, so they never run together.
+        textAt(dc, w * 0.47, h * 0.52, Graphics.FONT_SMALL, d != null ? (d[:rpm] as Number).toString() + " rpm" : "-- rpm", 0x38BDF8, Graphics.TEXT_JUSTIFY_RIGHT);
+        textAt(dc, w * 0.53, h * 0.52, Graphics.FONT_SMALL, d != null ? (d[:speed] as Float).format("%.1f") + " km/h" : "-- km/h", Graphics.COLOR_WHITE, Graphics.TEXT_JUSTIFY_LEFT);
         text(dc, w * 0.30, h * 0.66, Graphics.FONT_MEDIUM, formatTime(timer), Graphics.COLOR_WHITE);
         text(dc, w * 0.70, h * 0.66, Graphics.FONT_MEDIUM, hr != null ? hr.toString() + " bpm" : "-- bpm", 0xF2506E);
         text(dc, w / 2, h * 0.79, Graphics.FONT_SMALL, km != null ? km.format("%.2f") + " km" : "", Graphics.COLOR_WHITE);
@@ -39,8 +40,12 @@ class MainView extends WatchUi.View {
     }
 
     private function text(dc as Graphics.Dc, x as Numeric, y as Numeric, font as Graphics.FontType, s as String, color as Number) as Void {
+        textAt(dc, x, y, font, s, color, Graphics.TEXT_JUSTIFY_CENTER);
+    }
+
+    private function textAt(dc as Graphics.Dc, x as Numeric, y as Numeric, font as Graphics.FontType, s as String, color as Number, justify as Number) as Void {
         dc.setColor(color, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(x, y, font, s, Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(x, y, font, s, justify | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 
     private function formatTime(s as Number) as String {

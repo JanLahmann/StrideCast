@@ -33,3 +33,12 @@ Going public needs a new app id and Jan's own word.
 characteristic (`…2b10…`) with an 18-byte packet, see `encodeStrideCastData` in
 `bridge/cycling-power.js` and `source/Packet.mc`. The Pi runs it with
 `STRIDECAST_SENSORS=run,ftms,app`.
+
+Don't pair the Pi as a sensor on the watch (e.g. the foot pod) while using the app: the
+watch then holds the connection itself, and the app stays at "Connecting".
+
+## What the recording holds
+
+Tested on a fenix 8 with intervals.icu: power (native record field 7) arrives as device
+power, cadence (4) as cadence, heart rate from the watch. Distance (5, cm) and speed (6,
+mm/s) are written to the native fields from 0.1.2 on.

@@ -5,7 +5,9 @@ import Toybox.Lang;
 
 // Records a cross-trainer workout. Heart rate, time and calories come from the watch itself;
 // power and cadence are written with the native FIT field numbers (record 7 and 4), so
-// Garmin Connect, Strava and intervals.icu can read them as power and cadence.
+// Garmin Connect, Strava and intervals.icu can read them as power and cadence. Distance
+// (record 5, in cm) and speed (record 6, in mm/s) also use the native fields, written as
+// raw FIT values with the native scale.
 class Recorder {
     private var _session as ActivityRecording.Session? = null;
     private var _power as FitContributor.Field? = null;
@@ -37,8 +39,8 @@ class Recorder {
             });
             _power = s.createField("power", 0, FitContributor.DATA_TYPE_UINT16, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => "W", :nativeNum => 7 });
             _cadence = s.createField("cadence", 1, FitContributor.DATA_TYPE_UINT8, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => "rpm", :nativeNum => 4 });
-            _speed = s.createField("elyx_speed", 2, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => "km/h" });
-            _distance = s.createField("elyx_distance", 3, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => "km" });
+            _speed = s.createField("speed", 2, FitContributor.DATA_TYPE_UINT16, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => "m/s", :nativeNum => 6 });
+            _distance = s.createField("distance", 3, FitContributor.DATA_TYPE_UINT32, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => "m", :nativeNum => 5 });
             _energy = s.createField("elyx_energy", 4, FitContributor.DATA_TYPE_UINT16, { :mesgType => FitContributor.MESG_TYPE_SESSION, :units => "kJ" });
             _session = s;
         }
@@ -76,8 +78,8 @@ class Recorder {
         }
         (_power as FitContributor.Field).setData(clamp(d[:power] as Number, 0, 0xffff));
         (_cadence as FitContributor.Field).setData(clamp(d[:rpm] as Number, 0, 0xff));
-        (_speed as FitContributor.Field).setData(d[:speed] as Float);
-        (_distance as FitContributor.Field).setData(((d[:distance] as Number) - (_distanceStart as Number)) / 1000.0);
+        (_speed as FitContributor.Field).setData(clamp(((d[:speed] as Float) / 3.6 * 1000).toNumber(), 0, 0xffff)); // mm/s
+        (_distance as FitContributor.Field).setData(clamp(((d[:distance] as Number) - (_distanceStart as Number)) * 100, 0, 0x7fffffff)); // cm
         (_energy as FitContributor.Field).setData(clamp((d[:energy] as Number) - (_energyStart as Number), 0, 0xffff));
     }
 
