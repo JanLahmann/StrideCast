@@ -49,7 +49,7 @@ The bridge on the Pi serves the pages too, on port 80 as well as 3000: open `htt
 
 `/tv` shows an HDMI source through a USB capture card (tested with a MiraBox HSV321 and a Fire TV stick) with the live values on top. Chrome asks once for camera and microphone: that is the card's picture and sound.
 
-- **P** picture in picture (the TV picture floats above other windows), **F** full screen, **S** shows or hides the values.
+- **P** picture in picture (the TV picture floats above other windows), **F** full screen, **Alt+S** shows or hides the values (as on YouTube), **X** stops the capture card (picture and sound off; Start opens it again).
 - **Sound:** pick the output at the bottom left (e.g. the TV over HDMI); everything else on the Mac keeps its default. The page remembers the choice.
 - No sound? The card takes stereo PCM only. On the Fire TV set Settings → Display & Sounds → Audio → Surround Sound to **PCM**, then unplug the card's USB cable once and reload the page.
 - Copy-protected apps (Netflix, Prime Video) stay black through a capture card.
