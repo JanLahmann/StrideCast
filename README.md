@@ -76,6 +76,7 @@ The extension in `extension/` shows your live values on top of youtube.com, musi
 2. Click **Load unpacked** and choose the `extension` folder of this repo.
 3. Open YouTube. The stats bar appears at the top right.
 
+- The overlay appears only while the ELYX is in use (cadence or power above zero) and hides itself 2 minutes after you stop. Alt+S shows it for 2 minutes anyway.
 - **Alt+S** or the StrideCast toolbar icon switches between the small bar, a larger panel with a 10-minute chart, and hidden.
 - **Sound:** the panel's header picks the output for the video (e.g. the TV over HDMI); the rest of the Mac keeps its default. The first time, choose "Choose output…": Chrome asks once for the microphone on that site, which it needs to show the output names (the microphone is closed right away). The choice is remembered for all sites.
 - Drag the bar or the panel's title to move them; drag the panel's corner to resize it. Both are remembered.
