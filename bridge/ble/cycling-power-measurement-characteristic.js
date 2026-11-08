@@ -1,6 +1,7 @@
 
 var Bleno = require('@abandonware/bleno');
 var DEBUG = false;
+const { CrankCounter, encodePowerMeasurement } = require('../cycling-power');
 
 // Spec
 //https://developer.bluetooth.org/gatt/characteristics/Pages/CharacteristicViewer.aspx?u=org.bluetooth.characteristic.cycling_power_measurement.xml
@@ -30,6 +31,7 @@ class CyclingPowerMeasurementCharacteristic extends  Bleno.Characteristic {
       ]
     });
     this._updateValueCallback = null;  
+    this._crank = new CrankCounter();
   }
 
   onSubscribe(maxValueSize, updateValueCallback) {
@@ -44,43 +46,19 @@ class CyclingPowerMeasurementCharacteristic extends  Bleno.Characteristic {
     return this.RESULT_UNLIKELY_ERROR;
   };
 
+  // StrideCast: sends crank revolution data so watches show cadence (the original wrote rpm
+  // where the crank count belongs, with the flags saying no crank data).
   notify(event) {
     if (!('power' in event) && !('rpm' in event)) {
       // ignore events with no power and no crank data
-      return this.RESULT_SUCCESS;;
+      return this.RESULT_SUCCESS;
     }
-    var buffer = new Buffer(8);
-    // flags
-    // 00000001 - 1   - 0x001 - Pedal Power Balance Present
-    // 00000010 - 2   - 0x002 - Pedal Power Balance Reference
-    // 00000100 - 4   - 0x004 - Accumulated Torque Present
-    // 00001000 - 8   - 0x008 - Accumulated Torque Source
-    // 00010000 - 16  - 0x010 - Wheel Revolution Data Present
-    // 00100000 - 32  - 0x020 - Crank Revolution Data Present
-    // 01000000 - 64  - 0x040 - Extreme Force Magnitudes Present
-    // 10000000 - 128 - 0x080 - Extreme Torque Magnitudes Present
-   
-    buffer.writeUInt16LE(0x0000, 0);
-   
-    if ('power' in event) {
-      var power = event.power;
-      if (DEBUG) console.log("power: " + power);
-      buffer.writeInt16LE(power, 2);
-    }
-  
-    if ('rpm' in event) {
-      var rpm = event.rpm;
-      if (DEBUG) console.log("rev_count: " + event.rpm);
-      buffer.writeUInt16LE(rpm, 4);
-    }
-  
+    const crank = this._crank.update(event.rpm || 0, performance.now());
     if (this._updateValueCallback) {
-      this._updateValueCallback(buffer);
+      this._updateValueCallback(encodePowerMeasurement(event.power, crank));
     }
     return this.RESULT_SUCCESS;
   }
-  
-  
 };
 
 module.exports = CyclingPowerMeasurementCharacteristic;
