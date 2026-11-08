@@ -41,6 +41,7 @@
 
 <div class="controls">
   <select id="source" aria-label="Video source"></select>
+  <select id="output" aria-label="Sound output"></select>
   <button class="btn" id="pip" title="Picture in picture (P)">PiP</button>
   <button class="btn" id="full" title="Full screen (F)">Full screen</button>
   <button class="btn" id="hideBar" title="Show or hide the values (S)">Values</button>
@@ -48,6 +49,7 @@
 
 <script type="module">
   import { startLive } from './assets/live.js';
+  import { setupOutput } from './assets/output.js';
 
   const video = document.getElementById('video');
   const start = document.getElementById('start');
@@ -55,8 +57,10 @@
   const bar = document.querySelector('.bar');
   const PREFERRED = /mirabox|capture|hdmi|cam link|uvc/i; // capture cards, not webcams
   let stream = null;
+  let output = null;
 
   startLive();
+  setupOutput(document.getElementById('output'), () => [video]).then((o) => { output = o; });
 
   // The sound input of the same device: same name (macOS lists the card twice, once per
   // kind), else the same group. Music and film sound: no echo cancellation, noise
@@ -80,6 +84,7 @@
     console.log('[StrideCast TV]', stream.getTracks().map((t) => `${t.kind}: ${t.label}`).join(', '));
     video.srcObject = stream;
     video.muted = false;
+    await output?.refresh(); // device names are known now, and the chosen output applies
     await video.play().catch(() => {});
     start.hidden = true;
     localStorage.setItem('stridecast-tv-source', deviceId);
