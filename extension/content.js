@@ -1,10 +1,13 @@
 // StrideCast overlay on YouTube, YouTube Music and Teams recordings (SharePoint/Stream): a small stats bar or a larger panel,
 // both draggable, also shown in full screen. Alt+S or the toolbar icon switches
-// bar → panel → hidden. The panel also picks the sound output for the page's videos (e.g.
+// bar → panel → hidden. It only shows while the ELYX is in use (cadence or power above zero)
+// and hides itself 2 minutes after the last movement; Alt+S shows it for 2 minutes anyway.
+// The panel also picks the sound output for the page's videos (e.g.
 // the TV over HDMI), so the rest of the Mac keeps its default.
 
 const MODES = ['bar', 'panel', 'hidden'];
 const WINDOW = 600; // seconds in the panel chart, one sample per second
+const IDLE_MS = 2 * 60 * 1000; // hide this long after the ELYX last moved
 
 const CSS = `
   :host { all: initial; }
@@ -119,12 +122,26 @@ const HTML = `
     Object.assign(box.style, { left: `${left}px`, top: `${top}px`, right: 'auto' });
   }
 
+  // Shown while the ELYX moved in the last IDLE_MS, or for IDLE_MS after Alt+S.
+  let lastActive = 0;
+  let manualUntil = 0;
+  const awake = () => Date.now() - lastActive < IDLE_MS || Date.now() < manualUntil;
+  let shown = null;
+
+  function render() {
+    const visible = awake() ? mode : 'hidden';
+    if (visible === shown) return;
+    shown = visible;
+    for (const [name, box] of Object.entries(boxes)) {
+      box.hidden = name !== visible;
+      if (name === visible) place(box, name);
+    }
+  }
+
   function setMode(next) {
     mode = next;
-    for (const [name, box] of Object.entries(boxes)) {
-      box.hidden = name !== mode;
-      if (name === mode) place(box, name);
-    }
+    shown = null;
+    render();
     chrome.storage.local.set({ mode });
   }
 
@@ -163,7 +180,16 @@ const HTML = `
     const act = e.target.closest('button')?.dataset.act;
     if (act) setMode(act);
   });
-  const cycle = () => setMode(MODES[(MODES.indexOf(mode) + 1) % MODES.length]);
+  const cycle = () => {
+    if (!awake()) {
+      // Asleep: wake it in the chosen mode instead of moving on to the next one.
+      manualUntil = Date.now() + IDLE_MS;
+      if (mode === 'hidden') mode = 'bar';
+      setMode(mode);
+      return;
+    }
+    setMode(MODES[(MODES.indexOf(mode) + 1) % MODES.length]);
+  };
   addEventListener('keydown', (e) => {
     if (e.altKey && !e.metaKey && !e.ctrlKey && e.code === 'KeyS') {
       e.preventDefault();
@@ -195,6 +221,7 @@ const HTML = `
       host.remove();
       return;
     }
+    render();
     if (document.hidden) return;
     routeMedia();
     let reply;
@@ -214,6 +241,10 @@ const HTML = `
       setStatus('off', 'ELYX not connected');
       return;
     } else setStatus('ok', 'ELYX');
+    if (data.source !== 'example' && ((data.rpm ?? 0) > 0 || (data.power ?? 0) > 0)) {
+      lastActive = Date.now();
+      render();
+    }
     history.push(data);
     if (history.length > WINDOW) history.shift();
     if (mode === 'panel') drawChart();
