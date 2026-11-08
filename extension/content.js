@@ -1,6 +1,7 @@
 // StrideCast overlay on YouTube, YouTube Music and Teams recordings (SharePoint/Stream): a small stats bar or a larger panel,
 // both draggable, also shown in full screen. Alt+S or the toolbar icon switches
-// bar → panel → hidden.
+// bar → panel → hidden. The panel also picks the sound output for the page's videos (e.g.
+// the TV over HDMI), so the rest of the Mac keeps its default.
 
 const MODES = ['bar', 'panel', 'hidden'];
 const WINDOW = 600; // seconds in the panel chart, one sample per second
@@ -24,6 +25,10 @@ const CSS = `
   [data-state="example"] .dot, .dot[data-state="example"] { background: #F5A524; }
   [data-state="off"] .dot, .dot[data-state="off"] { background: #F2506E; }
   [hidden] { display: none !important; }
+  select { all: unset; cursor: pointer; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    color: #8E9BA7; font-size: 12px; padding: 3px 6px; border: 1px solid rgba(255, 255, 255, .12); border-radius: 6px; }
+  select:hover, select:focus-visible { color: #EEF2F5; }
+  option { color: #000; }
 
   .bar { top: 72px; right: 24px; display: flex; align-items: center; gap: 18px; padding: 8px 10px 8px 12px; }
   .bar .m { display: flex; align-items: baseline; gap: 3px; white-space: nowrap; }
@@ -64,6 +69,7 @@ const HTML = `
     <header class="grip">
       <strong>StrideCast</strong>
       <span class="status"><i class="dot" data-status-dot></i><span data-status-text>Connecting…</span></span>
+      <select data-output title="Sound output for the video" aria-label="Sound output"></select>
       <button data-act="bar" title="Small bar">⤡</button>
       <button data-act="hidden" title="Hide (Alt+S)">×</button>
     </header>
@@ -190,6 +196,7 @@ const HTML = `
       return;
     }
     if (document.hidden) return;
+    routeMedia();
     let reply;
     try {
       reply = await chrome.runtime.sendMessage({ type: 'now' });
@@ -211,6 +218,45 @@ const HTML = `
     if (history.length > WINDOW) history.shift();
     if (mode === 'panel') drawChart();
   }
+
+  // Sound output. Chrome shows the output names only once the site may use the microphone,
+  // so the first pick asks for it once (the microphone is closed again right away).
+  const output = root.querySelector('[data-output]');
+  let sinkLabel = (await chrome.storage.local.get({ output: '' })).output;
+  let sinkId = '';
+  const UNLOCK = 'unlock';
+  async function fillOutputs() {
+    const outputs = (await navigator.mediaDevices.enumerateDevices()).filter((d) => d.kind === 'audiooutput' && d.deviceId !== 'default');
+    const named = outputs.some((d) => d.label);
+    const options = [new Option('Sound: Mac default', '')];
+    if (named) for (const d of outputs) options.push(new Option(`Sound: ${d.label}`, d.deviceId));
+    else options.push(new Option('Choose output…', UNLOCK));
+    output.replaceChildren(...options);
+    sinkId = outputs.find((d) => d.label && d.label === sinkLabel)?.deviceId ?? '';
+    output.value = sinkId;
+  }
+  function routeMedia() {
+    for (const el of document.querySelectorAll('video, audio')) {
+      if (el.sinkId !== sinkId) el.setSinkId(sinkId).catch(() => {});
+    }
+  }
+  if ('setSinkId' in HTMLMediaElement.prototype) {
+    output.addEventListener('change', async () => {
+      if (output.value === UNLOCK) {
+        try {
+          (await navigator.mediaDevices.getUserMedia({ audio: true })).getTracks().forEach((t) => t.stop());
+        } catch {}
+        await fillOutputs();
+        return;
+      }
+      sinkId = output.value;
+      sinkLabel = sinkId ? output.selectedOptions[0].text.replace(/^Sound: /, '') : '';
+      chrome.storage.local.set({ output: sinkLabel });
+      routeMedia();
+    });
+    navigator.mediaDevices.addEventListener('devicechange', fillOutputs);
+    await fillOutputs().catch(() => {});
+  } else output.hidden = true;
 
   setMode(mode);
   const timer = setInterval(poll, 1000);
