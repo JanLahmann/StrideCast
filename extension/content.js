@@ -2,6 +2,8 @@
 // both draggable, also shown in full screen. Alt+S or the toolbar icon switches
 // bar → panel → hidden. It only shows while the ELYX is in use (cadence or power above zero)
 // and hides itself 2 minutes after the last movement; Alt+S shows it for 2 minutes anyway.
+// Hiding it with × lasts until the next workout: it comes back when the ELYX starts moving
+// again after a break.
 // The panel also picks the sound output for the page's videos (e.g.
 // the TV over HDMI), so the rest of the Mac keeps its default.
 
@@ -242,6 +244,7 @@ const HTML = `
       return;
     } else setStatus('ok', 'ELYX');
     if (data.source !== 'example' && ((data.rpm ?? 0) > 0 || (data.power ?? 0) > 0)) {
+      if (Date.now() - lastActive >= IDLE_MS && mode === 'hidden') setMode('bar'); // a new workout
       lastActive = Date.now();
       render();
     }
