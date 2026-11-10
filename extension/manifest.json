@@ -1,15 +1,22 @@
 {
   "manifest_version": 3,
   "name": "StrideCast",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Shows live cross-trainer stats from StrideCast on top of YouTube, YouTube Music, Teams recordings and WhatsApp Web.",
   "permissions": [
-    "storage"
+    "storage",
+    "scripting"
   ],
   "host_permissions": [
     "http://stridecast-pi2w.local:3000/*",
     "http://192.168.178.165:3000/*",
-    "http://127.0.0.1:3700/*"
+    "http://127.0.0.1:3700/*",
+    "https://www.youtube.com/*",
+    "https://music.youtube.com/*",
+    "https://*.sharepoint.com/*",
+    "https://teams.microsoft.com/*",
+    "https://teams.cloud.microsoft/*",
+    "https://web.whatsapp.com/*"
   ],
   "background": {
     "service_worker": "background.js"
