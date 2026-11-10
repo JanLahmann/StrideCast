@@ -70,7 +70,7 @@ The dev server sends example data once per second, reloads open pages when a fil
 
 ## Stats on YouTube (Chrome extension)
 
-The extension in `extension/` shows your live values on top of youtube.com, music.youtube.com and Teams recordings (Teams web and the SharePoint/Stream player), also in full screen. It reads them straight from the bridge on the Pi (`http://stridecast-pi2w.local:3000`), so nothing has to run on the Mac. If the Pi is off, it falls back to the dev server above (`npm run dev`, example data).
+The extension in `extension/` shows your live values on top of youtube.com, music.youtube.com, Teams recordings (Teams web and the SharePoint/Stream player) and WhatsApp Web, also in full screen. It reads them straight from the bridge on the Pi (`http://stridecast-pi2w.local:3000`), so nothing has to run on the Mac. If the Pi is off, it falls back to the dev server above (`npm run dev`, example data).
 
 1. Open `chrome://extensions`, turn on **Developer mode** (top right).
 2. Click **Load unpacked** and choose the `extension` folder of this repo.
