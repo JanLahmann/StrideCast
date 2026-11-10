@@ -1,5 +1,5 @@
 // Development server: serves web/, streams example data on /api/live (the latest values
-// on /api/now) and reloads open pages when a file under web/ changes. /__extension tells the
+// on /api/now), the network cameras on /cam/<name>.mjpg (see cameras.mjs), and reloads open pages when a file under web/ changes. /__extension tells the
 // Chrome extension when its own files changed, so it reloads itself. Listens on this
 // computer only (127.0.0.1).
 
@@ -9,6 +9,7 @@ import { readFile, readdir, stat } from 'node:fs/promises';
 import { extname, join, normalize, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createSimulator } from './simulator.mjs';
+import { cameras, handleCamera } from './cameras.mjs';
 
 const root = resolve(fileURLToPath(new URL('../web', import.meta.url)));
 const extensionRoot = resolve(fileURLToPath(new URL('../extension', import.meta.url)));
@@ -119,6 +120,11 @@ createServer((req, res) => {
   } else if (url.pathname === '/api/now') {
     res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
     res.end(JSON.stringify(current));
+  } else if (url.pathname === '/api/cameras') {
+    res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
+    res.end(JSON.stringify(Object.keys(cameras)));
+  } else if (handleCamera(url.pathname, req, res)) {
+    // a camera picture
   } else if (url.pathname === '/__extension') {
     extensionStamp().then((stamp) => {
       res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
