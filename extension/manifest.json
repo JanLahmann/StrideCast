@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "StrideCast",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Shows live cross-trainer stats from StrideCast on top of YouTube, YouTube Music and Teams recordings.",
   "permissions": [
     "storage"
