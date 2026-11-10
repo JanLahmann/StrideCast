@@ -41,4 +41,5 @@ watch then holds the connection itself, and the app stays at "Connecting".
 
 Tested on a fenix 8 with intervals.icu: power (native record field 7) arrives as device
 power, cadence (4) as cadence, heart rate from the watch. Distance (5, cm) and speed (6,
-mm/s) are written to the native fields from 0.1.2 on.
+mm/s) went to the native fields in 0.1.2 and came out 100× and 1000× too large: the
+watch applies the FIT scale itself. From 0.1.4 on they are written in m and m/s.
