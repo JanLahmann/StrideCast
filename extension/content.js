@@ -114,13 +114,17 @@ const HTML = `
   // Keep the overlay inside the full-screen element, or it disappears behind the video.
   const attach = () => (document.fullscreenElement ?? document.documentElement).append(host);
   document.addEventListener('fullscreenchange', attach);
+  addEventListener('resize', () => {
+    for (const [name, box] of Object.entries(boxes)) if (!box.hidden) place(box, name);
+  });
   attach();
 
   function place(box, name) {
     const p = pos[name];
     if (!p) return;
-    const left = Math.min(Math.max(0, p.left), innerWidth - 60);
-    const top = Math.min(Math.max(0, p.top), innerHeight - 40);
+    // Keep the whole box inside the window, also when the window got smaller since.
+    const left = Math.max(0, Math.min(p.left, innerWidth - box.offsetWidth));
+    const top = Math.max(0, Math.min(p.top, innerHeight - box.offsetHeight));
     Object.assign(box.style, { left: `${left}px`, top: `${top}px`, right: 'auto' });
   }
 
