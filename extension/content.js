@@ -122,8 +122,10 @@ const HTML = `
   function place(box, name) {
     const p = pos[name];
     if (!p) return;
-    // Keep the whole box inside the window, also when the window got smaller since.
-    const left = Math.max(0, Math.min(p.left, innerWidth - box.offsetWidth));
+    // A box dropped in the right half keeps its distance to the right edge, so it stays at
+    // the top right when the window changes size. Always the whole box inside the window.
+    const want = p.right != null ? innerWidth - p.right - box.offsetWidth : p.left;
+    const left = Math.max(0, Math.min(want, innerWidth - box.offsetWidth));
     const top = Math.max(0, Math.min(p.top, innerHeight - box.offsetHeight));
     Object.assign(box.style, { left: `${left}px`, top: `${top}px`, right: 'auto' });
   }
@@ -167,6 +169,8 @@ const HTML = `
       const up = () => {
         grip.removeEventListener('pointermove', move);
         grip.removeEventListener('pointerup', up);
+        const r = box.getBoundingClientRect();
+        if (r.left + r.width / 2 > innerWidth / 2) pos[name] = { right: Math.max(0, innerWidth - r.right), top: r.top };
         chrome.storage.local.set({ pos });
       };
       grip.addEventListener('pointermove', move);
