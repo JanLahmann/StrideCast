@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "StrideCast",
-  "version": "0.7.0",
-  "description": "Shows live cross-trainer stats from StrideCast on top of YouTube, YouTube Music, Teams recordings and WhatsApp Web.",
+  "version": "0.8.0",
+  "description": "Shows live cross-trainer stats from StrideCast on top of YouTube, YouTube Music, Teams recordings, WhatsApp Web and the Prusa printer pages.",
   "permissions": [
     "storage",
     "scripting"
@@ -16,7 +16,10 @@
     "https://*.sharepoint.com/*",
     "https://teams.microsoft.com/*",
     "https://teams.cloud.microsoft/*",
-    "https://web.whatsapp.com/*"
+    "https://web.whatsapp.com/*",
+    "https://connect.prusa3d.com/*",
+    "http://prusa-core-one.fritz.box/*",
+    "http://192.168.178.117/*"
   ],
   "background": {
     "service_worker": "background.js"
@@ -32,7 +35,10 @@
         "https://*.sharepoint.com/*",
         "https://teams.microsoft.com/*",
         "https://teams.cloud.microsoft/*",
-        "https://web.whatsapp.com/*"
+        "https://web.whatsapp.com/*",
+        "https://connect.prusa3d.com/*",
+        "http://prusa-core-one.fritz.box/*",
+        "http://192.168.178.117/*"
       ],
       "js": [
         "content.js"
@@ -51,7 +57,10 @@
         "https://*.sharepoint.com/*",
         "https://teams.microsoft.com/*",
         "https://teams.cloud.microsoft/*",
-        "https://web.whatsapp.com/*"
+        "https://web.whatsapp.com/*",
+        "https://connect.prusa3d.com/*",
+        "http://prusa-core-one.fritz.box/*",
+        "http://192.168.178.117/*"
       ]
     }
   ]
