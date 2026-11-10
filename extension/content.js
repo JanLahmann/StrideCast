@@ -1,4 +1,4 @@
-// StrideCast overlay on YouTube, YouTube Music, Teams recordings (SharePoint/Stream) and WhatsApp Web: a small stats bar or a larger panel,
+// StrideCast overlay on YouTube, YouTube Music, Teams recordings (SharePoint/Stream), WhatsApp Web, Prusa Connect and the Prusa printer (PrusaLink): a small stats bar or a larger panel,
 // both draggable, also shown in full screen. Alt+S or the toolbar icon switches
 // bar → panel → hidden. It only shows while the ELYX is in use (cadence or power above zero)
 // and hides itself 2 minutes after the last movement; Alt+S shows it for 2 minutes anyway.
