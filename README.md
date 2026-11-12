@@ -91,7 +91,19 @@ The extension in `extension/` shows your live values on top of youtube.com, musi
 - **media:** play, pause, toggle, forward/back, restart, volume, mute, next (YouTube), fullscreen (the Chrome window), in the front tab or a named one.
 - **youtube_search**, **youtube_open** (the n-th video on the page), **tv** (start, stop, camera, values), **overlay** (bar, panel, hidden), **live** (the current values).
 - The answers say what happened, never what a page shows: no tab titles, mail or chat text. Reading content will be a separate server, for a local model only.
-- LM Studio: add the server to `~/.lmstudio/mcp.json` with the absolute path, e.g. `{"mcpServers": {"stridecast-control": {"command": "node", "args": ["/Users/you/GitHub/StrideCast/mcp/control.mjs"]}}}`.
+- LM Studio: add the server to `~/.lmstudio/mcp.json` with the absolute path, e.g. `{"mcpServers": {"stridecast-control": {"command": "node", "args": ["/Users/you/GitHub/StrideCast/mcp/control.mjs"]}}}`. Calling it through LM Studio's API needs "Require Authentication" and a token that allows servers from mcp.json.
+
+## Voice commands (local model)
+
+Spoken commands run on this Mac, with a model in LM Studio (default identifier `gemma`) and the tools above. Nothing goes to a cloud service.
+
+1. Dictate with VoiceInk (or another dictation app that pastes the text). When no text field in the page has the focus, the extension (`extension/voice.js`) takes the pasted text as a command. On YouTube, YouTube Music, WhatsApp, Teams, the printer pages and `/tv`.
+2. Alt+V opens a field for a typed or dictated command, e.g. when a WhatsApp message box would otherwise take the paste.
+3. The dev server (`server/assistant.mjs`, `POST /api/ask`) asks the model which tools to run and runs them. Commands (pause, show a tab, search YouTube) take one round, about 2 s; questions (live values, open tabs) a second one for the answer in words. The answer shows briefly at the top of the page.
+
+- The dev server loads the model when it starts (`STRIDECAST_VOICE=0` skips that). `LMSTUDIO_URL` and `STRIDECAST_MODEL` change the defaults.
+- With authentication on in LM Studio, the token goes in `~/.config/lmstudio/token` (mode 600).
+- From the command line: `node server/assistant.mjs "pause the video"`.
 
 ## Quick start (QZ, until the bridge is in this repo)
 

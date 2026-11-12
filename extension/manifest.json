@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "StrideCast",
-  "version": "0.9.0",
-  "description": "Shows live cross-trainer stats from StrideCast on top of YouTube, YouTube Music, Teams recordings, WhatsApp Web and the Prusa printer pages.",
+  "version": "0.10.0",
+  "description": "Shows live cross-trainer stats from StrideCast on top of YouTube, YouTube Music, Teams recordings, WhatsApp Web and the Prusa printer pages, and takes voice commands for a local model.",
   "permissions": [
     "storage",
     "scripting",
@@ -44,6 +44,26 @@
       ],
       "js": [
         "content.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://music.youtube.com/*",
+        "https://*.sharepoint.com/*",
+        "https://teams.microsoft.com/*",
+        "https://teams.cloud.microsoft/*",
+        "https://web.whatsapp.com/*",
+        "https://connect.prusa3d.com/*",
+        "http://prusa-core-one.fritz.box/*",
+        "http://192.168.178.117/*",
+        "http://127.0.0.1:3700/tv*",
+        "http://stridecast-pi2w.local:3000/tv*",
+        "http://192.168.178.165:3000/tv*"
+      ],
+      "js": [
+        "voice.js"
       ],
       "run_at": "document_idle"
     }
