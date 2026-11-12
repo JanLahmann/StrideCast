@@ -1,7 +1,8 @@
 // Development server: serves web/, streams example data on /api/live (the latest values
 // on /api/now), the network cameras on /cam/<name>.mjpg (see cameras.mjs), and reloads open pages when a file under web/ changes. /__extension tells the
 // Chrome extension when its own files changed, so it reloads itself. /api/control passes
-// commands to the extension (control.mjs). Listens on this
+// commands to the extension (control.mjs); /api/ask runs a voice command with the local model
+// (assistant.mjs). Listens on this
 // computer only (127.0.0.1).
 
 import { createServer } from 'node:http';
@@ -12,6 +13,7 @@ import { fileURLToPath } from 'node:url';
 import { createSimulator } from './simulator.mjs';
 import { cameras, handleCamera } from './cameras.mjs';
 import { handleControl } from './control.mjs';
+import { handleAssistant, warmUp } from './assistant.mjs';
 
 const root = resolve(fileURLToPath(new URL('../web', import.meta.url)));
 const extensionRoot = resolve(fileURLToPath(new URL('../extension', import.meta.url)));
@@ -129,6 +131,8 @@ createServer((req, res) => {
     // a camera picture
   } else if (handleControl(url.pathname, req, res)) {
     // a remote control command (see control.mjs)
+  } else if (handleAssistant(url.pathname, req, res, `http://${host}:${port}`)) {
+    // a voice command (see assistant.mjs)
   } else if (url.pathname === '/__extension') {
     extensionStamp().then((stamp) => {
       res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
@@ -141,4 +145,10 @@ createServer((req, res) => {
   }
 }).listen(port, host, () => {
   console.log(`StrideCast dev server: http://${host}:${port}/ (${source ? `values from ${source}` : 'example data'})`);
+  // Voice commands: load the local model now, so the first command isn't slow. Quiet when
+  // LM Studio isn't running.
+  if (process.env.STRIDECAST_VOICE !== '0') {
+    warmUp().then((ms) => console.log(`voice: local model ready (${(ms / 1000).toFixed(1)} s)`),
+      (error) => console.log(`voice: local model not available (${error.message})`));
+  }
 });

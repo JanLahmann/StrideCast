@@ -23,7 +23,7 @@ export const tools = [
   },
   {
     name: 'list_tabs',
-    description: 'Which of the known tabs are open in Chrome (names and counts only).',
+    description: 'Which of the known tabs are open in Chrome: open (name → number of tabs) and closed (names only).',
     inputSchema: { type: 'object', properties: {} },
   },
   {
@@ -66,13 +66,14 @@ export const tools = [
   },
 ];
 
-async function callTool(name, args, fetchImpl) {
+// Runs one tool through the dev server at base: {ok, result} or {ok: false, error}.
+export async function callTool(name, args, fetchImpl = fetch, base = BASE) {
   if (name === 'live') {
-    const res = await fetchImpl(`${BASE}/api/now`, { signal: AbortSignal.timeout(3000) });
+    const res = await fetchImpl(`${base}/api/now`, { signal: AbortSignal.timeout(3000) });
     return { ok: true, result: await res.json() };
   }
   if (!tools.some((t) => t.name === name)) return { ok: false, error: `unknown tool "${name}"` };
-  const res = await fetchImpl(`${BASE}/api/control`, {
+  const res = await fetchImpl(`${base}/api/control`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'X-StrideCast-Control': '1' },
     body: JSON.stringify({ command: name, args }),

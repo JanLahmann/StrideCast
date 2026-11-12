@@ -32,7 +32,30 @@ async function fetchNow() {
   throw lastError;
 }
 
+// Voice commands (voice.js) go to the local model through the dev server (assistant.mjs).
+const ASK = 'http://127.0.0.1:3700/api/ask';
+
+async function ask(text) {
+  try {
+    const res = await fetch(ASK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-StrideCast-Control': '1' },
+      body: JSON.stringify({ text }),
+      signal: AbortSignal.timeout(200000),
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } catch (error) {
+    return { ok: false, reply: `StrideCast dev server not reachable (npm run dev:pi): ${error.message}` };
+  }
+}
+
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  if (message?.type === 'ask') {
+    pollControl(); // the model's commands come back through the control poll
+    ask(String(message.text ?? '')).then(sendResponse);
+    return true;
+  }
   if (message?.type !== 'now') return false;
   checkForChanges();
   pollControl();
@@ -73,9 +96,10 @@ chrome.alarms.onAlarm.addListener(() => pollControl());
 
 // After a reload the old overlays remove themselves; inject the new one where it belongs.
 chrome.runtime.onInstalled.addListener(async () => {
-  const { content_scripts: [script] } = chrome.runtime.getManifest();
-  const tabs = await chrome.tabs.query({ url: script.matches });
-  for (const tab of tabs) {
-    chrome.scripting.executeScript({ target: { tabId: tab.id }, files: script.js }).catch(() => {});
+  for (const script of chrome.runtime.getManifest().content_scripts) {
+    const tabs = await chrome.tabs.query({ url: script.matches });
+    for (const tab of tabs) {
+      chrome.scripting.executeScript({ target: { tabId: tab.id }, files: script.js }).catch(() => {});
+    }
   }
 });
