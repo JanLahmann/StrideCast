@@ -15,6 +15,7 @@
 - `bridge/`: runs on the Pi Zero 2 W `StrideCast-Pi2w.local` (user `rasqberry`, service `stridecast-bridge`, port 3000). CommonJS; `ble/` is vendored MIT code from kettlerUSB2BLE. Deploy with rsync + `npm ci` on the Pi (native builds need the `allowScripts` entries; the Zero needs extra swap to compile). See `bridge/README.md`.
 - The bridge also serves `web/` (deployed to `~/stridecast/web` with rsync), so the pages work from the Pi alone.
 - `npm run dev:pi`: the dev server takes the values from the bridge instead of the simulator.
+- `mcp/control.mjs`: MCP server (stdio, no dependencies) that controls Chrome through the extension (tabs, video, YouTube search, /tv). It posts to `/api/control` on the dev server (`server/control.mjs`), which the extension long-polls (`extension/control.js`). Answers never carry page content (no tab titles, mail or chat text); content reading belongs in a separate server for a local model only.
 - `server/cameras.mjs`: the network cameras (Prusa Core One, RasQberry rig) as MJPEG for `/tv`, via `ffmpeg` on the Mac.
 - `test/`: `npm test` (`node --test`). The root package has no npm dependencies.
 - Live data shape (`/api/live`, server-sent events): `power`, `targetPower` (W), `rpm`, `speed` (km/h), `hr` (bpm), `distance` (km), `energy` (kJ), `elapsed` (s), `source` (`example` or the device).

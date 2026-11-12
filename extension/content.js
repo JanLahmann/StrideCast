@@ -209,6 +209,11 @@ const HTML = `
   }, true);
   chrome.runtime.onMessage.addListener((message) => {
     if (message?.type === 'toggle') cycle();
+    if (message?.type === 'mode' && MODES.includes(message.mode)) {
+      // From the remote control: like Alt+S, it also shows the overlay while the ELYX rests.
+      if (message.mode !== 'hidden') manualUntil = Date.now() + IDLE_MS;
+      setMode(message.mode);
+    }
   });
 
   function setStatus(state, text) {

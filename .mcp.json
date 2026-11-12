@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "stridecast-control": {
+      "command": "node",
+      "args": ["mcp/control.mjs"]
+    }
+  }
+}
