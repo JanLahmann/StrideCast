@@ -83,6 +83,16 @@ The extension in `extension/` shows your live values on top of youtube.com, musi
 - Drag the bar or the panel's title to move them; drag the panel's corner to resize it. Both are remembered.
 - While the dev server runs (`npm run dev` or `npm run dev:pi`), the extension reloads itself within a few seconds after a change to its files and puts the new overlay into the open tabs. Without the dev server, click the reload icon on its card in `chrome://extensions`, then reload the tab.
 
+## Remote control (MCP)
+
+`mcp/control.mjs` is an MCP server (stdio, no dependencies) that controls Chrome through the extension, for Claude Code (`.mcp.json` in this repo) and for a local model in LM Studio. It needs the dev server (`npm run dev` or `npm run dev:pi`), which passes each command to the extension.
+
+- **show_tab:** brings a tab to the front, or opens it: youtube, music, tv, whatsapp, teams, outlook, printer, prusa. **list_tabs:** which of them are open.
+- **media:** play, pause, toggle, forward/back, restart, volume, mute, next (YouTube), fullscreen (the Chrome window), in the front tab or a named one.
+- **youtube_search**, **youtube_open** (the n-th video on the page), **tv** (start, stop, camera, values), **overlay** (bar, panel, hidden), **live** (the current values).
+- The answers say what happened, never what a page shows: no tab titles, mail or chat text. Reading content will be a separate server, for a local model only.
+- LM Studio: add the server to `~/.lmstudio/mcp.json` with the absolute path, e.g. `{"mcpServers": {"stridecast-control": {"command": "node", "args": ["/Users/you/GitHub/StrideCast/mcp/control.mjs"]}}}`.
+
 ## Quick start (QZ, until the bridge is in this repo)
 
 1. Plug the ELYX console into the Pi and check that `/dev/ttyUSB0` appears.
