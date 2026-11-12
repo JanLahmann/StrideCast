@@ -1,11 +1,13 @@
 {
   "manifest_version": 3,
   "name": "StrideCast",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Shows live cross-trainer stats from StrideCast on top of YouTube, YouTube Music, Teams recordings, WhatsApp Web and the Prusa printer pages.",
   "permissions": [
     "storage",
-    "scripting"
+    "scripting",
+    "tabs",
+    "alarms"
   ],
   "host_permissions": [
     "http://stridecast-pi2w.local:3000/*",

@@ -1,3 +1,5 @@
+importScripts('control.js'); // remote control commands from the Mac (pollControl)
+
 // Fetches the current values for the overlays. Content scripts run under the page's origin
 // (youtube.com), which the browser keeps from reading local addresses; the extension may.
 // Asks the bridge on the Pi first, so the overlay works without anything running on the
@@ -33,6 +35,7 @@ async function fetchNow() {
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message?.type !== 'now') return false;
   checkForChanges();
+  pollControl();
   fetchNow()
     .then((data) => sendResponse({ data }))
     .catch((error) => sendResponse({ error: String(error?.message ?? error) }));
@@ -60,8 +63,13 @@ async function checkForChanges() {
     else if (stamp !== knownStamp) chrome.runtime.reload();
   } catch {}
 }
-setInterval(checkForChanges, 3000);
+setInterval(() => { checkForChanges(); pollControl(); }, 3000);
 checkForChanges();
+pollControl();
+// Wakes the service worker when Chrome has put it to sleep, so commands get through even
+// without an overlay tab open.
+chrome.alarms.create('control', { periodInMinutes: 0.5 });
+chrome.alarms.onAlarm.addListener(() => pollControl());
 
 // After a reload the old overlays remove themselves; inject the new one where it belongs.
 chrome.runtime.onInstalled.addListener(async () => {
