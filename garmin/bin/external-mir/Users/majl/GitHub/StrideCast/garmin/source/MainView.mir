@@ -1,0 +1,792 @@
+[ @file = "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Activity,1,14,22]; ]
+import Toybox.Activity;
+[ @file = "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Graphics,2,14,22]; ]
+import Toybox.Graphics;
+[ @file = "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Lang,3,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [WatchUi,4,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc"; @line = 7; @symbol_classdef = [MainView,7,6,14]; @symbol_extends<0> = [WatchUi,7,23,30]; @symbol_extends<1> = [View,7,31,35]; ]
+class MainView extends WatchUi.View {
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc"; @line = 7; ]
+    <init> {
+    }
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc"; @line = 7; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc"; @line = 8; @symbol_functiondef = [initialize,8,13,23]; ]
+    function initialize() as Void {
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_8_26_10_4_start:
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 9 8 ]
+        symbol [ View %tmp.2 9 8 12 ];
+        %tmp.2 = getv ? :View;
+        symbol [ initialize %tmp.3 9 13 23 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_8_26_10_4_stop:
+    }
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc"; @line = 12; @symbol_functiondef = [onUpdate,12,13,21]; @symbol_param<0> = [dc,12,22,24]; @symbol_param<0>_type<0> = [Graphics,12,28,36]; @symbol_param<0>_type<1> = [Dc,12,37,39]; ]
+    function onUpdate(dc as Graphics.Dc) as Void {
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_start:
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 13 8 ]
+        [ "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_start" "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_stop" ]
+        %w.1 = local;
+        symbol [ w %w.1 13 12 13 ];
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 13 16 18 ];
+        symbol [ getWidth %tmp.2 13 19 27 ];
+        %tmp.2 = getv function %tmp.1 :getWidth;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %w.1 %tmp.3;
+        symbol [ w %w.1 13 12 13 ];
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 14 8 ]
+        [ "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_start" "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_stop" ]
+        %h.2 = local;
+        symbol [ h %h.2 14 12 13 ];
+        %tmp.4 = lgetv %dc;
+        symbol [ dc %tmp.4 14 16 18 ];
+        symbol [ getHeight %tmp.5 14 19 28 ];
+        %tmp.5 = getv function %tmp.4 :getHeight;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        lputv %h.2 %tmp.6;
+        symbol [ h %h.2 14 12 13 ];
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 15 8 ]
+        %tmp.7 = lgetv %dc;
+        symbol [ dc %tmp.7 15 8 10 ];
+        symbol [ setColor %tmp.8 15 11 19 ];
+        %tmp.8 = getv function %tmp.7 :setColor;
+        symbol [ Graphics %tmp.9 15 20 28 ];
+        %tmp.9 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.10 15 29 40 ];
+        %tmp.10 = getv %tmp.9 :COLOR_BLACK;
+        symbol [ Graphics %tmp.11 15 42 50 ];
+        %tmp.11 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.12 15 51 62 ];
+        %tmp.12 = getv %tmp.11 :COLOR_BLACK;
+        invoke %tmp.7 %tmp.8(%tmp.10, %tmp.12);
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 16 8 ]
+        %tmp.13 = lgetv %dc;
+        symbol [ dc %tmp.13 16 8 10 ];
+        symbol [ clear %tmp.14 16 11 16 ];
+        %tmp.14 = getv function %tmp.13 :clear;
+        invoke %tmp.13 %tmp.14();
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 18 8 ]
+        [ "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_start" "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_stop" ]
+        %a.3 = local;
+        symbol [ a %a.3 18 12 13 ];
+        %tmp.15 = self;
+        symbol [ app %tmp.16 18 16 19 ];
+        %tmp.16 = getv function %tmp.15 :app;
+        %tmp.17 = invoke %tmp.15 %tmp.16();
+        lputv %a.3 %tmp.17;
+        symbol [ a %a.3 18 12 13 ];
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 19 8 ]
+        [ "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_start" "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_stop" ]
+        %d.4 = local;
+        symbol [ d %d.4 19 12 13 ];
+        %tmp.18 = lgetv %a.3;
+        symbol [ a %tmp.18 19 16 17 ];
+        symbol [ bridge %tmp.19 19 18 24 ];
+        %tmp.19 = getv %tmp.18 :bridge;
+        symbol [ current %tmp.20 19 25 32 ];
+        %tmp.20 = getv function %tmp.19 :current;
+        %tmp.21 = invoke %tmp.19 %tmp.20();
+        lputv %d.4 %tmp.21;
+        symbol [ d %d.4 19 12 13 ];
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 20 8 ]
+        [ "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_start" "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_stop" ]
+        %info.5 = local;
+        symbol [ info %info.5 20 12 16 ];
+        symbol [ Activity %tmp.22 20 19 27 ];
+        %tmp.22 = getm $.Toybox.Activity;
+        symbol [ getActivityInfo %tmp.23 20 28 43 ];
+        %tmp.23 = getv function %tmp.22 :getActivityInfo;
+        %tmp.24 = invoke %tmp.22 %tmp.23();
+        lputv %info.5 %tmp.24;
+        symbol [ info %info.5 20 12 16 ];
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 21 8 ]
+        [ "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_start" "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_stop" ]
+        %hr.6 = local;
+        symbol [ hr %hr.6 21 12 14 ];
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_21_17_21_56_begin:
+        %tmp.25 = lgetv %info.5;
+        symbol [ info %tmp.25 21 17 21 ];
+        %tmp.26 = null;
+        %tmp.27 = ne %tmp.25 %tmp.26;
+        bf %tmp.27 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_21_17_21_56_else_false;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_21_17_21_56_true:
+        %tmp.28 = lgetv %info.5;
+        symbol [ info %tmp.28 21 32 36 ];
+        %tmp.29 = as %tmp.28 { (!Null) };
+        symbol [ currentHeartRate %tmp.30 21 37 53 ];
+        %tmp.30 = getv %tmp.29 :currentHeartRate;
+        push %tmp.30;
+        goto @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_21_17_21_56_end;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_21_17_21_56_else_false:
+        %tmp.31 = null;
+        push %tmp.31;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_21_17_21_56_end:
+        %tmp.32 = phi [%tmp.27 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_21_17_21_56_begin] [%tmp.30 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_21_17_21_56_true] [%tmp.31 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_21_17_21_56_else_false] [%tmp.32 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_21_17_21_56_end];
+        lputv %hr.6 %tmp.32;
+        symbol [ hr %hr.6 21 12 14 ];
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 22 8 ]
+        [ "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_start" "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_stop" ]
+        %timer.7 = local;
+        symbol [ timer %timer.7 22 12 17 ];
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_22_20_22_97_begin:
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_22_20_22_54_begin:
+        %tmp.33 = lgetv %info.5;
+        symbol [ info %tmp.33 22 20 24 ];
+        %tmp.34 = null;
+        %tmp.35 = ne %tmp.33 %tmp.34;
+        bf %tmp.35 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_22_20_22_97_else_false;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_22_36_22_54_true:
+        %tmp.36 = lgetv %info.5;
+        symbol [ info %tmp.36 22 36 40 ];
+        %tmp.37 = as %tmp.36 { (!Null) };
+        symbol [ timerTime %tmp.38 22 41 50 ];
+        %tmp.38 = getv %tmp.37 :timerTime;
+        %tmp.39 = null;
+        %tmp.40 = ne %tmp.38 %tmp.39;
+        push %tmp.40;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_22_36_22_54_end:
+        %tmp.41 = phi [%tmp.35 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_22_20_22_54_begin] [%tmp.40 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_22_36_22_54_true] [%tmp.41 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_22_36_22_54_end];
+        bf %tmp.41 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_22_20_22_97_else_false;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_22_20_22_97_true:
+        %tmp.42 = lgetv %info.5;
+        symbol [ info %tmp.42 22 62 66 ];
+        %tmp.43 = as %tmp.42 { (!Null) };
+        symbol [ timerTime %tmp.44 22 67 76 ];
+        %tmp.44 = getv %tmp.43 :timerTime;
+        %tmp.45 = as %tmp.44 Number;
+        symbol [ Number %tmp.45 22 80 86 ];
+        %tmp.46 = 1000;
+        %tmp.47 = div %tmp.45 %tmp.46;
+        push %tmp.47;
+        goto @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_22_20_22_97_end;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_22_20_22_97_else_false:
+        %tmp.48 = 0;
+        push %tmp.48;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_22_20_22_97_end:
+        %tmp.49 = phi [%tmp.41 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_22_20_22_97_begin] [%tmp.47 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_22_20_22_97_true] [%tmp.48 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_22_20_22_97_else_false] [%tmp.49 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_22_20_22_97_end];
+        lputv %timer.7 %tmp.49;
+        symbol [ timer %timer.7 22 12 17 ];
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 24 8 ]
+        [ "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_start" "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_stop" ]
+        %state.8 = local;
+        symbol [ state %state.8 24 12 17 ];
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_20_24_110_begin:
+        %tmp.50 = lgetv %a.3;
+        symbol [ a %tmp.50 24 20 21 ];
+        symbol [ recorder %tmp.51 24 22 30 ];
+        %tmp.51 = getv %tmp.50 :recorder;
+        symbol [ isRecording %tmp.52 24 31 42 ];
+        %tmp.52 = getv function %tmp.51 :isRecording;
+        %tmp.53 = invoke %tmp.51 %tmp.52();
+        bf %tmp.53 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_20_24_110_else_false;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_20_24_110_true:
+        %tmp.54 = "REC";
+        push %tmp.54;
+        goto @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_20_24_110_end;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_20_24_110_else_false:
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_56_24_93_begin:
+        %tmp.55 = lgetv %a.3;
+        symbol [ a %tmp.55 24 56 57 ];
+        symbol [ recorder %tmp.56 24 58 66 ];
+        %tmp.56 = getv %tmp.55 :recorder;
+        symbol [ hasSession %tmp.57 24 67 77 ];
+        %tmp.57 = getv function %tmp.56 :hasSession;
+        %tmp.58 = invoke %tmp.56 %tmp.57();
+        bf %tmp.58 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_56_24_93_else_false;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_56_24_93_true:
+        %tmp.59 = "PAUSED";
+        push %tmp.59;
+        goto @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_56_24_93_end;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_56_24_93_else_false:
+        %tmp.60 = "START to record";
+        push %tmp.60;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_56_24_93_end:
+        %tmp.61 = phi [%tmp.58 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_56_24_93_begin] [%tmp.59 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_56_24_93_true] [%tmp.60 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_56_24_93_else_false] [%tmp.61 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_56_24_93_end];
+        push %tmp.61;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_20_24_110_end:
+        %tmp.62 = phi [%tmp.53 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_20_24_110_begin] [%tmp.54 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_20_24_110_true] [%tmp.61 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_20_24_110_else_false] [%tmp.62 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_24_20_24_110_end];
+        lputv %state.8 %tmp.62;
+        symbol [ state %state.8 24 12 17 ];
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 25 8 ]
+        [ "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_start" "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_stop" ]
+        %stateColor.9 = local;
+        symbol [ stateColor %stateColor.9 25 12 22 ];
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_25_25_25_82_begin:
+        %tmp.63 = lgetv %a.3;
+        symbol [ a %tmp.63 25 25 26 ];
+        symbol [ recorder %tmp.64 25 27 35 ];
+        %tmp.64 = getv %tmp.63 :recorder;
+        symbol [ isRecording %tmp.65 25 36 47 ];
+        %tmp.65 = getv function %tmp.64 :isRecording;
+        %tmp.66 = invoke %tmp.64 %tmp.65();
+        bf %tmp.66 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_25_25_25_82_else_false;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_25_25_25_82_true:
+        symbol [ Graphics %tmp.67 25 52 60 ];
+        %tmp.67 = getm $.Toybox.Graphics;
+        symbol [ COLOR_RED %tmp.68 25 61 70 ];
+        %tmp.68 = getv %tmp.67 :COLOR_RED;
+        push %tmp.68;
+        goto @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_25_25_25_82_end;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_25_25_25_82_else_false:
+        symbol [ Graphics %tmp.69 25 73 81 ];
+        %tmp.69 = getm $.Toybox.Graphics;
+        symbol [ COLOR_LT_GRAY %tmp.70 25 82 95 ];
+        %tmp.70 = getv %tmp.69 :COLOR_LT_GRAY;
+        push %tmp.70;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_25_25_25_82_end:
+        %tmp.71 = phi [%tmp.66 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_25_25_25_82_begin] [%tmp.68 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_25_25_25_82_true] [%tmp.70 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_25_25_25_82_else_false] [%tmp.71 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_25_25_25_82_end];
+        lputv %stateColor.9 %tmp.71;
+        symbol [ stateColor %stateColor.9 25 12 22 ];
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 26 8 ]
+        %tmp.72 = self;
+        symbol [ text %tmp.73 26 8 12 ];
+        %tmp.73 = getv function %tmp.72 :text;
+        %tmp.74 = lgetv %dc;
+        symbol [ dc %tmp.74 26 13 15 ];
+        %tmp.75 = lgetv %w.1;
+        symbol [ w %tmp.75 26 17 18 ];
+        %tmp.76 = 2;
+        %tmp.77 = div %tmp.75 %tmp.76;
+        %tmp.78 = lgetv %h.2;
+        symbol [ h %tmp.78 26 24 25 ];
+        %tmp.79 = 0.10;
+        %tmp.80 = mul %tmp.78 %tmp.79;
+        symbol [ Graphics %tmp.81 26 34 42 ];
+        %tmp.81 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.82 26 43 53 ];
+        %tmp.82 = getv %tmp.81 :FONT_XTINY;
+        %tmp.83 = lgetv %state.8;
+        symbol [ state %tmp.83 26 55 60 ];
+        %tmp.84 = lgetv %stateColor.9;
+        symbol [ stateColor %tmp.84 26 62 72 ];
+        invoke %tmp.72 %tmp.73(%tmp.74, %tmp.77, %tmp.80, %tmp.82, %tmp.83, %tmp.84);
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 28 8 ]
+        %tmp.85 = self;
+        symbol [ text %tmp.86 28 8 12 ];
+        %tmp.86 = getv function %tmp.85 :text;
+        %tmp.87 = lgetv %dc;
+        symbol [ dc %tmp.87 28 13 15 ];
+        %tmp.88 = lgetv %w.1;
+        symbol [ w %tmp.88 28 17 18 ];
+        %tmp.89 = 2;
+        %tmp.90 = div %tmp.88 %tmp.89;
+        %tmp.91 = lgetv %h.2;
+        symbol [ h %tmp.91 28 24 25 ];
+        %tmp.92 = 0.27;
+        %tmp.93 = mul %tmp.91 %tmp.92;
+        symbol [ Graphics %tmp.94 28 34 42 ];
+        %tmp.94 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_HOT %tmp.95 28 43 58 ];
+        %tmp.95 = getv %tmp.94 :FONT_NUMBER_HOT;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_28_60_28_107_begin:
+        %tmp.96 = lgetv %d.4;
+        symbol [ d %tmp.96 28 60 61 ];
+        %tmp.97 = null;
+        %tmp.98 = ne %tmp.96 %tmp.97;
+        bf %tmp.98 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_28_60_28_107_else_false;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_28_60_28_107_true:
+        %tmp.99 = lgetv %d.4;
+        symbol [ d %tmp.99 28 73 74 ];
+        %tmp.100 = as %tmp.99 { (!Null) };
+        %tmp.102 = const :power;
+        symbol [ power %tmp.102 28 76 81 const ];
+        %tmp.103 = agetv %tmp.100 %tmp.102;
+        %tmp.104 = as %tmp.103 Number;
+        symbol [ Number %tmp.104 28 86 92 ];
+        symbol [ toString %tmp.105 28 94 102 ];
+        %tmp.105 = getv function %tmp.104 :toString;
+        %tmp.106 = invoke %tmp.104 %tmp.105();
+        push %tmp.106;
+        goto @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_28_60_28_107_end;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_28_60_28_107_else_false:
+        %tmp.107 = "--";
+        push %tmp.107;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_28_60_28_107_end:
+        %tmp.108 = phi [%tmp.98 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_28_60_28_107_begin] [%tmp.106 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_28_60_28_107_true] [%tmp.107 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_28_60_28_107_else_false] [%tmp.108 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_28_60_28_107_end];
+        %tmp.109 = 0xF5A524;
+        invoke %tmp.85 %tmp.86(%tmp.87, %tmp.90, %tmp.93, %tmp.95, %tmp.108, %tmp.109);
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 29 8 ]
+        %tmp.110 = self;
+        symbol [ text %tmp.111 29 8 12 ];
+        %tmp.111 = getv function %tmp.110 :text;
+        %tmp.112 = lgetv %dc;
+        symbol [ dc %tmp.112 29 13 15 ];
+        %tmp.113 = lgetv %w.1;
+        symbol [ w %tmp.113 29 17 18 ];
+        %tmp.114 = 2;
+        %tmp.115 = div %tmp.113 %tmp.114;
+        %tmp.116 = lgetv %h.2;
+        symbol [ h %tmp.116 29 24 25 ];
+        %tmp.117 = 0.40;
+        %tmp.118 = mul %tmp.116 %tmp.117;
+        symbol [ Graphics %tmp.119 29 34 42 ];
+        %tmp.119 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.120 29 43 53 ];
+        %tmp.120 = getv %tmp.119 :FONT_XTINY;
+        %tmp.121 = "W";
+        symbol [ Graphics %tmp.122 29 60 68 ];
+        %tmp.122 = getm $.Toybox.Graphics;
+        symbol [ COLOR_LT_GRAY %tmp.123 29 69 82 ];
+        %tmp.123 = getv %tmp.122 :COLOR_LT_GRAY;
+        invoke %tmp.110 %tmp.111(%tmp.112, %tmp.115, %tmp.118, %tmp.120, %tmp.121, %tmp.123);
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 31 8 ]
+        [ "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_start" "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_stop" ]
+        %km.10 = local;
+        symbol [ km %km.10 31 12 14 ];
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_31_17_31_56_begin:
+        %tmp.124 = lgetv %d.4;
+        symbol [ d %tmp.124 31 17 18 ];
+        %tmp.125 = null;
+        %tmp.126 = ne %tmp.124 %tmp.125;
+        bf %tmp.126 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_31_17_31_56_else_false;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_31_17_31_56_true:
+        %tmp.127 = lgetv %a.3;
+        symbol [ a %tmp.127 31 29 30 ];
+        symbol [ recorder %tmp.128 31 31 39 ];
+        %tmp.128 = getv %tmp.127 :recorder;
+        symbol [ distanceKm %tmp.129 31 40 50 ];
+        %tmp.129 = getv function %tmp.128 :distanceKm;
+        %tmp.130 = lgetv %d.4;
+        symbol [ d %tmp.130 31 51 52 ];
+        %tmp.131 = as %tmp.130 { (!Null) };
+        %tmp.132 = invoke %tmp.128 %tmp.129(%tmp.131);
+        push %tmp.132;
+        goto @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_31_17_31_56_end;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_31_17_31_56_else_false:
+        %tmp.133 = null;
+        push %tmp.133;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_31_17_31_56_end:
+        %tmp.134 = phi [%tmp.126 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_31_17_31_56_begin] [%tmp.132 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_31_17_31_56_true] [%tmp.133 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_31_17_31_56_else_false] [%tmp.134 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_31_17_31_56_end];
+        lputv %km.10 %tmp.134;
+        symbol [ km %km.10 31 12 14 ];
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 33 8 ]
+        %tmp.135 = self;
+        symbol [ textAt %tmp.136 33 8 14 ];
+        %tmp.136 = getv function %tmp.135 :textAt;
+        %tmp.137 = lgetv %dc;
+        symbol [ dc %tmp.137 33 15 17 ];
+        %tmp.138 = lgetv %w.1;
+        symbol [ w %tmp.138 33 19 20 ];
+        %tmp.139 = 0.47;
+        %tmp.140 = mul %tmp.138 %tmp.139;
+        %tmp.141 = lgetv %h.2;
+        symbol [ h %tmp.141 33 29 30 ];
+        %tmp.142 = 0.52;
+        %tmp.143 = mul %tmp.141 %tmp.142;
+        symbol [ Graphics %tmp.144 33 39 47 ];
+        %tmp.144 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.145 33 48 58 ];
+        %tmp.145 = getv %tmp.144 :FONT_SMALL;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_33_60_33_114_begin:
+        %tmp.146 = lgetv %d.4;
+        symbol [ d %tmp.146 33 60 61 ];
+        %tmp.147 = null;
+        %tmp.148 = ne %tmp.146 %tmp.147;
+        bf %tmp.148 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_33_60_33_114_else_false;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_33_60_33_114_true:
+        %tmp.149 = lgetv %d.4;
+        symbol [ d %tmp.149 33 73 74 ];
+        %tmp.150 = as %tmp.149 { (!Null) };
+        %tmp.152 = const :rpm;
+        symbol [ rpm %tmp.152 33 76 79 const ];
+        %tmp.153 = agetv %tmp.150 %tmp.152;
+        %tmp.154 = as %tmp.153 Number;
+        symbol [ Number %tmp.154 33 84 90 ];
+        symbol [ toString %tmp.155 33 92 100 ];
+        %tmp.155 = getv function %tmp.154 :toString;
+        %tmp.156 = invoke %tmp.154 %tmp.155();
+        %tmp.157 = " rpm";
+        %tmp.158 = add %tmp.156 %tmp.157;
+        push %tmp.158;
+        goto @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_33_60_33_114_end;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_33_60_33_114_else_false:
+        %tmp.159 = "-- rpm";
+        push %tmp.159;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_33_60_33_114_end:
+        %tmp.160 = phi [%tmp.148 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_33_60_33_114_begin] [%tmp.158 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_33_60_33_114_true] [%tmp.159 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_33_60_33_114_else_false] [%tmp.160 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_33_60_33_114_end];
+        %tmp.161 = 0x38BDF8;
+        symbol [ Graphics %tmp.162 33 134 142 ];
+        %tmp.162 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_RIGHT %tmp.163 33 143 161 ];
+        %tmp.163 = getv %tmp.162 :TEXT_JUSTIFY_RIGHT;
+        invoke %tmp.135 %tmp.136(%tmp.137, %tmp.140, %tmp.143, %tmp.145, %tmp.160, %tmp.161, %tmp.163);
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 34 8 ]
+        %tmp.164 = self;
+        symbol [ textAt %tmp.165 34 8 14 ];
+        %tmp.165 = getv function %tmp.164 :textAt;
+        %tmp.166 = lgetv %dc;
+        symbol [ dc %tmp.166 34 15 17 ];
+        %tmp.167 = lgetv %w.1;
+        symbol [ w %tmp.167 34 19 20 ];
+        %tmp.168 = 0.53;
+        %tmp.169 = mul %tmp.167 %tmp.168;
+        %tmp.170 = lgetv %h.2;
+        symbol [ h %tmp.170 34 29 30 ];
+        %tmp.171 = 0.52;
+        %tmp.172 = mul %tmp.170 %tmp.171;
+        symbol [ Graphics %tmp.173 34 39 47 ];
+        %tmp.173 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.174 34 48 58 ];
+        %tmp.174 = getv %tmp.173 :FONT_SMALL;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_34_60_34_120_begin:
+        %tmp.175 = lgetv %d.4;
+        symbol [ d %tmp.175 34 60 61 ];
+        %tmp.176 = null;
+        %tmp.177 = ne %tmp.175 %tmp.176;
+        bf %tmp.177 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_34_60_34_120_else_false;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_34_60_34_120_true:
+        %tmp.178 = lgetv %d.4;
+        symbol [ d %tmp.178 34 73 74 ];
+        %tmp.179 = as %tmp.178 { (!Null) };
+        %tmp.181 = const :speed;
+        symbol [ speed %tmp.181 34 76 81 const ];
+        %tmp.182 = agetv %tmp.179 %tmp.181;
+        %tmp.183 = as %tmp.182 Float;
+        symbol [ Float %tmp.183 34 86 91 ];
+        symbol [ format %tmp.184 34 93 99 ];
+        %tmp.184 = getv function %tmp.183 :format;
+        %tmp.185 = "%.1f";
+        %tmp.186 = invoke %tmp.183 %tmp.184(%tmp.185);
+        %tmp.187 = " km/h";
+        %tmp.188 = add %tmp.186 %tmp.187;
+        push %tmp.188;
+        goto @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_34_60_34_120_end;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_34_60_34_120_else_false:
+        %tmp.189 = "-- km/h";
+        push %tmp.189;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_34_60_34_120_end:
+        %tmp.190 = phi [%tmp.177 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_34_60_34_120_begin] [%tmp.188 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_34_60_34_120_true] [%tmp.189 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_34_60_34_120_else_false] [%tmp.190 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_34_60_34_120_end];
+        symbol [ Graphics %tmp.191 34 131 139 ];
+        %tmp.191 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.192 34 140 151 ];
+        %tmp.192 = getv %tmp.191 :COLOR_WHITE;
+        symbol [ Graphics %tmp.193 34 153 161 ];
+        %tmp.193 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_LEFT %tmp.194 34 162 179 ];
+        %tmp.194 = getv %tmp.193 :TEXT_JUSTIFY_LEFT;
+        invoke %tmp.164 %tmp.165(%tmp.166, %tmp.169, %tmp.172, %tmp.174, %tmp.190, %tmp.192, %tmp.194);
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 35 8 ]
+        %tmp.195 = self;
+        symbol [ text %tmp.196 35 8 12 ];
+        %tmp.196 = getv function %tmp.195 :text;
+        %tmp.197 = lgetv %dc;
+        symbol [ dc %tmp.197 35 13 15 ];
+        %tmp.198 = lgetv %w.1;
+        symbol [ w %tmp.198 35 17 18 ];
+        %tmp.199 = 0.30;
+        %tmp.200 = mul %tmp.198 %tmp.199;
+        %tmp.201 = lgetv %h.2;
+        symbol [ h %tmp.201 35 27 28 ];
+        %tmp.202 = 0.66;
+        %tmp.203 = mul %tmp.201 %tmp.202;
+        symbol [ Graphics %tmp.204 35 37 45 ];
+        %tmp.204 = getm $.Toybox.Graphics;
+        symbol [ FONT_MEDIUM %tmp.205 35 46 57 ];
+        %tmp.205 = getv %tmp.204 :FONT_MEDIUM;
+        %tmp.206 = self;
+        symbol [ formatTime %tmp.207 35 59 69 ];
+        %tmp.207 = getv function %tmp.206 :formatTime;
+        %tmp.208 = lgetv %timer.7;
+        symbol [ timer %tmp.208 35 70 75 ];
+        %tmp.209 = invoke %tmp.206 %tmp.207(%tmp.208);
+        symbol [ Graphics %tmp.210 35 78 86 ];
+        %tmp.210 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.211 35 87 98 ];
+        %tmp.211 = getv %tmp.210 :COLOR_WHITE;
+        invoke %tmp.195 %tmp.196(%tmp.197, %tmp.200, %tmp.203, %tmp.205, %tmp.209, %tmp.211);
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 36 8 ]
+        %tmp.212 = self;
+        symbol [ text %tmp.213 36 8 12 ];
+        %tmp.213 = getv function %tmp.212 :text;
+        %tmp.214 = lgetv %dc;
+        symbol [ dc %tmp.214 36 13 15 ];
+        %tmp.215 = lgetv %w.1;
+        symbol [ w %tmp.215 36 17 18 ];
+        %tmp.216 = 0.70;
+        %tmp.217 = mul %tmp.215 %tmp.216;
+        %tmp.218 = lgetv %h.2;
+        symbol [ h %tmp.218 36 27 28 ];
+        %tmp.219 = 0.66;
+        %tmp.220 = mul %tmp.218 %tmp.219;
+        symbol [ Graphics %tmp.221 36 37 45 ];
+        %tmp.221 = getm $.Toybox.Graphics;
+        symbol [ FONT_MEDIUM %tmp.222 36 46 57 ];
+        %tmp.222 = getv %tmp.221 :FONT_MEDIUM;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_36_59_36_97_begin:
+        %tmp.223 = lgetv %hr.6;
+        symbol [ hr %tmp.223 36 59 61 ];
+        %tmp.224 = null;
+        %tmp.225 = ne %tmp.223 %tmp.224;
+        bf %tmp.225 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_36_59_36_97_else_false;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_36_59_36_97_true:
+        %tmp.226 = lgetv %hr.6;
+        symbol [ hr %tmp.226 36 72 74 ];
+        %tmp.227 = as %tmp.226 { (!Null) };
+        symbol [ toString %tmp.228 36 75 83 ];
+        %tmp.228 = getv function %tmp.227 :toString;
+        %tmp.229 = invoke %tmp.227 %tmp.228();
+        %tmp.230 = " bpm";
+        %tmp.231 = add %tmp.229 %tmp.230;
+        push %tmp.231;
+        goto @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_36_59_36_97_end;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_36_59_36_97_else_false:
+        %tmp.232 = "-- bpm";
+        push %tmp.232;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_36_59_36_97_end:
+        %tmp.233 = phi [%tmp.225 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_36_59_36_97_begin] [%tmp.231 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_36_59_36_97_true] [%tmp.232 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_36_59_36_97_else_false] [%tmp.233 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_36_59_36_97_end];
+        %tmp.234 = 0xF2506E;
+        invoke %tmp.212 %tmp.213(%tmp.214, %tmp.217, %tmp.220, %tmp.222, %tmp.233, %tmp.234);
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 37 8 ]
+        %tmp.235 = self;
+        symbol [ text %tmp.236 37 8 12 ];
+        %tmp.236 = getv function %tmp.235 :text;
+        %tmp.237 = lgetv %dc;
+        symbol [ dc %tmp.237 37 13 15 ];
+        %tmp.238 = lgetv %w.1;
+        symbol [ w %tmp.238 37 17 18 ];
+        %tmp.239 = 2;
+        %tmp.240 = div %tmp.238 %tmp.239;
+        %tmp.241 = lgetv %h.2;
+        symbol [ h %tmp.241 37 24 25 ];
+        %tmp.242 = 0.79;
+        %tmp.243 = mul %tmp.241 %tmp.242;
+        symbol [ Graphics %tmp.244 37 34 42 ];
+        %tmp.244 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.245 37 43 53 ];
+        %tmp.245 = getv %tmp.244 :FONT_SMALL;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_37_55_37_96_begin:
+        %tmp.246 = lgetv %km.10;
+        symbol [ km %tmp.246 37 55 57 ];
+        %tmp.247 = null;
+        %tmp.248 = ne %tmp.246 %tmp.247;
+        bf %tmp.248 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_37_55_37_96_else_false;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_37_55_37_96_true:
+        %tmp.249 = lgetv %km.10;
+        symbol [ km %tmp.249 37 68 70 ];
+        %tmp.250 = as %tmp.249 { (!Null) };
+        symbol [ format %tmp.251 37 71 77 ];
+        %tmp.251 = getv function %tmp.250 :format;
+        %tmp.252 = "%.2f";
+        %tmp.253 = invoke %tmp.250 %tmp.251(%tmp.252);
+        %tmp.254 = " km";
+        %tmp.255 = add %tmp.253 %tmp.254;
+        push %tmp.255;
+        goto @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_37_55_37_96_end;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_37_55_37_96_else_false:
+        %tmp.256 = "";
+        push %tmp.256;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_37_55_37_96_end:
+        %tmp.257 = phi [%tmp.248 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_37_55_37_96_begin] [%tmp.255 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_37_55_37_96_true] [%tmp.256 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_37_55_37_96_else_false] [%tmp.257 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_37_55_37_96_end];
+        symbol [ Graphics %tmp.258 37 100 108 ];
+        %tmp.258 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.259 37 109 120 ];
+        %tmp.259 = getv %tmp.258 :COLOR_WHITE;
+        invoke %tmp.235 %tmp.236(%tmp.237, %tmp.240, %tmp.243, %tmp.245, %tmp.257, %tmp.259);
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 39 8 ]
+        %tmp.260 = self;
+        symbol [ text %tmp.261 39 8 12 ];
+        %tmp.261 = getv function %tmp.260 :text;
+        %tmp.262 = lgetv %dc;
+        symbol [ dc %tmp.262 39 13 15 ];
+        %tmp.263 = lgetv %w.1;
+        symbol [ w %tmp.263 39 17 18 ];
+        %tmp.264 = 2;
+        %tmp.265 = div %tmp.263 %tmp.264;
+        %tmp.266 = lgetv %h.2;
+        symbol [ h %tmp.266 39 24 25 ];
+        %tmp.267 = 0.90;
+        %tmp.268 = mul %tmp.266 %tmp.267;
+        symbol [ Graphics %tmp.269 39 34 42 ];
+        %tmp.269 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.270 39 43 53 ];
+        %tmp.270 = getv %tmp.269 :FONT_XTINY;
+        %tmp.271 = lgetv %a.3;
+        symbol [ a %tmp.271 39 55 56 ];
+        symbol [ bridge %tmp.272 39 57 63 ];
+        %tmp.272 = getv %tmp.271 :bridge;
+        symbol [ status %tmp.273 39 64 70 ];
+        %tmp.273 = getv %tmp.272 :status;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_39_72_39_116_begin:
+        %tmp.274 = lgetv %d.4;
+        symbol [ d %tmp.274 39 72 73 ];
+        %tmp.275 = null;
+        %tmp.276 = ne %tmp.274 %tmp.275;
+        bf %tmp.276 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_39_72_39_116_else_false;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_39_72_39_116_true:
+        symbol [ Graphics %tmp.277 39 84 92 ];
+        %tmp.277 = getm $.Toybox.Graphics;
+        symbol [ COLOR_GREEN %tmp.278 39 93 104 ];
+        %tmp.278 = getv %tmp.277 :COLOR_GREEN;
+        push %tmp.278;
+        goto @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_39_72_39_116_end;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_39_72_39_116_else_false:
+        symbol [ Graphics %tmp.279 39 107 115 ];
+        %tmp.279 = getm $.Toybox.Graphics;
+        symbol [ COLOR_YELLOW %tmp.280 39 116 128 ];
+        %tmp.280 = getv %tmp.279 :COLOR_YELLOW;
+        push %tmp.280;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_39_72_39_116_end:
+        %tmp.281 = phi [%tmp.276 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_39_72_39_116_begin] [%tmp.278 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_39_72_39_116_true] [%tmp.280 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_39_72_39_116_else_false] [%tmp.281 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_39_72_39_116_end];
+        invoke %tmp.260 %tmp.261(%tmp.262, %tmp.265, %tmp.268, %tmp.270, %tmp.273, %tmp.281);
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_12_49_40_4_stop:
+    }
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc"; @line = 42; @symbol_functiondef = [text,42,21,25]; @symbol_param<0> = [dc,42,26,28]; @symbol_param<0>_type<0> = [Graphics,42,32,40]; @symbol_param<0>_type<1> = [Dc,42,41,43]; @symbol_param<1> = [x,42,45,46]; @symbol_param<1>_type<0> = [Numeric,42,50,57]; @symbol_param<2> = [y,42,59,60]; @symbol_param<2>_type<0> = [Numeric,42,64,71]; @symbol_param<3> = [font,42,73,77]; @symbol_param<3>_type<0> = [Graphics,42,81,89]; @symbol_param<3>_type<1> = [FontType,42,90,98]; @symbol_param<4> = [s,42,100,101]; @symbol_param<4>_type<0> = [String,42,105,111]; @symbol_param<5> = [color,42,113,118]; @symbol_param<5>_type<0> = [Number,42,122,128]; ]
+    private
+    function text(dc as Graphics.Dc, x as Numeric, y as Numeric, font as Graphics.FontType, s as String, color as Number) as Void {
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_42_138_44_4_start:
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 43 8 ]
+        %tmp.1 = self;
+        symbol [ textAt %tmp.2 43 8 14 ];
+        %tmp.2 = getv function %tmp.1 :textAt;
+        %tmp.3 = lgetv %dc;
+        symbol [ dc %tmp.3 43 15 17 ];
+        %tmp.4 = lgetv %x;
+        symbol [ x %tmp.4 43 19 20 ];
+        %tmp.5 = lgetv %y;
+        symbol [ y %tmp.5 43 22 23 ];
+        %tmp.6 = lgetv %font;
+        symbol [ font %tmp.6 43 25 29 ];
+        %tmp.7 = lgetv %s;
+        symbol [ s %tmp.7 43 31 32 ];
+        %tmp.8 = lgetv %color;
+        symbol [ color %tmp.8 43 34 39 ];
+        symbol [ Graphics %tmp.9 43 41 49 ];
+        %tmp.9 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.10 43 50 69 ];
+        %tmp.10 = getv %tmp.9 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.1 %tmp.2(%tmp.3, %tmp.4, %tmp.5, %tmp.6, %tmp.7, %tmp.8, %tmp.10);
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_42_138_44_4_stop:
+    }
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc"; @line = 46; @symbol_functiondef = [textAt,46,21,27]; @symbol_param<0> = [dc,46,28,30]; @symbol_param<0>_type<0> = [Graphics,46,34,42]; @symbol_param<0>_type<1> = [Dc,46,43,45]; @symbol_param<1> = [x,46,47,48]; @symbol_param<1>_type<0> = [Numeric,46,52,59]; @symbol_param<2> = [y,46,61,62]; @symbol_param<2>_type<0> = [Numeric,46,66,73]; @symbol_param<3> = [font,46,75,79]; @symbol_param<3>_type<0> = [Graphics,46,83,91]; @symbol_param<3>_type<1> = [FontType,46,92,100]; @symbol_param<4> = [s,46,102,103]; @symbol_param<4>_type<0> = [String,46,107,113]; @symbol_param<5> = [color,46,115,120]; @symbol_param<5>_type<0> = [Number,46,124,130]; @symbol_param<6> = [justify,46,132,139]; @symbol_param<6>_type<0> = [Number,46,143,149]; ]
+    private
+    function textAt(dc as Graphics.Dc, x as Numeric, y as Numeric, font as Graphics.FontType, s as String, color as Number, justify as Number) as Void {
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_46_159_49_4_start:
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 47 8 ]
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 47 8 10 ];
+        symbol [ setColor %tmp.2 47 11 19 ];
+        %tmp.2 = getv function %tmp.1 :setColor;
+        %tmp.3 = lgetv %color;
+        symbol [ color %tmp.3 47 20 25 ];
+        symbol [ Graphics %tmp.4 47 27 35 ];
+        %tmp.4 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.5 47 36 53 ];
+        %tmp.5 = getv %tmp.4 :COLOR_TRANSPARENT;
+        invoke %tmp.1 %tmp.2(%tmp.3, %tmp.5);
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 48 8 ]
+        %tmp.6 = lgetv %dc;
+        symbol [ dc %tmp.6 48 8 10 ];
+        symbol [ drawText %tmp.7 48 11 19 ];
+        %tmp.7 = getv function %tmp.6 :drawText;
+        %tmp.8 = lgetv %x;
+        symbol [ x %tmp.8 48 20 21 ];
+        %tmp.9 = lgetv %y;
+        symbol [ y %tmp.9 48 23 24 ];
+        %tmp.10 = lgetv %font;
+        symbol [ font %tmp.10 48 26 30 ];
+        %tmp.11 = lgetv %s;
+        symbol [ s %tmp.11 48 32 33 ];
+        %tmp.12 = lgetv %justify;
+        symbol [ justify %tmp.12 48 35 42 ];
+        symbol [ Graphics %tmp.13 48 45 53 ];
+        %tmp.13 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.14 48 54 74 ];
+        %tmp.14 = getv %tmp.13 :TEXT_JUSTIFY_VCENTER;
+        %tmp.15 = bitor %tmp.12 %tmp.14;
+        invoke %tmp.6 %tmp.7(%tmp.8, %tmp.9, %tmp.10, %tmp.11, %tmp.15);
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_46_159_49_4_stop:
+    }
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc"; @line = 51; @symbol_functiondef = [formatTime,51,21,31]; @symbol_param<0> = [s,51,32,33]; @symbol_param<0>_type<0> = [Number,51,37,43]; @symbol_return<0> = [String,51,48,54]; ]
+    private
+    function formatTime(s as Number) as String {
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_51_55_56_4_start:
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 52 8 ]
+        [ "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_51_55_56_4_start" "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_51_55_56_4_stop" ]
+        %h.1 = local;
+        symbol [ h %h.1 52 12 13 ];
+        %tmp.1 = lgetv %s;
+        symbol [ s %tmp.1 52 16 17 ];
+        %tmp.2 = 3600;
+        %tmp.3 = div %tmp.1 %tmp.2;
+        lputv %h.1 %tmp.3;
+        symbol [ h %h.1 52 12 13 ];
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 53 8 ]
+        [ "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_51_55_56_4_start" "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_51_55_56_4_stop" ]
+        %m.2 = local;
+        symbol [ m %m.2 53 12 13 ];
+        %tmp.4 = lgetv %s;
+        symbol [ s %tmp.4 53 17 18 ];
+        %tmp.5 = 3600;
+        %tmp.6 = mod %tmp.4 %tmp.5;
+        %tmp.7 = 60;
+        %tmp.8 = div %tmp.6 %tmp.7;
+        lputv %m.2 %tmp.8;
+        symbol [ m %m.2 53 12 13 ];
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 54 8 ]
+        [ "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_51_55_56_4_start" "_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_51_55_56_4_stop" ]
+        %sec.3 = local;
+        symbol [ sec %sec.3 54 12 15 ];
+        %tmp.9 = lgetv %s;
+        symbol [ s %tmp.9 54 18 19 ];
+        %tmp.10 = 60;
+        %tmp.11 = mod %tmp.9 %tmp.10;
+        lputv %sec.3 %tmp.11;
+        symbol [ sec %sec.3 54 12 15 ];
+[ "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" 55 8 ]
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_55_15_55_106_begin:
+        %tmp.12 = lgetv %h.1;
+        symbol [ h %tmp.12 55 15 16 ];
+        %tmp.13 = 0;
+        %tmp.14 = gt %tmp.12 %tmp.13;
+        bf %tmp.14 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_55_15_55_106_else_false;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_55_15_55_106_true:
+        %tmp.15 = lgetv %h.1;
+        symbol [ h %tmp.15 55 23 24 ];
+        %tmp.16 = ":";
+        %tmp.17 = add %tmp.15 %tmp.16;
+        %tmp.18 = lgetv %m.2;
+        symbol [ m %tmp.18 55 33 34 ];
+        symbol [ format %tmp.19 55 35 41 ];
+        %tmp.19 = getv function %tmp.18 :format;
+        %tmp.20 = "%02d";
+        %tmp.21 = invoke %tmp.18 %tmp.19(%tmp.20);
+        %tmp.22 = add %tmp.17 %tmp.21;
+        %tmp.23 = ":";
+        %tmp.24 = add %tmp.22 %tmp.23;
+        %tmp.25 = lgetv %sec.3;
+        symbol [ sec %tmp.25 55 58 61 ];
+        symbol [ format %tmp.26 55 62 68 ];
+        %tmp.26 = getv function %tmp.25 :format;
+        %tmp.27 = "%02d";
+        %tmp.28 = invoke %tmp.25 %tmp.26(%tmp.27);
+        %tmp.29 = add %tmp.24 %tmp.28;
+        push %tmp.29;
+        goto @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_55_15_55_106_end;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_55_15_55_106_else_false:
+        %tmp.30 = lgetv %m.2;
+        symbol [ m %tmp.30 55 79 80 ];
+        %tmp.31 = ":";
+        %tmp.32 = add %tmp.30 %tmp.31;
+        %tmp.33 = lgetv %sec.3;
+        symbol [ sec %tmp.33 55 89 92 ];
+        symbol [ format %tmp.34 55 93 99 ];
+        %tmp.34 = getv function %tmp.33 :format;
+        %tmp.35 = "%02d";
+        %tmp.36 = invoke %tmp.33 %tmp.34(%tmp.35);
+        %tmp.37 = add %tmp.32 %tmp.36;
+        push %tmp.37;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_55_15_55_106_end:
+        %tmp.38 = phi [%tmp.14 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_55_15_55_106_begin] [%tmp.29 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_55_15_55_106_true] [%tmp.37 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_55_15_55_106_else_false] [%tmp.38 @_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_55_15_55_106_end];
+        ret %tmp.38;
+_Users_majl_GitHub_StrideCast_garmin_source_MainView_mc_51_55_56_4_stop:
+    }
+}
+[ @file = "/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc"; @line = 1; ]
+<init> {
+}

@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<debugInfo>
+    <manifest filename="/Users/majl/GitHub/StrideCast/garmin/manifest.xml"/>
+    <pcToLineNum>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="1" lineNum="43" parent="globals" pc="268435460" symbol="app"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="1" lineNum="44" parent="globals" pc="268435470" symbol="app"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="2" lineNum="6" parent="globals/MainDelegate" pc="268435481" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="3" lineNum="7" parent="globals/MainView" pc="268435493" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="4" lineNum="32" parent="globals/StopMenuDelegate" pc="268435505" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/bin/gen/006-B4536-00/source/Rez.mcgen" id="5" lineNum="7" parent="globals/Rez" pc="268435517" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="6" lineNum="7" parent="globals/StrideCastApp" pc="268435537" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="7" lineNum="7" parent="globals/Bridge" pc="268435549" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="7" lineNum="9" parent="globals/Bridge" pc="268435560" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="7" lineNum="10" parent="globals/Bridge" pc="268435597" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="7" lineNum="13" parent="globals/Bridge" pc="268435634" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="7" lineNum="14" parent="globals/Bridge" pc="268435658" symbol="&lt;init&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Packet.mc" id="8" lineNum="23" parent="globals/Packet" pc="268435683" symbol="num"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Packet.mc" id="8" lineNum="24" parent="globals/Packet" pc="268435693" symbol="num"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Packet.mc" id="9" lineNum="6" parent="globals/Packet" pc="268435725" symbol="decode"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Packet.mc" id="9" lineNum="7" parent="globals/Packet" pc="268435735" symbol="decode"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Packet.mc" id="9" lineNum="8" parent="globals/Packet" pc="268435758" symbol="decode"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Packet.mc" id="9" lineNum="10" parent="globals/Packet" pc="268435763" symbol="decode"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="10" lineNum="27" parent="globals/MainDelegate" pc="268435934" symbol="onBack"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="10" lineNum="28" parent="globals/MainDelegate" pc="268435936" symbol="onBack"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="11" lineNum="7" parent="globals/MainDelegate" pc="268435954" symbol="initialize"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="11" lineNum="8" parent="globals/MainDelegate" pc="268435956" symbol="initialize"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="12" lineNum="11" parent="globals/MainDelegate" pc="268435969" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="12" lineNum="12" parent="globals/MainDelegate" pc="268435972" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="12" lineNum="13" parent="globals/MainDelegate" pc="268435985" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="12" lineNum="14" parent="globals/MainDelegate" pc="268435995" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="12" lineNum="15" parent="globals/MainDelegate" pc="268436003" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="12" lineNum="16" parent="globals/MainDelegate" pc="268436043" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="12" lineNum="17" parent="globals/MainDelegate" pc="268436087" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="12" lineNum="18" parent="globals/MainDelegate" pc="268436131" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="12" lineNum="19" parent="globals/MainDelegate" pc="268436175" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="12" lineNum="21" parent="globals/MainDelegate" pc="268436213" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="12" lineNum="23" parent="globals/MainDelegate" pc="268436221" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="12" lineNum="24" parent="globals/MainDelegate" pc="268436232" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="13" lineNum="51" parent="globals/MainView" pc="268436234" symbol="&lt;globals/MainView/&lt;&gt;formatTime&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="13" lineNum="52" parent="globals/MainView" pc="268436237" symbol="&lt;globals/MainView/&lt;&gt;formatTime&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="13" lineNum="53" parent="globals/MainView" pc="268436245" symbol="&lt;globals/MainView/&lt;&gt;formatTime&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="13" lineNum="54" parent="globals/MainView" pc="268436256" symbol="&lt;globals/MainView/&lt;&gt;formatTime&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="13" lineNum="55" parent="globals/MainView" pc="268436263" symbol="&lt;globals/MainView/&lt;&gt;formatTime&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="14" lineNum="46" parent="globals/MainView" pc="268436341" symbol="&lt;globals/MainView/&lt;&gt;textAt&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="14" lineNum="47" parent="globals/MainView" pc="268436343" symbol="&lt;globals/MainView/&lt;&gt;textAt&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="14" lineNum="48" parent="globals/MainView" pc="268436357" symbol="&lt;globals/MainView/&lt;&gt;textAt&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="15" lineNum="8" parent="globals/MainView" pc="268436381" symbol="initialize"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="15" lineNum="9" parent="globals/MainView" pc="268436383" symbol="initialize"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="16" lineNum="42" parent="globals/MainView" pc="268436396" symbol="&lt;globals/MainView/&lt;&gt;text&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="16" lineNum="43" parent="globals/MainView" pc="268436398" symbol="&lt;globals/MainView/&lt;&gt;text&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="12" parent="globals/MainView" pc="268436422" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="13" parent="globals/MainView" pc="268436425" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="14" parent="globals/MainView" pc="268436434" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="15" parent="globals/MainView" pc="268436443" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="16" parent="globals/MainView" pc="268436455" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="18" parent="globals/MainView" pc="268436463" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="19" parent="globals/MainView" pc="268436471" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="20" parent="globals/MainView" pc="268436485" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="21" parent="globals/MainView" pc="268436497" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="22" parent="globals/MainView" pc="268436516" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="24" parent="globals/MainView" pc="268436550" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="25" parent="globals/MainView" pc="268436603" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="26" parent="globals/MainView" pc="268436633" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="28" parent="globals/MainView" pc="268436662" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="29" parent="globals/MainView" pc="268436721" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="31" parent="globals/MainView" pc="268436756" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="33" parent="globals/MainView" pc="268436784" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="34" parent="globals/MainView" pc="268436852" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="35" parent="globals/MainView" pc="268436929" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="36" parent="globals/MainView" pc="268436973" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="37" parent="globals/MainView" pc="268437035" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainView.mc" id="17" lineNum="39" parent="globals/MainView" pc="268437101" symbol="onUpdate"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="18" lineNum="50" parent="globals/StopMenuDelegate" pc="268437156" symbol="onBack"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="18" lineNum="51" parent="globals/StopMenuDelegate" pc="268437158" symbol="onBack"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="18" lineNum="52" parent="globals/StopMenuDelegate" pc="268437176" symbol="onBack"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="19" lineNum="33" parent="globals/StopMenuDelegate" pc="268437192" symbol="initialize"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="19" lineNum="34" parent="globals/StopMenuDelegate" pc="268437194" symbol="initialize"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="20" lineNum="37" parent="globals/StopMenuDelegate" pc="268437207" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="20" lineNum="38" parent="globals/StopMenuDelegate" pc="268437210" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="20" lineNum="39" parent="globals/StopMenuDelegate" pc="268437223" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="20" lineNum="40" parent="globals/StopMenuDelegate" pc="268437232" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="20" lineNum="41" parent="globals/StopMenuDelegate" pc="268437243" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="20" lineNum="42" parent="globals/StopMenuDelegate" pc="268437254" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="20" lineNum="43" parent="globals/StopMenuDelegate" pc="268437265" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="20" lineNum="44" parent="globals/StopMenuDelegate" pc="268437276" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="20" lineNum="45" parent="globals/StopMenuDelegate" pc="268437287" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/MainDelegate.mc" id="20" lineNum="47" parent="globals/StopMenuDelegate" pc="268437298" symbol="onSelect"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="21" lineNum="63" parent="globals/Recorder" pc="268437314" symbol="discard"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="21" lineNum="64" parent="globals/Recorder" pc="268437316" symbol="discard"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="21" lineNum="65" parent="globals/Recorder" pc="268437325" symbol="discard"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="21" lineNum="66" parent="globals/Recorder" pc="268437337" symbol="discard"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="22" lineNum="29" parent="globals/Recorder" pc="268437348" symbol="hasSession"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="22" lineNum="30" parent="globals/Recorder" pc="268437350" symbol="hasSession"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="23" lineNum="33" parent="globals/Recorder" pc="268437357" symbol="start"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="23" lineNum="34" parent="globals/Recorder" pc="268437360" symbol="start"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="23" lineNum="35" parent="globals/Recorder" pc="268437369" symbol="start"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="23" lineNum="40" parent="globals/Recorder" pc="268437415" symbol="start"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="23" lineNum="41" parent="globals/Recorder" pc="268437471" symbol="start"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="23" lineNum="42" parent="globals/Recorder" pc="268437528" symbol="start"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="23" lineNum="43" parent="globals/Recorder" pc="268437585" symbol="start"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="23" lineNum="44" parent="globals/Recorder" pc="268437642" symbol="start"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="23" lineNum="45" parent="globals/Recorder" pc="268437691" symbol="start"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="23" lineNum="47" parent="globals/Recorder" pc="268437703" symbol="start"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="24" lineNum="56" parent="globals/Recorder" pc="268437716" symbol="save"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="24" lineNum="57" parent="globals/Recorder" pc="268437718" symbol="save"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="24" lineNum="58" parent="globals/Recorder" pc="268437727" symbol="save"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="24" lineNum="59" parent="globals/Recorder" pc="268437739" symbol="save"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="25" lineNum="91" parent="globals/Recorder" pc="268437750" symbol="&lt;globals/Recorder/&lt;&gt;clear&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="25" lineNum="92" parent="globals/Recorder" pc="268437752" symbol="&lt;globals/Recorder/&lt;&gt;clear&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="25" lineNum="93" parent="globals/Recorder" pc="268437760" symbol="&lt;globals/Recorder/&lt;&gt;clear&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="25" lineNum="94" parent="globals/Recorder" pc="268437768" symbol="&lt;globals/Recorder/&lt;&gt;clear&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="25" lineNum="95" parent="globals/Recorder" pc="268437776" symbol="&lt;globals/Recorder/&lt;&gt;clear&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="25" lineNum="96" parent="globals/Recorder" pc="268437784" symbol="&lt;globals/Recorder/&lt;&gt;clear&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="25" lineNum="97" parent="globals/Recorder" pc="268437792" symbol="&lt;globals/Recorder/&lt;&gt;clear&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="25" lineNum="98" parent="globals/Recorder" pc="268437800" symbol="&lt;globals/Recorder/&lt;&gt;clear&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="25" lineNum="99" parent="globals/Recorder" pc="268437808" symbol="&lt;globals/Recorder/&lt;&gt;clear&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="26" lineNum="71" parent="globals/Recorder" pc="268437817" symbol="update"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="26" lineNum="72" parent="globals/Recorder" pc="268437819" symbol="update"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="26" lineNum="73" parent="globals/Recorder" pc="268437829" symbol="update"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="26" lineNum="75" parent="globals/Recorder" pc="268437833" symbol="update"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="26" lineNum="76" parent="globals/Recorder" pc="268437842" symbol="update"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="26" lineNum="77" parent="globals/Recorder" pc="268437857" symbol="update"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="26" lineNum="79" parent="globals/Recorder" pc="268437875" symbol="update"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="26" lineNum="80" parent="globals/Recorder" pc="268437910" symbol="update"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="26" lineNum="81" parent="globals/Recorder" pc="268437944" symbol="update"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="26" lineNum="82" parent="globals/Recorder" pc="268437995" symbol="update"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="26" lineNum="83" parent="globals/Recorder" pc="268438040" symbol="update"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="27" lineNum="87" parent="globals/Recorder" pc="268438082" symbol="distanceKm"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="27" lineNum="88" parent="globals/Recorder" pc="268438084" symbol="distanceKm"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="28" lineNum="25" parent="globals/Recorder" pc="268438118" symbol="isRecording"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="28" lineNum="26" parent="globals/Recorder" pc="268438120" symbol="isRecording"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="29" lineNum="50" parent="globals/Recorder" pc="268438144" symbol="stop"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="29" lineNum="51" parent="globals/Recorder" pc="268438146" symbol="stop"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="29" lineNum="52" parent="globals/Recorder" pc="268438155" symbol="stop"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="31" lineNum="102" parent="globals/Recorder" pc="268438171" symbol="&lt;globals/Recorder/&lt;&gt;clamp&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Recorder.mc" id="31" lineNum="103" parent="globals/Recorder" pc="268438173" symbol="&lt;globals/Recorder/&lt;&gt;clamp&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="32" lineNum="19" parent="globals/StrideCastApp" pc="268438202" symbol="onStart"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="32" lineNum="20" parent="globals/StrideCastApp" pc="268438204" symbol="onStart"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="32" lineNum="21" parent="globals/StrideCastApp" pc="268438222" symbol="onStart"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="32" lineNum="22" parent="globals/StrideCastApp" pc="268438234" symbol="onStart"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="33" lineNum="38" parent="globals/StrideCastApp" pc="268438266" symbol="getInitialView"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="33" lineNum="39" parent="globals/StrideCastApp" pc="268438268" symbol="getInitialView"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="34" lineNum="12" parent="globals/StrideCastApp" pc="268438315" symbol="initialize"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="34" lineNum="13" parent="globals/StrideCastApp" pc="268438317" symbol="initialize"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="34" lineNum="14" parent="globals/StrideCastApp" pc="268438329" symbol="initialize"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="34" lineNum="15" parent="globals/StrideCastApp" pc="268438354" symbol="initialize"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="34" lineNum="16" parent="globals/StrideCastApp" pc="268438379" symbol="initialize"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="35" lineNum="30" parent="globals/StrideCastApp" pc="268438409" symbol="tick"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="35" lineNum="31" parent="globals/StrideCastApp" pc="268438412" symbol="tick"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="35" lineNum="32" parent="globals/StrideCastApp" pc="268438425" symbol="tick"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="35" lineNum="33" parent="globals/StrideCastApp" pc="268438431" symbol="tick"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="35" lineNum="35" parent="globals/StrideCastApp" pc="268438450" symbol="tick"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="36" lineNum="25" parent="globals/StrideCastApp" pc="268438462" symbol="onStop"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="36" lineNum="26" parent="globals/StrideCastApp" pc="268438464" symbol="onStop"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" id="36" lineNum="27" parent="globals/StrideCastApp" pc="268438476" symbol="onStop"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="37" lineNum="100" parent="globals/Bridge" pc="268438489" symbol="onCharacteristicChanged"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="37" lineNum="101" parent="globals/Bridge" pc="268438492" symbol="onCharacteristicChanged"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="37" lineNum="102" parent="globals/Bridge" pc="268438508" symbol="onCharacteristicChanged"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="37" lineNum="103" parent="globals/Bridge" pc="268438514" symbol="onCharacteristicChanged"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="37" lineNum="104" parent="globals/Bridge" pc="268438523" symbol="onCharacteristicChanged"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="37" lineNum="105" parent="globals/Bridge" pc="268438540" symbol="onCharacteristicChanged"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="38" lineNum="96" parent="globals/Bridge" pc="268438556" symbol="onDescriptorWrite"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="38" lineNum="97" parent="globals/Bridge" pc="268438558" symbol="onDescriptorWrite"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="39" lineNum="26" parent="globals/Bridge" pc="268438591" symbol="start"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="39" lineNum="27" parent="globals/Bridge" pc="268438593" symbol="start"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="39" lineNum="28" parent="globals/Bridge" pc="268438607" symbol="start"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="40" lineNum="80" parent="globals/Bridge" pc="268438689" symbol="onConnectedStateChanged"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="40" lineNum="81" parent="globals/Bridge" pc="268438692" symbol="onConnectedStateChanged"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="40" lineNum="82" parent="globals/Bridge" pc="268438700" symbol="onConnectedStateChanged"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="40" lineNum="83" parent="globals/Bridge" pc="268438714" symbol="onConnectedStateChanged"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="40" lineNum="85" parent="globals/Bridge" pc="268438718" symbol="onConnectedStateChanged"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="40" lineNum="86" parent="globals/Bridge" pc="268438734" symbol="onConnectedStateChanged"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="40" lineNum="87" parent="globals/Bridge" pc="268438761" symbol="onConnectedStateChanged"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="40" lineNum="88" parent="globals/Bridge" pc="268438793" symbol="onConnectedStateChanged"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="40" lineNum="89" parent="globals/Bridge" pc="268438799" symbol="onConnectedStateChanged"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="40" lineNum="90" parent="globals/Bridge" pc="268438813" symbol="onConnectedStateChanged"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="40" lineNum="92" parent="globals/Bridge" pc="268438817" symbol="onConnectedStateChanged"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="40" lineNum="93" parent="globals/Bridge" pc="268438831" symbol="onConnectedStateChanged"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="41" lineNum="66" parent="globals/Bridge" pc="268438847" symbol="&lt;globals/Bridge/&lt;&gt;isBridge&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="41" lineNum="67" parent="globals/Bridge" pc="268438850" symbol="&lt;globals/Bridge/&lt;&gt;isBridge&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="41" lineNum="68" parent="globals/Bridge" pc="268438873" symbol="&lt;globals/Bridge/&lt;&gt;isBridge&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="41" lineNum="70" parent="globals/Bridge" pc="268438878" symbol="&lt;globals/Bridge/&lt;&gt;isBridge&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="41" lineNum="71" parent="globals/Bridge" pc="268438881" symbol="&lt;globals/Bridge/&lt;&gt;isBridge&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="41" lineNum="72" parent="globals/Bridge" pc="268438884" symbol="&lt;globals/Bridge/&lt;&gt;isBridge&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="41" lineNum="73" parent="globals/Bridge" pc="268438893" symbol="&lt;globals/Bridge/&lt;&gt;isBridge&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="41" lineNum="74" parent="globals/Bridge" pc="268438908" symbol="&lt;globals/Bridge/&lt;&gt;isBridge&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="41" lineNum="75" parent="globals/Bridge" pc="268438933" symbol="&lt;globals/Bridge/&lt;&gt;isBridge&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="41" lineNum="77" parent="globals/Bridge" pc="268438970" symbol="&lt;globals/Bridge/&lt;&gt;isBridge&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="42" lineNum="42" parent="globals/Bridge" pc="268438981" symbol="onProfileRegister"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="42" lineNum="43" parent="globals/Bridge" pc="268438983" symbol="onProfileRegister"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="42" lineNum="44" parent="globals/Bridge" pc="268438990" symbol="onProfileRegister"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="42" lineNum="45" parent="globals/Bridge" pc="268439007" symbol="onProfileRegister"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="42" lineNum="47" parent="globals/Bridge" pc="268439011" symbol="onProfileRegister"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="42" lineNum="48" parent="globals/Bridge" pc="268439025" symbol="onProfileRegister"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="43" lineNum="114" parent="globals/Bridge" pc="268439041" symbol="&lt;globals/Bridge/&lt;&gt;setStatus&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="43" lineNum="115" parent="globals/Bridge" pc="268439043" symbol="&lt;globals/Bridge/&lt;&gt;setStatus&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="43" lineNum="116" parent="globals/Bridge" pc="268439052" symbol="&lt;globals/Bridge/&lt;&gt;setStatus&gt;"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="44" lineNum="110" parent="globals/Bridge" pc="268439064" symbol="current"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="44" lineNum="111" parent="globals/Bridge" pc="268439066" symbol="current"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="45" lineNum="34" parent="globals/Bridge" pc="268439108" symbol="stop"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="45" lineNum="35" parent="globals/Bridge" pc="268439110" symbol="stop"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="45" lineNum="36" parent="globals/Bridge" pc="268439124" symbol="stop"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="45" lineNum="37" parent="globals/Bridge" pc="268439133" symbol="stop"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="45" lineNum="38" parent="globals/Bridge" pc="268439151" symbol="stop"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="46" lineNum="22" parent="globals/Bridge" pc="268439163" symbol="initialize"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="46" lineNum="23" parent="globals/Bridge" pc="268439165" symbol="initialize"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="47" lineNum="51" parent="globals/Bridge" pc="268439178" symbol="onScanResults"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="47" lineNum="52" parent="globals/Bridge" pc="268439181" symbol="onScanResults"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="47" lineNum="53" parent="globals/Bridge" pc="268439196" symbol="onScanResults"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="47" lineNum="54" parent="globals/Bridge" pc="268439211" symbol="onScanResults"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="47" lineNum="55" parent="globals/Bridge" pc="268439224" symbol="onScanResults"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="47" lineNum="56" parent="globals/Bridge" pc="268439238" symbol="onScanResults"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="47" lineNum="57" parent="globals/Bridge" pc="268439252" symbol="onScanResults"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="47" lineNum="58" parent="globals/Bridge" pc="268439273" symbol="onScanResults"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="47" lineNum="60" parent="globals/Bridge" pc="268439277" symbol="onScanResults"/>
+        <entry filename="/Users/majl/GitHub/StrideCast/garmin/source/Bridge.mc" id="47" lineNum="61" parent="globals/Bridge" pc="268439287" symbol="onScanResults"/>
+    </pcToLineNum>
+    <symbolTable>
+        <entry id="8388639" module="true" symbol="Graphics"/>
+        <entry id="11" object="true" symbol="StopMenuDelegate"/>
+        <entry id="8388632" method="true" symbol="&lt;init&gt;"/>
+        <entry id="9" module="true" symbol="Packet"/>
+        <entry id="8389849" symbol="units"/>
+        <entry id="14" method="true" symbol="decode"/>
+        <entry field="true" id="46" symbol="status"/>
+        <entry id="7" object="true" symbol="MainDelegate"/>
+        <entry id="8388638" module="true" symbol="ActivityRecording"/>
+        <entry id="27" method="true" symbol="&lt;globals/Recorder/&lt;&gt;clamp&gt;"/>
+        <entry field="true" id="8388890" symbol="sport"/>
+        <entry field="true" id="36" symbol="FITNESS_MACHINE"/>
+        <entry id="8391342" symbol="endianness"/>
+        <entry id="30" method="true" symbol="hasSession"/>
+        <entry id="15" method="true" symbol="num"/>
+        <entry id="8391787" symbol="resume"/>
+        <entry id="12" object="true" symbol="StrideCastApp"/>
+        <entry field="true" id="32" symbol="bridge"/>
+        <entry field="true" id="8388611" module="true" symbol="Toybox"/>
+        <entry id="8391256" method="true" symbol="onScanResults"/>
+        <entry field="true" id="21" symbol="&lt;globals/Recorder/&lt;&gt;_distanceStart&gt;"/>
+        <entry id="13" method="true" symbol="app"/>
+        <entry field="true" id="48" symbol="AppName"/>
+        <entry id="8391262" method="true" symbol="onDescriptorWrite"/>
+        <entry field="true" id="26" symbol="&lt;globals/Recorder/&lt;&gt;_speed&gt;"/>
+        <entry id="5" module="true" symbol="globals/Rez/Strings"/>
+        <entry field="true" id="8390265" symbol="targetPower"/>
+        <entry id="8388631" module="true" symbol="Activity"/>
+        <entry id="8388648" module="true" symbol="WatchUi"/>
+        <entry id="8389081" method="true" symbol="onBack"/>
+        <entry id="3" module="true" symbol="globals/Rez"/>
+        <entry id="8" object="true" symbol="MainView"/>
+        <entry id="8391340" symbol="descriptors"/>
+        <entry id="8388883" method="true" symbol="discard"/>
+        <entry id="10" object="true" symbol="Recorder"/>
+        <entry id="8389124" method="true" symbol="onUpdate"/>
+        <entry id="8391263" method="true" symbol="onCharacteristicChanged"/>
+        <entry field="true" id="20" symbol="&lt;globals/Recorder/&lt;&gt;_distance&gt;"/>
+        <entry id="8388771" module="true" object="true" symbol="Drawables"/>
+        <entry id="50" symbol="energy"/>
+        <entry id="8391258" method="true" symbol="onConnectedStateChanged"/>
+        <entry field="true" id="39" symbol="&lt;globals/Bridge/&lt;&gt;_device&gt;"/>
+        <entry id="6" object="true" symbol="Bridge"/>
+        <entry id="45" method="true" symbol="&lt;globals/Bridge/&lt;&gt;setStatus&gt;"/>
+        <entry field="true" id="23" symbol="&lt;globals/Recorder/&lt;&gt;_energyStart&gt;"/>
+        <entry id="2" module="true" symbol="globals/Packet"/>
+        <entry id="8389936" symbol="nativeNum"/>
+        <entry field="true" id="31" symbol="&lt;globals/StrideCastApp/&lt;&gt;_timer&gt;"/>
+        <entry id="34" method="true" symbol="tick"/>
+        <entry id="8388882" method="true" symbol="save"/>
+        <entry id="53" symbol="consoleConnected"/>
+        <entry field="true" id="8388911" symbol="distance"/>
+        <entry id="51" symbol="elapsed"/>
+        <entry field="true" id="22" symbol="&lt;globals/Recorder/&lt;&gt;_energy&gt;"/>
+        <entry id="4" module="true" symbol="globals/Rez/Drawables"/>
+        <entry id="18" method="true" symbol="&lt;globals/MainView/&lt;&gt;textAt&gt;"/>
+        <entry id="28" method="true" symbol="&lt;globals/Recorder/&lt;&gt;clear&gt;"/>
+        <entry id="8388699" method="true" symbol="stop"/>
+        <entry field="true" id="33" symbol="recorder"/>
+        <entry id="49" symbol="rpm"/>
+        <entry id="8391337" symbol="offset"/>
+        <entry id="29" method="true" symbol="distanceKm"/>
+        <entry field="true" id="24" symbol="&lt;globals/Recorder/&lt;&gt;_power&gt;"/>
+        <entry field="true" id="35" symbol="DATA"/>
+        <entry id="8391257" method="true" symbol="onProfileRegister"/>
+        <entry id="8389619" method="true" symbol="onSelect"/>
+        <entry id="8388769" module="true" object="true" symbol="Rez"/>
+        <entry field="true" id="37" symbol="FOOT_POD"/>
+        <entry id="8388640" module="true" symbol="Lang"/>
+        <entry id="8388881" method="true" symbol="isRecording"/>
+        <entry field="true" id="47" symbol="LauncherIcon"/>
+        <entry id="8388610" symbol="statics"/>
+        <entry id="8388643" module="true" symbol="Sensor"/>
+        <entry id="17" method="true" symbol="&lt;globals/MainView/&lt;&gt;text&gt;"/>
+        <entry id="8389350" module="true" symbol="globals"/>
+        <entry id="8391334" symbol="uuid"/>
+        <entry field="true" id="8388958" symbol="speed"/>
+        <entry id="8388770" module="true" object="true" symbol="Strings"/>
+        <entry id="8391193" module="true" symbol="BluetoothLowEnergy"/>
+        <entry id="8388702" method="true" symbol="initialize"/>
+        <entry id="8389279" method="true" symbol="onStart"/>
+        <entry field="true" id="8388891" symbol="subSport"/>
+        <entry id="8389780" module="true" symbol="FitContributor"/>
+        <entry field="true" id="8388961" symbol="power"/>
+        <entry field="true" id="40" symbol="&lt;globals/Bridge/&lt;&gt;_seen&gt;"/>
+        <entry field="true" id="8388892" symbol="name"/>
+        <entry id="8389280" method="true" symbol="getInitialView"/>
+        <entry id="8389281" method="true" symbol="onStop"/>
+        <entry id="8389847" symbol="mesgType"/>
+        <entry id="8391341" symbol="characteristics"/>
+        <entry field="true" id="43" symbol="latest"/>
+        <entry field="true" id="38" symbol="SERVICE"/>
+        <entry id="52" symbol="consoleHr"/>
+        <entry id="16" method="true" symbol="&lt;globals/MainView/&lt;&gt;formatTime&gt;"/>
+        <entry id="8388646" module="true" object="true" symbol="Timer"/>
+        <entry id="8388698" method="true" symbol="start"/>
+        <entry id="41" method="true" symbol="current"/>
+        <entry field="true" id="44" symbol="latestAt"/>
+        <entry id="42" method="true" symbol="&lt;globals/Bridge/&lt;&gt;isBridge&gt;"/>
+        <entry id="8390514" method="true" symbol="update"/>
+        <entry field="true" id="25" symbol="&lt;globals/Recorder/&lt;&gt;_session&gt;"/>
+        <entry id="8388635" module="true" symbol="Application"/>
+        <entry field="true" id="8389642" symbol="title"/>
+        <entry field="true" id="19" symbol="&lt;globals/Recorder/&lt;&gt;_cadence&gt;"/>
+    </symbolTable>
+    <localVars>
+        <entry arg="true" endPc="268435724" name="b" stackId="1" startPc="268435683"/>
+        <entry arg="true" endPc="268435724" name="format" stackId="2" startPc="268435683"/>
+        <entry arg="true" endPc="268435724" name="offset" stackId="3" startPc="268435683"/>
+        <entry arg="true" endPc="268435933" name="b" stackId="1" startPc="268435725"/>
+        <entry endPc="268436233" name="r" stackId="1" startPc="268435972"/>
+        <entry endPc="268436209" name="menu" stackId="2" startPc="268435995"/>
+        <entry arg="true" endPc="268436340" name="s" stackId="1" startPc="268436234"/>
+        <entry endPc="268436340" name="h" stackId="2" startPc="268436237"/>
+        <entry endPc="268436340" name="m" stackId="3" startPc="268436237"/>
+        <entry endPc="268436340" name="sec" stackId="4" startPc="268436237"/>
+        <entry arg="true" endPc="268436380" name="dc" stackId="1" startPc="268436341"/>
+        <entry arg="true" endPc="268436380" name="x" stackId="2" startPc="268436341"/>
+        <entry arg="true" endPc="268436380" name="y" stackId="3" startPc="268436341"/>
+        <entry arg="true" endPc="268436380" name="font" stackId="4" startPc="268436341"/>
+        <entry arg="true" endPc="268436380" name="s" stackId="5" startPc="268436341"/>
+        <entry arg="true" endPc="268436380" name="color" stackId="6" startPc="268436341"/>
+        <entry arg="true" endPc="268436380" name="justify" stackId="7" startPc="268436341"/>
+        <entry arg="true" endPc="268436421" name="dc" stackId="1" startPc="268436396"/>
+        <entry arg="true" endPc="268436421" name="x" stackId="2" startPc="268436396"/>
+        <entry arg="true" endPc="268436421" name="y" stackId="3" startPc="268436396"/>
+        <entry arg="true" endPc="268436421" name="font" stackId="4" startPc="268436396"/>
+        <entry arg="true" endPc="268436421" name="s" stackId="5" startPc="268436396"/>
+        <entry arg="true" endPc="268436421" name="color" stackId="6" startPc="268436396"/>
+        <entry arg="true" endPc="268437155" name="dc" stackId="1" startPc="268436422"/>
+        <entry endPc="268437154" name="w" stackId="2" startPc="268436425"/>
+        <entry endPc="268437154" name="h" stackId="3" startPc="268436425"/>
+        <entry endPc="268437154" name="a" stackId="4" startPc="268436425"/>
+        <entry endPc="268437154" name="d" stackId="5" startPc="268436425"/>
+        <entry endPc="268437154" name="info" stackId="6" startPc="268436425"/>
+        <entry endPc="268437154" name="hr" stackId="7" startPc="268436425"/>
+        <entry endPc="268437154" name="timer" stackId="8" startPc="268436425"/>
+        <entry endPc="268437154" name="state" stackId="9" startPc="268436425"/>
+        <entry endPc="268437154" name="stateColor" stackId="10" startPc="268436425"/>
+        <entry endPc="268437154" name="km" stackId="11" startPc="268436425"/>
+        <entry arg="true" endPc="268437313" name="item" stackId="1" startPc="268437207"/>
+        <entry endPc="268437312" name="r" stackId="2" startPc="268437210"/>
+        <entry endPc="268437312" name="id" stackId="3" startPc="268437210"/>
+        <entry endPc="268437699" name="s" stackId="1" startPc="268437369"/>
+        <entry arg="true" endPc="268438081" name="d" stackId="1" startPc="268437817"/>
+        <entry arg="true" endPc="268438117" name="d" stackId="1" startPc="268438082"/>
+        <entry arg="true" endPc="268438201" name="v" stackId="1" startPc="268438171"/>
+        <entry arg="true" endPc="268438201" name="lo" stackId="2" startPc="268438171"/>
+        <entry arg="true" endPc="268438201" name="hi" stackId="3" startPc="268438171"/>
+        <entry arg="true" endPc="268438265" name="state" stackId="1" startPc="268438202"/>
+        <entry endPc="268438460" name="d" stackId="1" startPc="268438412"/>
+        <entry arg="true" endPc="268438488" name="state" stackId="1" startPc="268438462"/>
+        <entry arg="true" endPc="268438555" name="characteristic" stackId="1" startPc="268438489"/>
+        <entry arg="true" endPc="268438555" name="value" stackId="2" startPc="268438489"/>
+        <entry endPc="268438554" name="decoded" stackId="3" startPc="268438492"/>
+        <entry arg="true" endPc="268438590" name="descriptor" stackId="1" startPc="268438556"/>
+        <entry arg="true" endPc="268438590" name="status" stackId="2" startPc="268438556"/>
+        <entry arg="true" endPc="268438846" name="device" stackId="1" startPc="268438689"/>
+        <entry arg="true" endPc="268438846" name="state" stackId="2" startPc="268438689"/>
+        <entry endPc="268438845" name="service" stackId="3" startPc="268438692"/>
+        <entry endPc="268438845" name="data" stackId="4" startPc="268438692"/>
+        <entry endPc="268438845" name="cccd" stackId="5" startPc="268438692"/>
+        <entry arg="true" endPc="268438980" name="r" stackId="1" startPc="268438847"/>
+        <entry endPc="268438980" name="footPod" stackId="2" startPc="268438850"/>
+        <entry endPc="268438980" name="machine" stackId="3" startPc="268438850"/>
+        <entry endPc="268438980" name="uuids" stackId="4" startPc="268438850"/>
+        <entry endPc="268438969" name="u" stackId="5" startPc="268438908"/>
+        <entry arg="true" endPc="268439040" name="uuid" stackId="1" startPc="268438981"/>
+        <entry arg="true" endPc="268439040" name="status" stackId="2" startPc="268438981"/>
+        <entry arg="true" endPc="268439063" name="text" stackId="1" startPc="268439041"/>
+        <entry arg="true" endPc="268439348" name="results" stackId="1" startPc="268439178"/>
+        <entry endPc="268439347" name="r" stackId="2" startPc="268439196"/>
+        <entry endPc="268439335" name="name" stackId="3" startPc="268439196"/>
+    </localVars>
+    <deviceInfo deviceVersion="e6263c2a80ff43933f83afa71f1f6645dc2cb4a3" partNumber="006-B4536-00"/>
+    <annotations>
+        <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="LauncherIcon"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="AppName"/>
+    </annotations>
+    <dataEntryOffsetMappings>
+        <dataEntry label="globals" offset="58" parentId="" symbolId="globals" type="module"/>
+        <dataEntry label="globals/Packet" offset="170" parentId="globals" symbolId="Packet" type="module"/>
+        <dataEntry label="globals/MainDelegate" offset="214" parentId="globals" symbolId="MainDelegate" type="class"/>
+        <dataEntry label="globals/MainView" offset="276" parentId="globals" symbolId="MainView" type="class"/>
+        <dataEntry label="globals/StopMenuDelegate" offset="356" parentId="globals" symbolId="StopMenuDelegate" type="class"/>
+        <dataEntry label="globals/Rez" offset="418" parentId="globals" symbolId="Rez" type="module"/>
+        <dataEntry label="globals/Recorder" offset="462" parentId="globals" symbolId="Recorder" type="class"/>
+        <dataEntry label="globals/StrideCastApp" offset="668" parentId="globals" symbolId="StrideCastApp" type="class"/>
+        <dataEntry label="globals/Bridge" offset="775" parentId="globals" symbolId="Bridge" type="class"/>
+        <dataEntry label="globals/Rez/Drawables" offset="990" parentId="Rez" symbolId="Drawables" type="module"/>
+        <dataEntry label="globals/Rez/Strings" offset="1025" parentId="Rez" symbolId="Strings" type="module"/>
+    </dataEntryOffsetMappings>
+    <functions>
+        <functionEntry accessMode="public" endPc="268435480" name="app" startPc="268435460">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Packet">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435492" name="&lt;init&gt;" parent="MainDelegate" startPc="268435481">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435504" name="&lt;init&gt;" parent="MainView" startPc="268435493">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435516" name="&lt;init&gt;" parent="StopMenuDelegate" startPc="268435505">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435536" name="&lt;init&gt;" parent="Rez" startPc="268435517">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Recorder">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435548" name="&lt;init&gt;" parent="StrideCastApp" startPc="268435537">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435682" name="&lt;init&gt;" parent="Bridge" startPc="268435549">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435724" name="num" parent="Packet" startPc="268435683">
+            <param id="b"/>
+            <param id="format"/>
+            <param id="offset"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435933" name="decode" parent="Packet" startPc="268435725">
+            <param id="b"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435953" name="onBack" parent="MainDelegate" startPc="268435934">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435968" name="initialize" parent="MainDelegate" startPc="268435954">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436233" name="onSelect" parent="MainDelegate" startPc="268435969">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="private" endPc="268436340" name="&lt;globals/MainView/&lt;&gt;formatTime&gt;" parent="MainView" startPc="268436234">
+            <param id="s"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="private" endPc="268436380" name="&lt;globals/MainView/&lt;&gt;textAt&gt;" parent="MainView" startPc="268436341">
+            <param id="dc"/>
+            <param id="x"/>
+            <param id="y"/>
+            <param id="font"/>
+            <param id="s"/>
+            <param id="color"/>
+            <param id="justify"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436395" name="initialize" parent="MainView" startPc="268436381">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="private" endPc="268436421" name="&lt;globals/MainView/&lt;&gt;text&gt;" parent="MainView" startPc="268436396">
+            <param id="dc"/>
+            <param id="x"/>
+            <param id="y"/>
+            <param id="font"/>
+            <param id="s"/>
+            <param id="color"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437155" name="onUpdate" parent="MainView" startPc="268436422">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437191" name="onBack" parent="StopMenuDelegate" startPc="268437156">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437206" name="initialize" parent="StopMenuDelegate" startPc="268437192">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437313" name="onSelect" parent="StopMenuDelegate" startPc="268437207">
+            <param id="item"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Drawables">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Strings">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437347" name="discard" parent="Recorder" startPc="268437314">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437356" name="hasSession" parent="Recorder" startPc="268437348">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437715" name="start" parent="Recorder" startPc="268437357">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437749" name="save" parent="Recorder" startPc="268437716">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="private" endPc="268437816" name="&lt;globals/Recorder/&lt;&gt;clear&gt;" parent="Recorder" startPc="268437750">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438081" name="update" parent="Recorder" startPc="268437817">
+            <param id="d"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438117" name="distanceKm" parent="Recorder" startPc="268438082">
+            <param id="d"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438143" name="isRecording" parent="Recorder" startPc="268438118">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438170" name="stop" parent="Recorder" startPc="268438144">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="initialize" parent="Recorder">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="private" endPc="268438201" name="&lt;globals/Recorder/&lt;&gt;clamp&gt;" parent="Recorder" startPc="268438171">
+            <param id="v"/>
+            <param id="lo"/>
+            <param id="hi"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438265" name="onStart" parent="StrideCastApp" startPc="268438202">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438314" name="getInitialView" parent="StrideCastApp" startPc="268438266">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438408" name="initialize" parent="StrideCastApp" startPc="268438315">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438461" name="tick" parent="StrideCastApp" startPc="268438409">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438488" name="onStop" parent="StrideCastApp" startPc="268438462">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438555" name="onCharacteristicChanged" parent="Bridge" startPc="268438489">
+            <param id="characteristic"/>
+            <param id="value"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438590" name="onDescriptorWrite" parent="Bridge" startPc="268438556">
+            <param id="descriptor"/>
+            <param id="status"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438688" name="start" parent="Bridge" startPc="268438591">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438846" name="onConnectedStateChanged" parent="Bridge" startPc="268438689">
+            <param id="device"/>
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="private" endPc="268438980" name="&lt;globals/Bridge/&lt;&gt;isBridge&gt;" parent="Bridge" startPc="268438847">
+            <param id="r"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439040" name="onProfileRegister" parent="Bridge" startPc="268438981">
+            <param id="uuid"/>
+            <param id="status"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="private" endPc="268439063" name="&lt;globals/Bridge/&lt;&gt;setStatus&gt;" parent="Bridge" startPc="268439041">
+            <param id="text"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439107" name="current" parent="Bridge" startPc="268439064">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439162" name="stop" parent="Bridge" startPc="268439108">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439177" name="initialize" parent="Bridge" startPc="268439163">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439348" name="onScanResults" parent="Bridge" startPc="268439178">
+            <param id="results"/>
+            <documentation/>
+        </functionEntry>
+    </functions>
+</debugInfo>

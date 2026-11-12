@@ -119,7 +119,7 @@ const commands = {
       const tabs = await chrome.tabs.query({ url: TABS[name].match });
       if (tabs.length) open[name] = tabs.length;
     }
-    return { open, known: Object.keys(TABS) };
+    return { open, closed: Object.keys(TABS).filter((name) => !open[name]) };
   },
   async show_tab({ tab }) {
     const { opened } = await showTab(tab);

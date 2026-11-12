@@ -1,0 +1,191 @@
+[ @file = "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Application,1,14,25]; ]
+import Toybox.Application;
+[ @file = "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Lang,2,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Sensor,3,14,20]; ]
+import Toybox.Sensor;
+[ @file = "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Timer,4,14,19]; ]
+import Toybox.Timer;
+[ @file = "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc"; @line = 5; @symbol_importdef<0> = [Toybox,5,7,13]; @symbol_importdef<1> = [WatchUi,5,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc"; @line = 7; @symbol_classdef = [StrideCastApp,7,6,19]; @symbol_extends<0> = [Application,7,28,39]; @symbol_extends<1> = [AppBase,7,40,47]; ]
+class StrideCastApp extends Application.AppBase {
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc"; @line = 7; ]
+    <init> {
+    }
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc"; @line = 7; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc"; @line = 8; @position = 8; @symbol_vardef = [bridge,8,8,14]; @symbol_type<0> = [Bridge,8,18,24]; ]
+    var bridge as Bridge;
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc"; @line = 9; @position = 8; @symbol_vardef = [recorder,9,8,16]; @symbol_type<0> = [Recorder,9,20,28]; ]
+    var recorder as Recorder;
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc"; @line = 10; @position = 16; @symbol_vardef = [_timer,10,16,22]; @symbol_type<0> = [Timer,10,26,31]; @symbol_type<1> = [Timer,10,32,37]; ]
+    private
+    var _timer as Timer.Timer;
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc"; @line = 12; @symbol_functiondef = [initialize,12,13,23]; ]
+    function initialize() as Void {
+_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_12_26_17_4_start:
+[ "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" 13 8 ]
+        symbol [ AppBase %tmp.2 13 8 15 ];
+        %tmp.2 = getv ? :AppBase;
+        symbol [ initialize %tmp.3 13 16 26 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" 14 8 ]
+        symbol [ Bridge %tmp.7 14 21 27 ];
+        %tmp.7 = getv ? :Bridge;
+        %tmp.4 = newc %tmp.7 ();
+        symbol [ bridge ? 14 8 14 ];
+        putv self :bridge %tmp.4;
+[ "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" 15 8 ]
+        symbol [ Recorder %tmp.11 15 23 31 ];
+        %tmp.11 = getv ? :Recorder;
+        %tmp.8 = newc %tmp.11 ();
+        symbol [ recorder ? 15 8 16 ];
+        putv self :recorder %tmp.8;
+[ "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" 16 8 ]
+        symbol [ Timer %tmp.14 16 21 26 ];
+        %tmp.14 = getm $.Toybox.Timer;
+        symbol [ Timer %tmp.15 16 27 32 ];
+        %tmp.15 = getv function ? %tmp.14 :Timer;
+        %tmp.12 = newc %tmp.15 ();
+        symbol [ _timer ? 16 8 14 ];
+        putv self :_timer %tmp.12;
+_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_12_26_17_4_stop:
+    }
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc"; @line = 19; @symbol_functiondef = [onStart,19,13,20]; @symbol_param<0> = [state,19,21,26]; @symbol_param<0>_type<0> = [Dictionary,19,30,40]; ]
+    function onStart(state as Dictionary or Null) as Void {
+_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_19_51_23_4_start:
+[ "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" 20 8 ]
+        symbol [ Sensor %tmp.1 20 8 14 ];
+        %tmp.1 = getm $.Toybox.Sensor;
+        symbol [ setEnabledSensors %tmp.2 20 15 32 ];
+        %tmp.2 = getv function %tmp.1 :setEnabledSensors;
+        %tmp.3 = newa 1;
+        symbol [ Sensor %tmp.4 20 34 40 ];
+        %tmp.4 = getm $.Toybox.Sensor;
+        symbol [ SENSOR_HEARTRATE %tmp.5 20 41 57 ];
+        %tmp.5 = getv %tmp.4 :SENSOR_HEARTRATE;
+        %tmp.6 = dup %tmp.3;
+        %tmp.7 = aputv %tmp.6 0 %tmp.5;
+        invoke %tmp.1 %tmp.2(%tmp.7);
+[ "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" 21 8 ]
+        symbol [ bridge %tmp.9 21 8 14 ];
+        %tmp.9 = getv ? :bridge;
+        symbol [ start %tmp.10 21 15 20 ];
+        %tmp.10 = getv function %tmp.9 :start;
+        invoke %tmp.9 %tmp.10();
+[ "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" 22 8 ]
+        symbol [ _timer %tmp.12 22 8 14 ];
+        %tmp.12 = getv ? :_timer;
+        symbol [ start %tmp.13 22 15 20 ];
+        %tmp.13 = getv function %tmp.12 :start;
+        %tmp.14 = self;
+        symbol [ method %tmp.15 22 21 27 ];
+        %tmp.15 = getv function %tmp.14 :method;
+        %tmp.17 = const :tick;
+        symbol [ tick %tmp.17 22 29 33 const ];
+        %tmp.18 = invoke %tmp.14 %tmp.15(%tmp.17);
+        %tmp.19 = 1000;
+        %tmp.20 = true;
+        invoke %tmp.12 %tmp.13(%tmp.18, %tmp.19, %tmp.20);
+_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_19_51_23_4_stop:
+    }
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc"; @line = 25; @symbol_functiondef = [onStop,25,13,19]; @symbol_param<0> = [state,25,20,25]; @symbol_param<0>_type<0> = [Dictionary,25,29,39]; ]
+    function onStop(state as Dictionary or Null) as Void {
+_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_25_50_28_4_start:
+[ "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" 26 8 ]
+        symbol [ _timer %tmp.2 26 8 14 ];
+        %tmp.2 = getv ? :_timer;
+        symbol [ stop %tmp.3 26 15 19 ];
+        %tmp.3 = getv function %tmp.2 :stop;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" 27 8 ]
+        symbol [ bridge %tmp.5 27 8 14 ];
+        %tmp.5 = getv ? :bridge;
+        symbol [ stop %tmp.6 27 15 19 ];
+        %tmp.6 = getv function %tmp.5 :stop;
+        invoke %tmp.5 %tmp.6();
+_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_25_50_28_4_stop:
+    }
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc"; @line = 30; @symbol_functiondef = [tick,30,13,17]; ]
+    function tick() as Void {
+_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_30_28_36_4_start:
+[ "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" 31 8 ]
+        [ "_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_30_28_36_4_start" "_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_30_28_36_4_stop" ]
+        %d.1 = local;
+        symbol [ d %d.1 31 12 13 ];
+        symbol [ bridge %tmp.2 31 16 22 ];
+        %tmp.2 = getv ? :bridge;
+        symbol [ current %tmp.3 31 23 30 ];
+        %tmp.3 = getv function %tmp.2 :current;
+        %tmp.4 = invoke %tmp.2 %tmp.3();
+        lputv %d.1 %tmp.4;
+        symbol [ d %d.1 31 12 13 ];
+[ "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" 32 8 ]
+_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_32_8_34_8_if_stmt:
+        %tmp.5 = lgetv %d.1;
+        symbol [ d %tmp.5 32 12 13 ];
+        %tmp.6 = null;
+        %tmp.7 = ne %tmp.5 %tmp.6;
+        bf %tmp.7 @_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_32_8_34_8_if_end;
+_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_32_8_34_8_if_true:
+_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_32_23_34_8_start:
+[ "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" 33 12 ]
+        symbol [ recorder %tmp.9 33 12 20 ];
+        %tmp.9 = getv ? :recorder;
+        symbol [ update %tmp.10 33 21 27 ];
+        %tmp.10 = getv function %tmp.9 :update;
+        %tmp.11 = lgetv %d.1;
+        symbol [ d %tmp.11 33 28 29 ];
+        %tmp.12 = as %tmp.11 { (!Null) };
+        invoke %tmp.9 %tmp.10(%tmp.12);
+_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_32_23_34_8_stop:
+        goto @_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_32_8_34_8_if_end;
+_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_32_8_34_8_if_end:
+[ "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" 35 8 ]
+        symbol [ WatchUi %tmp.13 35 8 15 ];
+        %tmp.13 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.14 35 16 29 ];
+        %tmp.14 = getv function %tmp.13 :requestUpdate;
+        invoke %tmp.13 %tmp.14();
+_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_30_28_36_4_stop:
+    }
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc"; @line = 38; @symbol_functiondef = [getInitialView,38,13,27]; @symbol_return<0> = [WatchUi,38,34,41]; @symbol_return<1> = [Views,38,42,47]; @symbol_return<2> = [WatchUi,38,53,60]; @symbol_return<3> = [Views,38,61,66]; @symbol_return<4> = [WatchUi,38,68,75]; @symbol_return<5> = [InputDelegates,38,76,90]; ]
+    function getInitialView() as [WatchUi.Views] or [WatchUi.Views, WatchUi.InputDelegates] {
+_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_38_92_40_4_start:
+[ "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" 39 8 ]
+        %tmp.1 = newa 2;
+        symbol [ MainView %tmp.5 39 20 28 ];
+        %tmp.5 = getv ? :MainView;
+        %tmp.2 = newc %tmp.5 ();
+        %tmp.6 = dup %tmp.1;
+        %tmp.7 = aputv %tmp.6 0 %tmp.2;
+        symbol [ MainDelegate %tmp.11 39 36 48 ];
+        %tmp.11 = getv ? :MainDelegate;
+        %tmp.8 = newc %tmp.11 ();
+        %tmp.12 = dup %tmp.7;
+        %tmp.13 = aputv %tmp.12 1 %tmp.8;
+        ret %tmp.13;
+_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_38_92_40_4_stop:
+    }
+}
+[ @file = "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc"; @line = 43; @symbol_functiondef = [app,43,9,12]; @symbol_return<0> = [StrideCastApp,43,18,31]; ]
+function app() as StrideCastApp {
+_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_43_32_45_0_start:
+[ "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc" 44 4 ]
+    symbol [ Application %tmp.1 44 11 22 ];
+    %tmp.1 = getm $.Toybox.Application;
+    symbol [ getApp %tmp.2 44 23 29 ];
+    %tmp.2 = getv function %tmp.1 :getApp;
+    %tmp.3 = invoke %tmp.1 %tmp.2();
+    %tmp.4 = as %tmp.3 StrideCastApp;
+    symbol [ StrideCastApp %tmp.4 44 35 48 ];
+    ret %tmp.4;
+_Users_majl_GitHub_StrideCast_garmin_source_StrideCastApp_mc_43_32_45_0_stop:
+}
+[ @file = "/Users/majl/GitHub/StrideCast/garmin/source/StrideCastApp.mc"; @line = 1; ]
+<init> {
+}

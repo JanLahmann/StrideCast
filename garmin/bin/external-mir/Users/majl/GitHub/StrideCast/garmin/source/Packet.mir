@@ -1,0 +1,200 @@
+[ @file = "/Users/majl/GitHub/StrideCast/garmin/source/Packet.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/majl/GitHub/StrideCast/garmin/source/Packet.mc"; @line = 5; @symbol_moduledef = [Packet,5,7,13]; ]
+module Packet {
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/Packet.mc"; @line = 5; ]
+    <init> {
+    }
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/Packet.mc"; @line = 6; @symbol_functiondef = [decode,6,13,19]; @symbol_param<0> = [b,6,20,21]; @symbol_param<0>_type<0> = [ByteArray,6,25,34]; @symbol_return<0> = [Dictionary,6,39,49]; ]
+    function decode(b as ByteArray) as Dictionary or Null {
+_Users_majl_GitHub_StrideCast_garmin_source_Packet_mc_6_51_21_4_start:
+[ "/Users/majl/GitHub/StrideCast/garmin/source/Packet.mc" 7 8 ]
+_Users_majl_GitHub_StrideCast_garmin_source_Packet_mc_7_8_9_8_if_stmt:
+_Users_majl_GitHub_StrideCast_garmin_source_Packet_mc_7_12_7_37_begin:
+        %tmp.1 = lgetv %b;
+        symbol [ b %tmp.1 7 12 13 ];
+        symbol [ size %tmp.2 7 14 18 ];
+        %tmp.2 = getv function %tmp.1 :size;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        %tmp.4 = 18;
+        %tmp.5 = lt %tmp.3 %tmp.4;
+        bt %tmp.5 @_Users_majl_GitHub_StrideCast_garmin_source_Packet_mc_7_8_9_8_if_true;
+_Users_majl_GitHub_StrideCast_garmin_source_Packet_mc_7_29_7_37_false:
+        %tmp.6 = lgetv %b;
+        symbol [ b %tmp.6 7 29 30 ];
+        %tmp.7 = 0;
+        %tmp.8 = agetv %tmp.6 %tmp.7;
+        %tmp.9 = 1;
+        %tmp.10 = ne %tmp.8 %tmp.9;
+        push %tmp.10;
+_Users_majl_GitHub_StrideCast_garmin_source_Packet_mc_7_29_7_37_end:
+        %tmp.11 = phi [%tmp.5 @_Users_majl_GitHub_StrideCast_garmin_source_Packet_mc_7_12_7_37_begin] [%tmp.10 @_Users_majl_GitHub_StrideCast_garmin_source_Packet_mc_7_29_7_37_false] [%tmp.11 @_Users_majl_GitHub_StrideCast_garmin_source_Packet_mc_7_29_7_37_end];
+        bf %tmp.11 @_Users_majl_GitHub_StrideCast_garmin_source_Packet_mc_7_8_9_8_if_end;
+_Users_majl_GitHub_StrideCast_garmin_source_Packet_mc_7_8_9_8_if_true:
+_Users_majl_GitHub_StrideCast_garmin_source_Packet_mc_7_40_9_8_start:
+[ "/Users/majl/GitHub/StrideCast/garmin/source/Packet.mc" 8 12 ]
+        %tmp.12 = null;
+        ret %tmp.12;
+_Users_majl_GitHub_StrideCast_garmin_source_Packet_mc_7_40_9_8_stop:
+        goto @_Users_majl_GitHub_StrideCast_garmin_source_Packet_mc_7_8_9_8_if_end;
+_Users_majl_GitHub_StrideCast_garmin_source_Packet_mc_7_8_9_8_if_end:
+[ "/Users/majl/GitHub/StrideCast/garmin/source/Packet.mc" 10 8 ]
+        %tmp.13 = newd 9;
+        %tmp.15 = const :power;
+        symbol [ power %tmp.15 11 13 18 const ];
+        %tmp.16 = self;
+        symbol [ num %tmp.17 11 22 25 ];
+        %tmp.17 = getv function %tmp.16 :num;
+        %tmp.18 = lgetv %b;
+        symbol [ b %tmp.18 11 26 27 ];
+        symbol [ Lang %tmp.19 11 29 33 ];
+        %tmp.19 = getm $.Toybox.Lang;
+        symbol [ NUMBER_FORMAT_SINT16 %tmp.20 11 34 54 ];
+        %tmp.20 = getv %tmp.19 :NUMBER_FORMAT_SINT16;
+        %tmp.21 = 1;
+        %tmp.22 = invoke %tmp.16 %tmp.17(%tmp.18, %tmp.20, %tmp.21);
+        %tmp.23 = dup %tmp.13;
+        %tmp.24 = aputv %tmp.23 %tmp.15 %tmp.22;
+        %tmp.26 = const :rpm;
+        symbol [ rpm %tmp.26 12 13 16 const ];
+        %tmp.27 = lgetv %b;
+        symbol [ b %tmp.27 12 20 21 ];
+        %tmp.28 = 3;
+        %tmp.29 = agetv %tmp.27 %tmp.28;
+        %tmp.30 = dup %tmp.24;
+        %tmp.31 = aputv %tmp.30 %tmp.26 %tmp.29;
+        %tmp.33 = const :speed;
+        symbol [ speed %tmp.33 13 13 18 const ];
+        %tmp.34 = self;
+        symbol [ num %tmp.35 13 22 25 ];
+        %tmp.35 = getv function %tmp.34 :num;
+        %tmp.36 = lgetv %b;
+        symbol [ b %tmp.36 13 26 27 ];
+        symbol [ Lang %tmp.37 13 29 33 ];
+        %tmp.37 = getm $.Toybox.Lang;
+        symbol [ NUMBER_FORMAT_UINT16 %tmp.38 13 34 54 ];
+        %tmp.38 = getv %tmp.37 :NUMBER_FORMAT_UINT16;
+        %tmp.39 = 4;
+        %tmp.40 = invoke %tmp.34 %tmp.35(%tmp.36, %tmp.38, %tmp.39);
+        %tmp.41 = 100.0;
+        %tmp.42 = div %tmp.40 %tmp.41;
+        %tmp.43 = dup %tmp.31;
+        %tmp.44 = aputv %tmp.43 %tmp.33 %tmp.42;
+        %tmp.46 = const :distance;
+        symbol [ distance %tmp.46 14 13 21 const ];
+        %tmp.47 = self;
+        symbol [ num %tmp.48 14 25 28 ];
+        %tmp.48 = getv function %tmp.47 :num;
+        %tmp.49 = lgetv %b;
+        symbol [ b %tmp.49 14 29 30 ];
+        symbol [ Lang %tmp.50 14 32 36 ];
+        %tmp.50 = getm $.Toybox.Lang;
+        symbol [ NUMBER_FORMAT_UINT32 %tmp.51 14 37 57 ];
+        %tmp.51 = getv %tmp.50 :NUMBER_FORMAT_UINT32;
+        %tmp.52 = 6;
+        %tmp.53 = invoke %tmp.47 %tmp.48(%tmp.49, %tmp.51, %tmp.52);
+        %tmp.54 = dup %tmp.44;
+        %tmp.55 = aputv %tmp.54 %tmp.46 %tmp.53;
+        %tmp.57 = const :energy;
+        symbol [ energy %tmp.57 15 13 19 const ];
+        %tmp.58 = self;
+        symbol [ num %tmp.59 15 23 26 ];
+        %tmp.59 = getv function %tmp.58 :num;
+        %tmp.60 = lgetv %b;
+        symbol [ b %tmp.60 15 27 28 ];
+        symbol [ Lang %tmp.61 15 30 34 ];
+        %tmp.61 = getm $.Toybox.Lang;
+        symbol [ NUMBER_FORMAT_UINT16 %tmp.62 15 35 55 ];
+        %tmp.62 = getv %tmp.61 :NUMBER_FORMAT_UINT16;
+        %tmp.63 = 10;
+        %tmp.64 = invoke %tmp.58 %tmp.59(%tmp.60, %tmp.62, %tmp.63);
+        %tmp.65 = dup %tmp.55;
+        %tmp.66 = aputv %tmp.65 %tmp.57 %tmp.64;
+        %tmp.68 = const :elapsed;
+        symbol [ elapsed %tmp.68 16 13 20 const ];
+        %tmp.69 = self;
+        symbol [ num %tmp.70 16 24 27 ];
+        %tmp.70 = getv function %tmp.69 :num;
+        %tmp.71 = lgetv %b;
+        symbol [ b %tmp.71 16 28 29 ];
+        symbol [ Lang %tmp.72 16 31 35 ];
+        %tmp.72 = getm $.Toybox.Lang;
+        symbol [ NUMBER_FORMAT_UINT16 %tmp.73 16 36 56 ];
+        %tmp.73 = getv %tmp.72 :NUMBER_FORMAT_UINT16;
+        %tmp.74 = 12;
+        %tmp.75 = invoke %tmp.69 %tmp.70(%tmp.71, %tmp.73, %tmp.74);
+        %tmp.76 = dup %tmp.66;
+        %tmp.77 = aputv %tmp.76 %tmp.68 %tmp.75;
+        %tmp.79 = const :consoleHr;
+        symbol [ consoleHr %tmp.79 17 13 22 const ];
+        %tmp.80 = lgetv %b;
+        symbol [ b %tmp.80 17 26 27 ];
+        %tmp.81 = 14;
+        %tmp.82 = agetv %tmp.80 %tmp.81;
+        %tmp.83 = dup %tmp.77;
+        %tmp.84 = aputv %tmp.83 %tmp.79 %tmp.82;
+        %tmp.86 = const :consoleConnected;
+        symbol [ consoleConnected %tmp.86 18 13 29 const ];
+        %tmp.87 = lgetv %b;
+        symbol [ b %tmp.87 18 34 35 ];
+        %tmp.88 = 15;
+        %tmp.89 = agetv %tmp.87 %tmp.88;
+        %tmp.90 = 1;
+        %tmp.91 = bitand %tmp.89 %tmp.90;
+        %tmp.92 = 1;
+        %tmp.93 = eq %tmp.91 %tmp.92;
+        %tmp.94 = dup %tmp.84;
+        %tmp.95 = aputv %tmp.94 %tmp.86 %tmp.93;
+        %tmp.97 = const :targetPower;
+        symbol [ targetPower %tmp.97 19 13 24 const ];
+        %tmp.98 = self;
+        symbol [ num %tmp.99 19 28 31 ];
+        %tmp.99 = getv function %tmp.98 :num;
+        %tmp.100 = lgetv %b;
+        symbol [ b %tmp.100 19 32 33 ];
+        symbol [ Lang %tmp.101 19 35 39 ];
+        %tmp.101 = getm $.Toybox.Lang;
+        symbol [ NUMBER_FORMAT_UINT16 %tmp.102 19 40 60 ];
+        %tmp.102 = getv %tmp.101 :NUMBER_FORMAT_UINT16;
+        %tmp.103 = 16;
+        %tmp.104 = invoke %tmp.98 %tmp.99(%tmp.100, %tmp.102, %tmp.103);
+        %tmp.105 = dup %tmp.95;
+        %tmp.106 = aputv %tmp.105 %tmp.97 %tmp.104;
+        ret %tmp.106;
+_Users_majl_GitHub_StrideCast_garmin_source_Packet_mc_6_51_21_4_stop:
+    }
+    [ @file = "/Users/majl/GitHub/StrideCast/garmin/source/Packet.mc"; @line = 23; @symbol_functiondef = [num,23,13,16]; @symbol_param<0> = [b,23,17,18]; @symbol_param<0>_type<0> = [ByteArray,23,22,31]; @symbol_param<1> = [format,23,33,39]; @symbol_param<1>_type<0> = [NumberFormat,23,43,55]; @symbol_param<2> = [offset,23,57,63]; @symbol_param<2>_type<0> = [Number,23,67,73]; @symbol_return<0> = [Number,23,78,84]; ]
+    function num(b as ByteArray, format as NumberFormat, offset as Number) as Number {
+_Users_majl_GitHub_StrideCast_garmin_source_Packet_mc_23_85_25_4_start:
+[ "/Users/majl/GitHub/StrideCast/garmin/source/Packet.mc" 24 8 ]
+        %tmp.1 = lgetv %b;
+        symbol [ b %tmp.1 24 15 16 ];
+        symbol [ decodeNumber %tmp.2 24 17 29 ];
+        %tmp.2 = getv function %tmp.1 :decodeNumber;
+        %tmp.3 = lgetv %format;
+        symbol [ format %tmp.3 24 30 36 ];
+        %tmp.4 = newd 2;
+        %tmp.6 = const :offset;
+        symbol [ offset %tmp.6 24 41 47 const ];
+        %tmp.7 = lgetv %offset;
+        symbol [ offset %tmp.7 24 51 57 ];
+        %tmp.8 = dup %tmp.4;
+        %tmp.9 = aputv %tmp.8 %tmp.6 %tmp.7;
+        %tmp.11 = const :endianness;
+        symbol [ endianness %tmp.11 24 60 70 const ];
+        symbol [ Lang %tmp.12 24 74 78 ];
+        %tmp.12 = getm $.Toybox.Lang;
+        symbol [ ENDIAN_LITTLE %tmp.13 24 79 92 ];
+        %tmp.13 = getv %tmp.12 :ENDIAN_LITTLE;
+        %tmp.14 = dup %tmp.9;
+        %tmp.15 = aputv %tmp.14 %tmp.11 %tmp.13;
+        %tmp.16 = invoke %tmp.1 %tmp.2(%tmp.3, %tmp.15);
+        %tmp.17 = as %tmp.16 Number;
+        symbol [ Number %tmp.17 24 99 105 ];
+        ret %tmp.17;
+_Users_majl_GitHub_StrideCast_garmin_source_Packet_mc_23_85_25_4_stop:
+    }
+}
+[ @file = "/Users/majl/GitHub/StrideCast/garmin/source/Packet.mc"; @line = 1; ]
+<init> {
+}

@@ -16,6 +16,7 @@
 - The bridge also serves `web/` (deployed to `~/stridecast/web` with rsync), so the pages work from the Pi alone.
 - `npm run dev:pi`: the dev server takes the values from the bridge instead of the simulator.
 - `mcp/control.mjs`: MCP server (stdio, no dependencies) that controls Chrome through the extension (tabs, video, YouTube search, /tv). It posts to `/api/control` on the dev server (`server/control.mjs`), which the extension long-polls (`extension/control.js`). Answers never carry page content (no tab titles, mail or chat text); content reading belongs in a separate server for a local model only.
+- `server/assistant.mjs`: voice commands (`/api/ask`) with a local model in LM Studio and the control tools; `extension/voice.js` sends pasted dictation (VoiceInk) or an Alt+V field to it. Commands skip the model's second round; only questions get one.
 - `server/cameras.mjs`: the network cameras (Prusa Core One, RasQberry rig) as MJPEG for `/tv`, via `ffmpeg` on the Mac.
 - `test/`: `npm test` (`node --test`). The root package has no npm dependencies.
 - Live data shape (`/api/live`, server-sent events): `power`, `targetPower` (W), `rpm`, `speed` (km/h), `hr` (bpm), `distance` (km), `energy` (kJ), `elapsed` (s), `source` (`example` or the device).
